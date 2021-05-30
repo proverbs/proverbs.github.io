@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Proverbs's Blog</title>
+    <meta name="description" content="share what I think about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Proverbs&#39;s Blog">
+<meta property="og:url" content="https://proverbs.github.io/page/2/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="share what I think about">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content=" js">
+<meta property="article:tag" content=" html">
+<meta property="article:tag" content=" c++">
+<meta property="article:tag" content=" c">
+<meta property="article:tag" content=" java">
+<meta property="article:tag" content=" css">
+<meta property="article:tag" content=" nodejs">
+<meta property="article:tag" content=" hexo">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    <div class="content article-list">
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/07/08/Leetcode-collection-2019-07-08/">[Leetcode]collection-2019-07-08</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="minimum-cost-for-tickets-medium">minimum-cost-for-tickets(medium)</h2>
+<p>The straightforward way is <code>dp</code> day by day.<br>
+<code>dp[i]:</code> the minimum cost for tickets before day <code>i</code>.<br>
+The state transfer is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!mp[i]) dp[i] = dp[i - <span class="number">1</span>];</span><br><span class="line">dp[i] = min(dp[i], dp[i - <span class="number">1</span>] + costs[<span class="number">0</span>]);</span><br><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">7</span>) dp[i] = min(dp[i], dp[i - <span class="number">7</span>] + costs[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">if</span> (i &gt;= <span class="number">30</span>) dp[i] = min(dp[i], dp[i - <span class="number">30</span>] + costs[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+<p>However, here is a trick: the result could not be <code>dp[365]</code>.<br>
+Another solution is much brighter and faster: <code>dp[i]</code> indicates the minimum cost for tickets from <code>day[i]</code> to the last day.<br>
+The state transfer is:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n1 = n - <span class="number">1</span>, n7 = n - <span class="number">1</span>, n30 = n - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --) &#123;</span><br><span class="line">    <span class="keyword">while</span> (days[n1] &gt;= days[i] + <span class="number">1</span>) n1 --;</span><br><span class="line">    <span class="keyword">while</span> (days[n7] &gt;= days[i] + <span class="number">7</span>) n7 --;</span><br><span class="line">    <span class="keyword">while</span> (days[n30] &gt;= days[i] + <span class="number">30</span>) n30 --;</span><br><span class="line"></span><br><span class="line">    dp[i] = min(dp[i], dp[n1 + <span class="number">1</span>] + costs[<span class="number">0</span>]);</span><br><span class="line">    dp[i] = min(dp[i], dp[n7 + <span class="number">1</span>] + costs[<span class="number">1</span>]);</span><br><span class="line">    dp[i] = min(dp[i], dp[n30 + <span class="number">1</span>] + costs[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: O(400), or O(n).</li>
+<li>Space complexity: O(400), or O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/07/08/Leetcode-collection-2019-07-08/" class="article-date">
+	  <time datetime="2019-07-09T06:38:15.000Z" itemprop="datePublished">Jul 8</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/07/08/Leetcode-collection-2019-07-08/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 471(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/07/06/Leetcode-collection-2019-07-06/">[Leetcode]collection-2019-07-06</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="subarray-sums-divisible-by-k-medium">subarray-sums-divisible-by-k(medium)</h2>
+<p>I have to admit that it’s a good problem and it seems pretty hard at first glance. However, if you know:</p>
+<ol>
+<li>a little about <code>congruence group</code>, the solution will be very straightforward;</li>
+<li>sum of a subarray can be represented using two the difference between two prefix sums.</li>
+</ol>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="interval-list-intersections-easy">interval-list-intersections(easy)</h2>
+<p>It’s a quite common <code>interval merge</code> problem. The solution is:</p>
+<ol>
+<li>sort if it’s out of order;</li>
+<li>use a pointer to indicate the next candidate which can contribute to the results.</li>
+</ol>
+<p>THere are two lists, so we’ll use two pointers for them respectively.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/07/06/Leetcode-collection-2019-07-06/" class="article-date">
+	  <time datetime="2019-07-07T05:48:50.000Z" itemprop="datePublished">Jul 6</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/07/06/Leetcode-collection-2019-07-06/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 470(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/07/04/Leetcode-collection-2019-07-04/">[Leetcode]collection-2019-07-04</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="robot-return-to-origin-easy">robot-return-to-origin(easy)</h2>
+<p>Use <code>dx++/--</code> and <code>dy++/--</code> to indicate the move of the robot.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="reverse-vowels-of-a-string-easy">reverse-vowels-of-a-string(easy)</h2>
+<p>Scan the string from left to right and save all vowels in order in an array. Then, replace the vowels from right to left according to the array. Another way is to use two pointers to walk the string from left and right respectively and swap the vowels.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/07/04/Leetcode-collection-2019-07-04/" class="article-date">
+	  <time datetime="2019-07-05T01:11:01.000Z" itemprop="datePublished">Jul 4</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/07/04/Leetcode-collection-2019-07-04/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 931(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/02/02/Leetcode-collection-2019-02-02/">[Leetcode]collection-2019-02-02</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="find-leaves-of-binary-tree-easy">find-leaves-of-binary-tree(easy)</h2>
+<p>Compute the maximum distance to the leaves using <strong>Bottom-Up DFS</strong>.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="friends-of-appropriate-ages-easy">friends-of-appropriate-ages(easy)</h2>
+<p>People with the same age have no difference to each other. So, we can just save how many people are of this age.<br>
+Then, use the constraints to find the available age range.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="graph-valid-tree-easy">graph-valid-tree(easy)</h2>
+<p>Use DSU to check whether a graph is a tree.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/02/02/Leetcode-collection-2019-02-02/" class="article-date">
+	  <time datetime="2019-02-03T03:22:08.000Z" itemprop="datePublished">Feb 2</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/02/Leetcode-collection-2019-02-02/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 571(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/30/Leetcode-collection-2019-01-30/">[Leetcode]collection-2019-01-30</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="1-bit-and-2-bit-characters-easy">1-bit-and-2-bit-characters(easy)</h2>
+<p>Check from left to right.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="construct-binary-tree-from-inorder-and-postorder-traversal-easy">construct-binary-tree-from-inorder-and-postorder-traversal(easy)</h2>
+<p>The same as construct BST from inorder and preorder traversal.</p>
+<ul>
+<li>Time complexity: O(n^2) in the worst case.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="construct-quad-tree-easy">construct-quad-tree(easy)</h2>
+<p>Just be careful to coordinates.</p>
+<ul>
+<li>Time complexity: O(n^2).</li>
+<li>Space complexity: O(n^2).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/30/Leetcode-collection-2019-01-30/" class="article-date">
+	  <time datetime="2019-01-30T18:39:30.000Z" itemprop="datePublished">Jan 30</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/30/Leetcode-collection-2019-01-30/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 310(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/28/Leetcode-collection-2019-01-28/">[Leetcode]collection-2019-01-28</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="beautiful-array-hard">beautiful-array(hard)</h2>
+<p>It is hard because the first time I see this problem, I didn’t have any idea of how to solve it.<br>
+Then, it the discuss, I found a quite brilliant way which is kind of like a <strong>reversion divide and conquer</strong>.<br>
+Divide the range to the odd part and the even part. Combining with the two properties, we can scale down the problem.<br>
+<a href="https://leetcode.com/problems/beautiful-array/discuss/186679/C%2B%2BJavaPython-Odd-%2B-Even-Pattern-O(N)" target="_blank" rel="noopener">Link</a>.</p>
+<ul>
+<li>Time complexity: O(n) with cache.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="expressive-words-easy">expressive-words(easy)</h2>
+<p>O(n) for enumerating groups, O(n) for checking if one group can extend to another.</p>
+<ul>
+<li>Time complexity: O(n^2).</li>
+<li>Space complexity: O(1)</li>
+</ul>
+<h2 id="logger-rate-limiter-easy">logger-rate-limiter(easy)</h2>
+<p>Use a map to save the timestamp.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/28/Leetcode-collection-2019-01-28/" class="article-date">
+	  <time datetime="2019-01-28T23:45:35.000Z" itemprop="datePublished">Jan 28</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/28/Leetcode-collection-2019-01-28/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 322(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/08/Leetcode-collection-2019-01-08/">[Leetcode]collection-2019-01-08</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="arranging-coins-easy">arranging-coins(easy)</h2>
+<p>Math.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="combination-sum-iv-medium">combination-sum-iv(medium)</h2>
+<p>Knapsack problem. Just note the order of the loops and which loop is the outer one.<br>
+As for the follow-up, I think we should add the limitation that we can only use a negative number at most once, or there could be infinite combinations. And then to solve this new problem, my idea is run 01-knapsack problem to initialize the array <code>dp</code>. This is just what I think about, and I cannot guarantee it is correct.</p>
+<ul>
+<li>Time complexity: O(n*target).</li>
+<li>Space complexity: O(target).</li>
+</ul>
+<h2 id="generate-random-point-in-a-circle-medium">generate-random-point-in-a-circle(medium)</h2>
+<p>A simplest way is to use <strong>rejection sampling</strong>, which I have mentioned before.<br>
+However, my intuition is to pick a radius and a radian randomly, which seems like quite easy. However, there exists a pitfall that <strong>the probability of a point with a larger radius should be larger than that with a smaller radius.</strong></p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/08/Leetcode-collection-2019-01-08/" class="article-date">
+	  <time datetime="2019-01-09T01:06:39.000Z" itemprop="datePublished">Jan 8</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/08/Leetcode-collection-2019-01-08/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 683(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/07/Leetcode-collection-2019-01-07/">[Leetcode]collection-2019-01-07</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="boundary-of-binary-tree-easy">boundary-of-binary-tree(easy)</h2>
+<p>The top is the root, the left or right boundary is the “leftmost” or “rightmost” nodes. The remaining leaves are the bottom.<br>
+Use dfs to get the left boundary and leaves in the left subtree. And do the same thing for right boundary and leaves in the right subtree.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="custom-sort-string-medium">custom-sort-string(medium)</h2>
+<p>The easiest approach is to use quick sort and overwrite the compare function, which is O(nlogn).<br>
+However, there will only be at most 26 characters. Thus, we can use <strong>counting sort</strong> which is not based on comparison.</p>
+<ul>
+<li>Time complexity: O(s.length+t.length).</li>
+<li>Space complexity: extra O(26).</li>
+</ul>
+<h2 id="design-circular-queue-easy">design-circular-queue(easy)</h2>
+<p><strong>Circular queue</strong>’s size should be (1 + size of ordinary queue) in order to represent states of empty and full.</p>
+<ul>
+<li>Time complexity: O(1) for each operation.</li>
+<li>Space complexity: O(size).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/07/Leetcode-collection-2019-01-07/" class="article-date">
+	  <time datetime="2019-01-08T01:41:21.000Z" itemprop="datePublished">Jan 7</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/07/Leetcode-collection-2019-01-07/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 705(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/06/Leetcode-collection-2019-01-06/">[Leetcode]collection-2019-01-06</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="all-paths-from-source-to-target-easy">all-paths-from-source-to-target(easy)</h2>
+<p>DFS and keep track of current path.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="convert-sorted-list-to-binary-search-tree-medium">convert-sorted-list-to-binary-search-tree(medium)</h2>
+<p>The same as building BST from sorted array. And the only difference is we should traverse the whole linked list to get its length is each round of DFS. So, the time complexity will be O(nlogn) rather than O(n).<br>
+<strong>Another smarter O(n) solution is using in-order traversal:</strong> <a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/solution/" target="_blank" rel="noopener">Link</a>, which is to <strong>keep track of current node pointer and build the tree from left to right using recursion of in-order traversal</strong>.</p>
+<ul>
+<li>Time complexity: O(nlogn).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/06/Leetcode-collection-2019-01-06/" class="article-date">
+	  <time datetime="2019-01-07T05:25:56.000Z" itemprop="datePublished">Jan 6</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/06/Leetcode-collection-2019-01-06/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 461(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/05/Leetcode-collection-2019-01-05/">[Leetcode]collection-2019-01-05</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="card-flipping-game-easy">card-flipping-game(easy)</h2>
+<p>The description is kind of vague. Another description from discussion is:</p>
+<blockquote>
+<p>Given an array of cards with numbers written on both sides and an infinite number of card flips, find the minimum number appearing on any card’s back which is not appearing on any card’s front.</p>
+</blockquote>
+<p>And the solution is to find the smallest number which never appears on both sides of any card.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="count-different-palindromic-subsequences-hard">count-different-palindromic-subsequences(hard)</h2>
+<p>The most difficult point of this problem is how to deal with the duplicate subsequences.<br>
+<code>dp[c][lt][rt]: number of different subsequences which start with c and end with c using letters in range [lt, rt]</code>.<br>
+The key point is when <code>c == s[lt] == s[rt]</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (s[lt] == <span class="string">'a'</span> + c &amp;&amp; s[rt] == <span class="string">'a'</span> + c) &#123;</span><br><span class="line">    <span class="keyword">if</span> (lt + <span class="number">1</span> == rt) &#123;</span><br><span class="line">        res = <span class="number">2</span>; <span class="comment">// c, cc</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res = <span class="number">1</span>; <span class="comment">// cc</span></span><br><span class="line">    res += dfs(dp, s, c, lt + <span class="number">1</span>, rt - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (dfs(dp, s, c, lt + <span class="number">1</span>, rt - <span class="number">1</span>)) res ++; <span class="comment">// there exists at least one c, then 1 for cc...cc or c...c...c</span></span><br><span class="line">    <span class="keyword">else</span> res ++; <span class="comment">// there exists no c, then 1 for c</span></span><br><span class="line">    res %= mod;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++)</span><br><span class="line">        <span class="keyword">if</span> (i != c) &#123;</span><br><span class="line">            res += dfs(dp, s, i, lt + <span class="number">1</span>, rt - <span class="number">1</span>);</span><br><span class="line">            res %= mod;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS: Why I got MLE if I used the resize function???</p>
+<ul>
+<li>Time complexity: O(4*length^2).</li>
+<li>Space complexity: O(4*length^2).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/05/Leetcode-collection-2019-01-05/" class="article-date">
+	  <time datetime="2019-01-06T05:46:31.000Z" itemprop="datePublished">Jan 5</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/05/Leetcode-collection-2019-01-05/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 753(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/04/Leetcode-collection-2019-01-04/">[Leetcode]collection-2019-01-04</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="bricks-falling-when-hit-hard">bricks-falling-when-hit(hard)</h2>
+<p>Reverse thinking and DSU to solve it offline.</p>
+<ul>
+<li>Time complexity: O(row*col).</li>
+<li>Space complexity: O(row*col).</li>
+</ul>
+<h2 id="closest-binary-search-tree-value-ii-medium">closest-binary-search-tree-value-ii(medium)</h2>
+<p><strong>Size of a subtree is a quite useful property for BST.</strong><br>
+Binary search the radius of the result range. Then get the number of elements less than a certain value can be solved in O(logn) by using the size property.<br>
+If k is much smaller than n, then we can find k predecessors and k successors using stack.</p>
+<ul>
+<li>Time complexity: O(n) for initialization of size, O(logn*log(MAX_DIFF)) for binary searching and checking.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/04/Leetcode-collection-2019-01-04/" class="article-date">
+	  <time datetime="2019-01-05T02:06:19.000Z" itemprop="datePublished">Jan 4</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/04/Leetcode-collection-2019-01-04/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 632(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/03/Leetcode-collection-2019-01-03/">[Leetcode]collection-2019-01-03</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="battleships-in-a-board-easy">battleships-in-a-board(easy)</h2>
+<p>Because there is no two adjacent battleships, we can just count the top-left X in one pass.</p>
+<ul>
+<li>Time complexity: O(row*col).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="best-meeting-point-medium">best-meeting-point(medium)</h2>
+<p><strong>Manhattan distance: x and y are independent.</strong></p>
+<p>Then we can just think about the problem of 1D, and the solution is quite direct: to find the median.</p>
+<ul>
+<li>Time complexity: O(col*row).</li>
+<li>Space complexity: O(max(col, row)).</li>
+</ul>
+<h2 id="bulls-and-cows-easy">bulls-and-cows(easy)</h2>
+<p>Count using map. To avoid duplication, we can decrease the counter by one when there is a cow.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/03/Leetcode-collection-2019-01-03/" class="article-date">
+	  <time datetime="2019-01-04T03:42:52.000Z" itemprop="datePublished">Jan 3</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/03/Leetcode-collection-2019-01-03/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 860(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/02/Leetcode-collection-2019-01-02/">[Leetcode]collection-2019-01-02</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="all-nodes-distance-k-in-binary-tree-medium">all-nodes-distance-k-in-binary-tree(medium)</h2>
+<p><strong>ALL problem related to distance in trees can be solved using depth.</strong><br>
+Find the depth of the target node. If it is in the left subtree, find all nodes which meet the requirement in the right subtree. And if it is in the right subtree, find all nodes in left subtree.<br>
+If the difference of depth between current node and the target node is K, push back current node to the results.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="binary-tree-paths-easy">binary-tree-paths(easy)</h2>
+<p>DFS.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="diagonal-traverse-easy">diagonal-traverse(easy)</h2>
+<p>There are 4 ways of going out of bounds in total.</p>
+<ul>
+<li>Time complexity: O(row*col).</li>
+<li>Space complexity: O(row*col).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/02/Leetcode-collection-2019-01-02/" class="article-date">
+	  <time datetime="2019-01-03T01:41:09.000Z" itemprop="datePublished">Jan 2</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/02/Leetcode-collection-2019-01-02/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 712(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2019/01/01/Leetcode-collection-2019-01-01/">[Leetcode]collection-2019-01-01</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="balanced-binary-tree-easy">balanced-binary-tree(easy)</h2>
+<p>DFS for depth.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1) without stack.</li>
+</ul>
+<h2 id="best-time-to-buy-and-sell-stock-iv-hard">best-time-to-buy-and-sell-stock-iv(hard)</h2>
+<p>DP.<br>
+Basic idea: <code>dp[i][j]</code> denotes maximum profit for first i days and at most j transactions. <code>dp[i][j] = max(dp[p - 1][j - 1] + prices[i] - prices[p]), where p &lt;= i</code>.<br>
+However, it is an O(kn^2) method.<br>
+And the optimization is <strong>to keep track of the maximum value of (dp[p - 1][j - 1] - prices[p]) while looping through i.</strong><br>
+And another optimization is to use rolling array.</p>
+<ul>
+<li>Time complexity: O(min(kn, n^2)).</li>
+<li>Space complexity: O(min(kn, n^2)).</li>
+</ul>
+<h2 id="design-linked-list-easy">design-linked-list(easy)</h2>
+<p>I did not implement linked list myself, but directly use stl list.</p>
+<ul>
+<li>Time complexity: O(1) for insert and delete, O(n) for indexing.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/01/Leetcode-collection-2019-01-01/" class="article-date">
+	  <time datetime="2019-01-02T01:37:12.000Z" itemprop="datePublished">Jan 1</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/01/Leetcode-collection-2019-01-01/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 602(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2018/12/31/Leetcode-collection-2018-12-31/">[Leetcode]collection-2018-12-31</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="delete-node-in-a-bst-medium">delete-node-in-a-bst(medium)</h2>
+<p>First, find the node which should be deleted.<br>
+(1) If the node is a leaf node, delete it directly.<br>
+(2) If the node has exactly one child, replace it with its child.<br>
+(3) If the node has two child, we will find the largest element in its left subtree, and replace it with that element. This can be implemented using recursion of deleting an element in its left subtree.</p>
+<ul>
+<li>Time complexity: O(height).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="flatten-a-multilevel-doubly-linked-list-easy">flatten-a-multilevel-doubly-linked-list(easy)</h2>
+<p>There are some pitfalls: (1) make nodes’ child pointers to NULL; (2) the same instance can be used for many times.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2018/12/31/Leetcode-collection-2018-12-31/" class="article-date">
+	  <time datetime="2018-12-31T19:54:23.000Z" itemprop="datePublished">Dec 31</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/31/Leetcode-collection-2018-12-31/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 598(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2018/12/30/Leetcode-collection-2018-12-30/">[Leetcode]collection-2018-12-30</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="accounts-merge-medium">accounts-merge(medium)</h2>
+<p>We cannot merge accounts in one pass because of the cases such as</p>
+<blockquote>
+<p>[[“<a href="mailto:David%22,%22David0@m.co">David&quot;,&quot;David0@m.co</a>”<a href="mailto:,%22David1@m.co">,&quot;David1@m.co</a>&quot;],[“<a href="mailto:David%22,%22David3@m.co">David&quot;,&quot;David3@m.co</a>”<a href="mailto:,%22David4@m.co">,&quot;David4@m.co</a>&quot;],[“<a href="mailto:David%22,%22David4@m.co">David&quot;,&quot;David4@m.co</a>”<a href="mailto:,%22David5@m.co">,&quot;David5@m.co</a>&quot;],[“<a href="mailto:David%22,%22David2@m.co">David&quot;,&quot;David2@m.co</a>”<a href="mailto:,%22David3@m.co">,&quot;David3@m.co</a>&quot;],[“<a href="mailto:David%22,%22David1@m.co">David&quot;,&quot;David1@m.co</a>”<a href="mailto:,%22David2@m.co">,&quot;David2@m.co</a>&quot;]]</p>
+</blockquote>
+<p>So we need to do <code>union find</code> first.</p>
+<ul>
+<li>Time complexity: O(nlogn).</li>
+<li>Space complexity: O(nlogn).</li>
+</ul>
+<h2 id="best-time-to-buy-and-sell-stock-iii-medium">best-time-to-buy-and-sell-stock-iii(medium)</h2>
+<p>DP. <code>dp[i]: max profit before i; sq[i]: max profit after i. And the result should be max(dp[i] + sq[i]).</code></p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2018/12/30/Leetcode-collection-2018-12-30/" class="article-date">
+	  <time datetime="2018-12-30T18:21:40.000Z" itemprop="datePublished">Dec 30</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/30/Leetcode-collection-2018-12-30/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 648(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2018/12/29/Leetcode-collection-2018-12-29/">[Leetcode]collection-2018-12-29</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="candy-crush-medium">candy-crush(medium)</h2>
+<p>Each round, we should crush all candies simultaneously and then we go for the next round.<br>
+My way is to mark horizontal candies as 1 and vertical candies as 2. It takes O(width*height) time.</p>
+<ul>
+<li>Time complexity: O(#round<em>width</em>height).</li>
+<li>Space complexity: O(width*height).</li>
+</ul>
+<h2 id="candy-medium">candy(medium)</h2>
+<p>Compute the longest consecutive ascending subarray both from left and right. Select the greater number as the number of candies the child is given.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="degree-of-an-array-easy">degree-of-an-array(easy)</h2>
+<p>keep track of how many times a number occurs and its left-most and right-most index using three maps.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2018/12/29/Leetcode-collection-2018-12-29/" class="article-date">
+	  <time datetime="2018-12-29T18:42:01.000Z" itemprop="datePublished">Dec 29</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/29/Leetcode-collection-2018-12-29/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 514(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+</div>
+
+    
+<nav class="pagination bottom-0 px-5 mb-3 absolute w-full inset-x-0" data-stick-bottom>
+    <div class="flex justify-between leading-tight">
+        <span class="pager">
+            
+                <button class="prev">
+                    <a href="/">
+                        <i class="iconfont icon-angle-left"></i>
+                        Prev
+                    </a>
+                </button>
+            
+            
+                <button class="next">
+                    <a href="/page/3/">
+                        Next
+                        <i class="iconfont icon-angle-right"></i>
+                    </a>
+                </button>
+            
+        </span>
+        <div class="total-article bar-right">Page 2 of 4</div>
+    </div>
+</nav>
+
+
+</main>
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="widgets">
+        
+            
+
+        
+            
+    <div class="widget">
+        <h3 class="widget-title">
+            Tags
+        </h3>
+        <div class="widget-body">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agatha-Christie/" rel="tag">Agatha Christie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning-FER/" rel="tag">Deep Learning - FER</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/" rel="tag">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FER/" rel="tag">FER</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">37</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/" rel="tag">design pattern</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/novel/" rel="tag">novel</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/" rel="tag">reading</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflection/" rel="tag">reflection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+        
+            
+    <div class="widget">
+        
+        <h3 class="widget-title">Tag Cloud</h3>
+        
+        <div class="widget-body tagcloud">
+            <a href="/tags/Agatha-Christie/" style="font-size: 13px;">Agatha Christie</a> <a href="/tags/Deep-Learning/" style="font-size: 13px;">Deep Learning</a> <a href="/tags/Deep-Learning-FER/" style="font-size: 13px;">Deep Learning - FER</a> <a href="/tags/English/" style="font-size: 13px;">English</a> <a href="/tags/FER/" style="font-size: 13px;">FER</a> <a href="/tags/LeetCode/" style="font-size: 13.86px;">LeetCode</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/design-pattern/" style="font-size: 13.43px;">design pattern</a> <a href="/tags/game/" style="font-size: 13.14px;">game</a> <a href="/tags/hexo/" style="font-size: 13.29px;">hexo</a> <a href="/tags/life/" style="font-size: 13.43px;">life</a> <a href="/tags/linux/" style="font-size: 13.14px;">linux</a> <a href="/tags/novel/" style="font-size: 13.57px;">novel</a> <a href="/tags/python/" style="font-size: 13.29px;">python</a> <a href="/tags/reading/" style="font-size: 13.71px;">reading</a> <a href="/tags/reflection/" style="font-size: 13px;">reflection</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/tech/" style="font-size: 13.43px;">tech</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 13px;">人脸检测</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 13.29px;">字符串</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 13px;">数字图像处理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.57px;">数据结构</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 13px;">树状数组</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.29px;">爬虫</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 13px;">线段树</a>
+        </div>
+    </div>
+
+
+        
+            
+    <div class="widget">
+        <h3 class="widget-title">Archive</h3>
+        <div class="widget-body">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">16</span></li></ul>
+        </div>
+    </div>
+
+
+        
+            
+<div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled">
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/05/30/Reading-How-to-Win-Friends-and-Influence-People/" class="title">[Reading]How to Win Friends and Influence People</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-05-30T16:51:45.000Z" itemprop="datePublished">2021-05-30</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/01/08/Arc-of-a-Scythe-Scythe/" class="title">Arc of a Scythe - Scythe</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-01-09T07:02:11.000Z" itemprop="datePublished">2021-01-08</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/01/01/My-2020-End-of-Year-Review/" class="title">My 2020 End-of-Year Review</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-01-01T17:49:27.000Z" itemprop="datePublished">2021-01-01</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2020/07/05/Design-Pattern-Tour-A-Summary/" class="title">Design Pattern Tour: A Summary</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2020-07-05T17:39:40.000Z" itemprop="datePublished">2020-07-05</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/" class="title">Design Pattern Tour: Behavioral Patterns</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2020-07-04T23:51:38.000Z" itemprop="datePublished">2020-07-04</time>
+                        </p>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+        
+    </div>
+</aside>
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

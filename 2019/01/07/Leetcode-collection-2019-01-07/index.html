@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>[Leetcode]collection-2019-01-07 | Proverbs's Blog</title>
+    <meta name="description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. boundary-of-binary-tree(easy) The top is the root, the left or right boundary is the “leftmost” or “">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leetcode]collection-2019-01-07">
+<meta property="og:url" content="https://proverbs.github.io/2019/01/07/Leetcode-collection-2019-01-07/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. boundary-of-binary-tree(easy) The top is the root, the left or right boundary is the “leftmost” or “">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-01-08T01:41:21.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            [Leetcode]collection-2019-01-07
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/07/Leetcode-collection-2019-01-07/" class="article-date">
+	  <time datetime="2019-01-08T01:41:21.000Z" itemprop="datePublished">Jan 7</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2019/01/07/Leetcode-collection-2019-01-07/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 705(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="boundary-of-binary-tree-easy">boundary-of-binary-tree(easy)</h2>
+<p>The top is the root, the left or right boundary is the “leftmost” or “rightmost” nodes. The remaining leaves are the bottom.<br>
+Use dfs to get the left boundary and leaves in the left subtree. And do the same thing for right boundary and leaves in the right subtree.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="custom-sort-string-medium">custom-sort-string(medium)</h2>
+<p>The easiest approach is to use quick sort and overwrite the compare function, which is O(nlogn).<br>
+However, there will only be at most 26 characters. Thus, we can use <strong>counting sort</strong> which is not based on comparison.</p>
+<ul>
+<li>Time complexity: O(s.length+t.length).</li>
+<li>Space complexity: extra O(26).</li>
+</ul>
+<h2 id="design-circular-queue-easy">design-circular-queue(easy)</h2>
+<p><strong>Circular queue</strong>’s size should be (1 + size of ordinary queue) in order to represent states of empty and full.</p>
+<ul>
+<li>Time complexity: O(1) for each operation.</li>
+<li>Space complexity: O(size).</li>
+</ul>
+<a id="more"></a>
+<h2 id="encode-string-with-shortest-length-hard">encode-string-with-shortest-length(hard)</h2>
+<p>DP. <code>dp[i][j]: shortest encoded string from s[i] to s[j]</code>, <code>dp[i][j]</code> can be modified by <code>dp[i][k] + dp[k + 1][j]</code> and a substring of s[i~j] which can form s[i~j] by repeating.<br>
+To check if there is a substring of s[i~j] which can form s[i~j] by repeating, we can use <strong>R-K Hash</strong>.<br>
+Greedy algorithm to encode from the longest duplicate substrings is wrong. e.g. aaabbbaaabbbaaabbbaaa</p>
+<ul>
+<li>Time complexity: O(n^3).</li>
+<li>Space complexity: O(n^2).</li>
+</ul>
+<h2 id="flipping-an-image-easy">flipping-an-image(easy)</h2>
+<ul>
+<li>Time complexity: O(row*col).</li>
+<li>Space complexity: O(row*col).</li>
+</ul>
+<h2 id="guess-number-higher-or-lower-ii-hard">guess-number-higher-or-lower-ii(hard)</h2>
+<p>DP. <code>dp[i][j]</code> means the lowest cost to guess from i to j. <code>dp[i][j] = min(i + max(dp[i][k - 1] + dp[k + 1][j]))</code>, which is O(n^3).<br>
+There is a quite challengeable <a href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/discuss/84826/An-O(n2)-DP-Solution-Quite-Hard" target="_blank" rel="noopener">solution</a> which is O(n^2).</p>
+<ul>
+<li>Time complexity: O(n^3).</li>
+<li>Space complexity: O(^2).</li>
+</ul>
+<h2 id="implement-rand10-using-rand7-medium">implement-rand10-using-rand7(medium)</h2>
+<p>It is a typical <a href="https://leetcode.com/problems/implement-rand10-using-rand7/solution/" target="_blank" rel="noopener">method</a>: <strong>Rejection Sampling</strong>.</p>
+<ul>
+<li>Time complexity: O(1) expected.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="implement-stack-using-queues-medium">implement-stack-using-queues(medium)</h2>
+<p>Keep the order of queue except that the last element becomes the first when pushing.</p>
+<ul>
+<li>Time complexity: O(n) for push, O(1) for other functions.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="insert-into-a-cyclic-sorted-list-medium">insert-into-a-cyclic-sorted-list(medium)</h2>
+<p>Find the smallest and greatest nodes.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="is-subsequence-easy">is-subsequence(easy)</h2>
+<p>Greedy algorithm.</p>
+<ul>
+<li>Time complexity: O(t.length).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="knight-dialer-medium">knight-dialer(medium)</h2>
+<p>It is a simplest problem of <strong>fast power of matrix</strong>.<br>
+And the ordinary method is DP.</p>
+<ul>
+<li>Time complexity: O(logn).</li>
+<li>Space complexity: O(10).</li>
+</ul>
+<h2 id="maximize-distance-to-closest-person-easy">maximize-distance-to-closest-person(easy)</h2>
+<p>Scan from left to right and keep track of a <strong>last</strong> pointer.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="minimum-moves-to-equal-array-elements-medium">minimum-moves-to-equal-array-elements(medium)</h2>
+<p>The last state before all elements are equal is (n-1) elements are equal.<br>
+The last state before (n-1) elements are equal is (n-2) elements are equal.<br>
+…<br>
+That is the approach.</p>
+<ul>
+<li>Time complexity: O(nlogn).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="odd-even-linked-list-easy">odd-even-linked-list(easy)</h2>
+<p>Divide linked list to odd and even parts.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="palindrome-permutation-easy">palindrome-permutation(easy)</h2>
+<p>There are no more than 2 characters which appear odd times.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="rectangle-area-easy">rectangle-area(easy)</h2>
+<p>Sum of two areas subtract the overlapped area.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="score-of-parentheses-easy">score-of-parentheses(easy)</h2>
+<p>Recursion.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="search-in-rotated-sorted-array-ii-hard">search-in-rotated-sorted-array-ii(hard)</h2>
+<p>Maybe when I had a messy mind when I tried to solve it.</p>
+<ul>
+<li>Time complexity: O(n) in the worst case.</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="trapping-rain-water-ii-hard">trapping-rain-water-ii(hard)</h2>
+<p>It a good problem. However, 1D solution is not applicable for 2D problem because there are many path for water to go down.<br>
+The solution is to use priority queue to maintain the minimum border and <strong>current height</strong> which means the shortest piece of the bucket for the new added point.</p>
+<ul>
+<li>Time complexity: O(n<em>m</em>log(n*m)).</li>
+<li>Space complexity: O(n*m).</li>
+</ul>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2019/01/07/Leetcode-collection-2019-01-07/">https://proverbs.github.io/2019/01/07/Leetcode-collection-2019-01-07/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#boundary-of-binary-tree-easy"><span class="toc-number">1.</span> <span class="toc-text">boundary-of-binary-tree(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#custom-sort-string-medium"><span class="toc-number">2.</span> <span class="toc-text">custom-sort-string(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#design-circular-queue-easy"><span class="toc-number">3.</span> <span class="toc-text">design-circular-queue(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#encode-string-with-shortest-length-hard"><span class="toc-number">4.</span> <span class="toc-text">encode-string-with-shortest-length(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flipping-an-image-easy"><span class="toc-number">5.</span> <span class="toc-text">flipping-an-image(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#guess-number-higher-or-lower-ii-hard"><span class="toc-number">6.</span> <span class="toc-text">guess-number-higher-or-lower-ii(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#implement-rand10-using-rand7-medium"><span class="toc-number">7.</span> <span class="toc-text">implement-rand10-using-rand7(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#implement-stack-using-queues-medium"><span class="toc-number">8.</span> <span class="toc-text">implement-stack-using-queues(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#insert-into-a-cyclic-sorted-list-medium"><span class="toc-number">9.</span> <span class="toc-text">insert-into-a-cyclic-sorted-list(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-subsequence-easy"><span class="toc-number">10.</span> <span class="toc-text">is-subsequence(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knight-dialer-medium"><span class="toc-number">11.</span> <span class="toc-text">knight-dialer(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maximize-distance-to-closest-person-easy"><span class="toc-number">12.</span> <span class="toc-text">maximize-distance-to-closest-person(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#minimum-moves-to-equal-array-elements-medium"><span class="toc-number">13.</span> <span class="toc-text">minimum-moves-to-equal-array-elements(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#odd-even-linked-list-easy"><span class="toc-number">14.</span> <span class="toc-text">odd-even-linked-list(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#palindrome-permutation-easy"><span class="toc-number">15.</span> <span class="toc-text">palindrome-permutation(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rectangle-area-easy"><span class="toc-number">16.</span> <span class="toc-text">rectangle-area(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#score-of-parentheses-easy"><span class="toc-number">17.</span> <span class="toc-text">score-of-parentheses(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#search-in-rotated-sorted-array-ii-hard"><span class="toc-number">18.</span> <span class="toc-text">search-in-rotated-sorted-array-ii(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trapping-rain-water-ii-hard"><span class="toc-number">19.</span> <span class="toc-text">trapping-rain-water-ii(hard)</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

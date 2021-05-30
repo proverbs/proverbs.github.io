@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>[Leetcode]collection-2018-12-27 | Proverbs's Blog</title>
+    <meta name="description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. 4sum(medium) We can apply the same method of enumerating the first 2 positions as 3sum to this probl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leetcode]collection-2018-12-27">
+<meta property="og:url" content="https://proverbs.github.io/2018/12/27/Leetcode-collection-2018-12-27/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. 4sum(medium) We can apply the same method of enumerating the first 2 positions as 3sum to this probl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-12-27T17:13:13.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            [Leetcode]collection-2018-12-27
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2018/12/27/Leetcode-collection-2018-12-27/" class="article-date">
+	  <time datetime="2018-12-27T17:13:13.000Z" itemprop="datePublished">Dec 27</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2018/12/27/Leetcode-collection-2018-12-27/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 581(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="4sum-medium">4sum(medium)</h2>
+<p>We can apply the same method of enumerating the first 2 positions as 3sum to this problem and the time complexity will be O(n^3).<br>
+Sum of four numbers is the sum of two pairs. Thus, another way is to use a map to save the sums of all pairs of numbers and use a set to store corresponding pairs.<br>
+<strong>To avoid duplications, we can stipulate that numbers in the first pair should not greater than numbers in the second pair.</strong><br>
+And to avoid cases like <code>[-1, -1, -1, -1], sum=4</code>, we should check if the combination of two pairs is available.</p>
+<ul>
+<li>Time complexity: O(n^2logn) if using set, O(n^2) if using unordered_set(need to customize hash function).</li>
+<li>Space complexity: O(n^2logn) if using set.</li>
+</ul>
+<h2 id="all-oone-data-structure-hard">all-oone-data-structure(hard)</h2>
+<p>I have mentioned that: <code>inc/dec by 1 --&gt; linked list</code> before.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<a id="more"></a>
+<h2 id="count-primes-easy">count-primes(easy)</h2>
+<p>Sieve method to check primes.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="design-log-storage-system-medium">design-log-storage-system(medium)</h2>
+<p>Set(customized comparator) + binary search.</p>
+<ul>
+<li>Time complexity: O(logn) for put function, O(result_size) for retrieve function.</li>
+<li>Space complexity: O(nlogn).</li>
+</ul>
+<h2 id="frog-jump-medium">frog-jump(medium)</h2>
+<p>DP using recurrence(递推).</p>
+<ul>
+<li>Time complexity: O(n^2).</li>
+<li>Space complexity: O(n^2).</li>
+</ul>
+<h2 id="is-graph-bipartite-easy">is-graph-bipartite(easy)</h2>
+<p>Coloring using two colors.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="isomorphic-strings-easy">isomorphic-strings(easy)</h2>
+<p>s can mapping to t, t can mapping to s.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="simplify-path-easy">simplify-path(easy)</h2>
+<p>Stack for <code>..</code>.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="string-compression-easy">string-compression(easy)</h2>
+<p>The compressed string will be always shorter than(or equal to) the its original string.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1) in-place.</li>
+</ul>
+<h2 id="swap-nodes-in-pairs-easy">swap-nodes-in-pairs(easy)</h2>
+<p>Operations of linked list.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1) in-place.</li>
+</ul>
+<h2 id="to-lower-case-easy">to-lower-case(easy)</h2>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="two-sum-ii-input-array-is-sorted-easy">two-sum-ii-input-array-is-sorted(easy)</h2>
+<p>Two pointers. Each time left pointer moves right, right pointer will never move right.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="validate-ip-address-easy">validate-ip-address(easy)</h2>
+<p>Be careful of some special cases.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="zigzag-conversion-easy">zigzag-conversion(easy)</h2>
+<p>The straightforward way is to put all letters to their 2D coordinates.<br>
+But the smarter way is to compute the coordinates directly, O(length).</p>
+<ul>
+<li>Time complexity: O(num * length) for the first way.</li>
+<li>Space complexity: O(num * length) for the first way.</li>
+</ul>
+<h2 id="course-schedule-ii-easy">course-schedule-ii(easy)</h2>
+<p>Topological sort.</p>
+<ul>
+<li>TIme complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="wiggle-sort-ii-hard">wiggle-sort-ii(hard)</h2>
+<p>For <code>wiggle-sort</code>, we can just put those less than or equal to the median to even slots and those greater or equal to the median to odd slots.<br>
+However, it is not correct for this problem because the relationship between two consecutive numbers is strict.<br>
+For example, the solution of <code>[4,5,5,6]</code> is <code>[5,6,4,5]</code>.<br>
+To get wiggle sort, you want to put the number in the following way such that</p>
+<blockquote>
+<p>(1) elements smaller than the ‘median’ are put into the last even slots<br>
+(2) elements larger than the ‘median’ are put into the first odd slots<br>
+(3) the medians are put into the remaining slots.</p>
+</blockquote>
+<p><a href="https://leetcode.com/problems/wiggle-sort-ii/discuss/77682/Step-by-step-explanation-of-index-mapping-in-Java" target="_blank" rel="noopener">ref</a>.</p>
+<p>And the solution use <code>three-way-partition</code> and <code>virtual indexing</code> which is quite brilliant.</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2018/12/27/Leetcode-collection-2018-12-27/">https://proverbs.github.io/2018/12/27/Leetcode-collection-2018-12-27/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4sum-medium"><span class="toc-number">1.</span> <span class="toc-text">4sum(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#all-oone-data-structure-hard"><span class="toc-number">2.</span> <span class="toc-text">all-oone-data-structure(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#count-primes-easy"><span class="toc-number">3.</span> <span class="toc-text">count-primes(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#design-log-storage-system-medium"><span class="toc-number">4.</span> <span class="toc-text">design-log-storage-system(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frog-jump-medium"><span class="toc-number">5.</span> <span class="toc-text">frog-jump(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-graph-bipartite-easy"><span class="toc-number">6.</span> <span class="toc-text">is-graph-bipartite(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isomorphic-strings-easy"><span class="toc-number">7.</span> <span class="toc-text">isomorphic-strings(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simplify-path-easy"><span class="toc-number">8.</span> <span class="toc-text">simplify-path(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string-compression-easy"><span class="toc-number">9.</span> <span class="toc-text">string-compression(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#swap-nodes-in-pairs-easy"><span class="toc-number">10.</span> <span class="toc-text">swap-nodes-in-pairs(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#to-lower-case-easy"><span class="toc-number">11.</span> <span class="toc-text">to-lower-case(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#two-sum-ii-input-array-is-sorted-easy"><span class="toc-number">12.</span> <span class="toc-text">two-sum-ii-input-array-is-sorted(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#validate-ip-address-easy"><span class="toc-number">13.</span> <span class="toc-text">validate-ip-address(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zigzag-conversion-easy"><span class="toc-number">14.</span> <span class="toc-text">zigzag-conversion(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#course-schedule-ii-easy"><span class="toc-number">15.</span> <span class="toc-text">course-schedule-ii(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wiggle-sort-ii-hard"><span class="toc-number">16.</span> <span class="toc-text">wiggle-sort-ii(hard)</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

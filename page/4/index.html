@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Proverbs's Blog</title>
+    <meta name="description" content="share what I think about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Proverbs&#39;s Blog">
+<meta property="og:url" content="https://proverbs.github.io/page/4/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="share what I think about">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content=" js">
+<meta property="article:tag" content=" html">
+<meta property="article:tag" content=" c++">
+<meta property="article:tag" content=" c">
+<meta property="article:tag" content=" java">
+<meta property="article:tag" content=" css">
+<meta property="article:tag" content=" nodejs">
+<meta property="article:tag" content=" hexo">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    <div class="content article-list">
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/06/01/Algorithm-Splay/">Algorithm-Splay</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="【数据结构】splay伸展树">【数据结构】splay伸展树</h1>
+<h2 id="引言">引言</h2>
+<p>splay树并不是严格意义上的平衡树，但是他可以做到平衡树可以做到的一切。</p>
+<p>而且，相比与RBT和AVL，splay简直不能更好写了～</p>
+<p>所以，用来解决一般的算法问题，基本上splay已经是够用了。</p>
+<h2 id="splay">splay</h2>
+<h3 id="操作">操作</h3>
+<p>关于splay的基本操作就是旋转，将一个子树向左或向右旋转。</p>
+<p>关于两种旋转，可以参考<a href="http://dongxicheng.org/structure/splay-tree/" target="_blank" rel="noopener">这篇博客</a>。</p>
+<p>但是，从我个人理解，无论是左旋还是右旋，本质都是将一个节点上提（降低节点的深度）。</p>
+<p>而旋转操作有用在区间操作上：我们可以通过旋转将一个区间旋转到一棵子树上，这样就可以直接对树根打上lazy标记。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/06/01/Algorithm-Splay/" class="article-date">
+	  <time datetime="2017-06-02T06:37:57.000Z" itemprop="datePublished">Jun 1</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/06/01/Algorithm-Splay/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/31/Algorithm-Segment-Tree/">Algorithm-Segment-Tree</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="【数据结构】线段树">【数据结构】线段树</h1>
+<h2 id="引言">引言</h2>
+<p>线段树虽然写起来没有树状数组那么简洁，时间效率也没有树状数组那么好，但是他的功能更加强大。</p>
+<h2 id="线段树">线段树</h2>
+<p>主要功能：</p>
+<ul>
+<li>单点更新、区间更新（lazy）</li>
+<li>单点查询、区间查询</li>
+</ul>
+<p>剩下的不想多说了，太容易理解了，找个图一看就明白了～</p>
+<p>只有一点要注意的：</p>
+<ul>
+<li>区间边界有没有包含在两棵相邻的子树内</li>
+</ul>
+<p>线段树根据不同的题目变化很丰富，所以没有模板，只有大致的框架。</p>
+<p>看应用中的例子吧～</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/31/Algorithm-Segment-Tree/" class="article-date">
+	  <time datetime="2017-05-31T22:12:15.000Z" itemprop="datePublished">May 31</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>, <a class="article-tag-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/31/Algorithm-Segment-Tree/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 510(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/30/Algorithm-Bit/">Algorithm-Bit</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="【数据结构】树状数组">【数据结构】树状数组</h1>
+<h2 id="引言">引言</h2>
+<p>树状数组可以说是最好写，也是最好用的一种数据结构了～</p>
+<h2 id="树状数组">树状数组</h2>
+<h3 id="概览">概览</h3>
+<p>树状数组是用数组存储的，它并没有显式的树形结构，而是用数组下表的二进制表示中最低位1的位置构建的一个隐式的树形结构。</p>
+<p>这里不盗图了，要有版权意识～所以，更形象的展示可以参考<a href="http://blog.csdn.net/int64ago/article/details/7429868" target="_blank" rel="noopener">这个博客</a>中的AB图。</p>
+<h3 id="关于lowbit">关于lowbit</h3>
+<p>lowbit当然不是low逼的意思啦～</p>
+<p>lowbit(x)=x&amp;-x，要理解这个，首先要知道计算机中<strong>补码</strong>的概念。如+8，因为正数的补码为其本身，所以其的二级制表示为01000（最高位是符号位）。而-8的补码将+8的所有位（包括符号位）取反，然后加1的结果，也就是11000。</p>
+<p>所以，这个函数的作用就是求x最低位1所对应的数字，lowbit(8)=1000=8。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/30/Algorithm-Bit/" class="article-date">
+	  <time datetime="2017-05-31T06:43:08.000Z" itemprop="datePublished">May 30</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>, <a class="article-tag-link" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/30/Algorithm-Bit/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 682(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/29/Algorithm-Trie/">Algorithm-Trie</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="【算法】Trie图">【算法】Trie图</h1>
+<h2 id="引言">引言</h2>
+<p>Trie图是Trie树的变种，结合了ac自动机中的思想。</p>
+<p>而ac自动机的根本思想是基于kmp的next数组构建的fail指针。</p>
+<p>所以，在学习Trie图前，请先搞清楚<a href="http://blog.proverbs.top/2017/05/27/Algorithm-KMP/" target="_blank" rel="noopener">kmp</a>算法。</p>
+<h2 id="关于AC自动机">关于AC自动机</h2>
+<p>我太久没写过AC自动机了，只知道AC自动机可以自动ac了。</p>
+<p>所以，我还真的说不出AC自动机和我写的trie图有什么区别，可能我写的就叫ac自动机吧。</p>
+<p>或者说，可能AC自动机和Trie图本来就是几乎一样的。</p>
+<h2 id="Trie图">Trie图</h2>
+<p>关于Trie图，只要找到有图（那种非常好看的图）的那种博文，一般讲的都比较清楚。</p>
+<p>因为，根本不用看字，看看图就明白了。</p>
+<p>这里推荐一个博客：<a href="http://www.cnblogs.com/gtarcoder/p/4820560.html" target="_blank" rel="noopener">http://www.cnblogs.com/gtarcoder/p/4820560.html</a></p>
+<p>Trie图写起来非常短，我这种邋遢的代码风格也就10行。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/29/Algorithm-Trie/" class="article-date">
+	  <time datetime="2017-05-29T18:37:05.000Z" itemprop="datePublished">May 29</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/29/Algorithm-Trie/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 986(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/27/Algorithm-Suffix-Array/">Algorithm-Suffix-Array</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="【算法】后缀数组（SA）">【算法】后缀数组（SA）</h1>
+<h2 id="引言">引言</h2>
+<p>关于后缀数组的原理，<a href="https://wenku.baidu.com/view/228caa45b307e87101f696a8.html" target="_blank" rel="noopener">集训队论文</a>中已经将的非常详细了。</p>
+<p>但是，其中的代码对于第一接触这个东西的人来说可能就觉得有些恶心了。</p>
+<p>所以，我这篇文章主要是讲怎么理解倍增方法的SA的构建过程。</p>
+<h2 id="SA的实现">SA的实现</h2>
+<h3 id="基数排序">基数排序</h3>
+<p>很多人理解不了这个是因为不知道<strong>基数排序</strong>。</p>
+<p>所以，在学习后缀数组之前请先动手写一个双关键字的基数排序程序：求sa[i]表示第i大的元组在数组中的下标。</p>
+<p>然后就可以正式进入SA部分了～</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/27/Algorithm-Suffix-Array/" class="article-date">
+	  <time datetime="2017-05-27T07:45:42.000Z" itemprop="datePublished">May 27</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/27/Algorithm-Suffix-Array/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.8k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 8(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/27/Algorithm-Suffix-Tree/">Algorithm-Suffix-Tree</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/27/Algorithm-Suffix-Tree/" class="article-date">
+	  <time datetime="2017-05-27T07:45:27.000Z" itemprop="datePublished">May 27</time>
+	</a>
+</span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/27/Algorithm-Suffix-Tree/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 0(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/27/Algorithm-KMP/">Algorithm-KMP</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="【算法】字符串：KMP算法">【算法】字符串：KMP算法</h1>
+<h2 id="引言">引言</h2>
+<p>kmp算法是字符串算法中最简单的一种算法，可以用于一下问题解决（待补充）：</p>
+<ul>
+<li>字符串匹配</li>
+<li>字符串循环节</li>
+</ul>
+<p>但是，我发现有很多人都像我以前一样，其实并不是很懂这个算法。于是，就采用背代码的方式试图理解，但总是徒劳。而我个人认为，唯一可以通过背代码加深理解的只有复杂的数据结构。而这种巧妙的算法不是能通过背来理解的。</p>
+<h2 id="关于KMP算法">关于KMP算法</h2>
+<p>关于kmp算法的讲解网上有很多，找那种图多的博客看看，基本上讲的都差不多，也都非常明了。</p>
+<p>所以，这里我只想讲讲我自己的体会。不画图，纯想：</p>
+<ul>
+<li>kmp算法的核心是一个next数组（我的代码中为p数组），当我们处于字符串（设为a）的第i个字符处时，求出的next[i]满足数组的前next[i]个字符和以a[i-next[i]+1]～a[i]这next[i]个字符是完全一样的，且next[i]最大，但又不能等于i</li>
+</ul>
+<p>上面说的还是有点抽象，那么我们从字符串匹配的角度思考：</p>
+<ul>
+<li>现在我们要从a串中找到一个子串和b串完全匹配，假设已经匹配了前i个，但是第（i+1）个不匹配，那么我么就要将字符串b向后移动再次寻求匹配。</li>
+<li>既然我们向后移动了b串，那么，如果a中与b串匹配的串的首个字符的位置在i之前，那么这个匹配的子串一定跨越了i这个位置。</li>
+<li>那么，我们自然而然就像知道，以a中以i位置结尾的子串最多能与b中的前几个匹配呢？</li>
+<li>要回答这个问题，就是取求next数组了。</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/27/Algorithm-KMP/" class="article-date">
+	  <time datetime="2017-05-27T07:36:16.000Z" itemprop="datePublished">May 27</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/27/Algorithm-KMP/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 859(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/24/selenium-phantomjs/">selenium_phantomjs</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="python爬虫实战（四）：selenium-phantomJS使用">python爬虫实战（四）：selenium+phantomJS使用</h1>
+<h2 id="引言">引言</h2>
+<p>phantomJS是一个没有界面的浏览器；selenium则是一个web测试工具，可以模拟用户操作。<br>
+在对phantomJS使用不熟练的时候，可以用firefox和selenium一起使用。</p>
+<h2 id="配置">配置</h2>
+<ul>
+<li>phantomJS直接从<a href="http://phantomjs.org/download.html" target="_blank" rel="noopener">官网</a>下载二进制包，解压，然后用软链接的方式添加到/usr/bin/</li>
+<li>使用firefox必须添加到环境变量，同时还要下载<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">驱动</a></li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/24/selenium-phantomjs/" class="article-date">
+	  <time datetime="2017-05-24T17:59:56.000Z" itemprop="datePublished">May 24</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/24/selenium-phantomjs/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 472(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/24/taomm/">taomm</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="python爬虫实战（三）：爬取淘女郎图片">python爬虫实战（三）：爬取淘女郎图片</h1>
+<h2 id="引言">引言</h2>
+<p>爬取淘女郎图片是为了给一个朋友找找穿衣的搭配，但是期间遇到了很多问题，所以就写了这篇文章记录一下解决方案。</p>
+<h2 id="分析">分析</h2>
+<ul>
+<li>
+<p>我们要爬取的网页是：<a href="https://mm.taobao.com/search_tstar_model.htm" target="_blank" rel="noopener">淘女郎</a>，通过分析可以看到每个淘女郎的主页：</p>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/taomm_01.png" alt="">)</p>
+</li>
+<li>
+<p>随便找一个淘女郎的个人主页，有大量的图片，而且几乎没有多余的无关图片，所以直接用正则表达式可以轻易提取出图片的原始链接</p>
+</li>
+<li>
+<p>那么我们爬完第一页，就要翻页了，尝试点击了一下“第二页”，网址竟然没变？！看来有麻烦了：翻页操作使用的是ajax异步加载的！那么我们的主要问题就是取解决如何获取ajax异步加载的内容了</p>
+</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/24/taomm/" class="article-date">
+	  <time datetime="2017-05-24T17:03:26.000Z" itemprop="datePublished">May 24</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/24/taomm/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.4k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 6(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/24/symbolic-link/">symbolic_link</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Linux-软链接">[Linux]软链接</h1>
+<h2 id="引言">引言</h2>
+<p>我们经常会从网上下载一些程序，有些可以直接安装，像windows中的exe一样；有些则是源码安装，也是最麻烦的；而有些则是已经编译好的二进制文件，可以直接运行，就像windows中的“绿色软件”～</p>
+<p>而面对这种绿色软件，如果想在任意目录下随意的运行，且不去修改系统的环境变量，软链接就派上用场了～</p>
+<h2 id="软链接vs硬链接">软链接vs硬链接</h2>
+<ul>
+<li>
+<p>软链接</p>
+<ul>
+<li>
+<p>相当于windows中的快捷方式，不会占用多余的空间</p>
+</li>
+<li>
+<p>使用方式：<code>ln -s 源文件 目标文件</code>，<strong>其中源文件必须使用绝对路径</strong></p>
+</li>
+<li>
+<p>软链接和源文件是两个不同的文件，对应不同的<strong>节点</strong></p>
+</li>
+<li>
+<p>使用<code>ls -l</code>时可以看到软链接有特殊的箭头符号表示</p>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/symbolic%20link.png" alt="symbolic link"></p>
+</li>
+</ul>
+</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/24/symbolic-link/" class="article-date">
+	  <time datetime="2017-05-24T07:00:47.000Z" itemprop="datePublished">May 24</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/linux/" rel="tag">linux</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/24/symbolic-link/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 411(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/19/hexo-abstract-length/">hexo-abstract-length</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="控制hexo文章摘要长度">控制hexo文章摘要长度</h1>
+<p>方法很简单，不用安装任何插件，不用配置任何文件，只需要：<br>
+在期望显示的摘要后加上<code>&lt;!--more--&gt;</code>就可以了～</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/19/hexo-abstract-length/" class="article-date">
+	  <time datetime="2017-05-20T06:21:10.000Z" itemprop="datePublished">May 19</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/hexo/" rel="tag">hexo</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/19/hexo-abstract-length/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 671(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/19/hexo-index-top/">hexo-index-top</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="hexo文章置顶">hexo文章置顶</h1>
+<p>由于我经常非常自恋的点开自己的博客，所以想到将自己的计划放在自己的首页提示自己。同时，也是激励自己。<br>
+所以就搜索了一些资料，总结了hexo博客文章置顶的方法，备忘。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/19/hexo-index-top/" class="article-date">
+	  <time datetime="2017-05-20T06:07:15.000Z" itemprop="datePublished">May 19</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/hexo/" rel="tag">hexo</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/19/hexo-index-top/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 521(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/14/python-crawler-requests/">python-crawler-requests</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="requests模块学习">requests模块学习</h1>
+<h2 id="基础">基础</h2>
+<h3 id="基本请求">基本请求</h3>
+<ul>
+<li><code>requests</code>支持http的6种基本请求（get，post，put，delete，head，options），请求名即为函数名</li>
+<li><code>get</code>方法：<code>res = requests.get(url)</code>，返回的是<code>Response</code>实例，主要包含如下属性
+<ul>
+<li><code>res.status_code</code></li>
+<li><code>res.url</code></li>
+<li><code>res.encoding</code></li>
+<li><code>res.cookies</code>：如果<code>response</code>中包含cookie，则可通过<code>cookies</code>属性获取</li>
+<li><code>res.text</code></li>
+<li><code>res.content</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="get">get</h3>
+<ul>
+<li><code>get</code>添加参数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">res = requests.get(<span class="string">"http://httpbin.org/get"</span>, params=payload)</span><br><span class="line">print(res.url) <span class="comment"># http://httpbin.org/get?key2=value2&amp;key1=value1</span></span><br></pre></td></tr></table></figure>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/14/python-crawler-requests/" class="article-date">
+	  <time datetime="2017-05-15T05:58:41.000Z" itemprop="datePublished">May 14</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/14/python-crawler-requests/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 941(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/14/python-crawler-urllib/">python-crawler-urllib</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="python爬虫（一）：urllib">python爬虫（一）：urllib</h1>
+<h2 id="urllib">urllib</h2>
+<h3 id="urllib-request">urllib.request</h3>
+<h4 id="urllib-request-urlopen">urllib.request.urlopen</h4>
+<ul>
+<li>原型：<code>request.urlopen(url, data, timeout)</code></li>
+<li>返回：Request类实例</li>
+<li>实践：<code>response = request.urlopen('http://blog.proverbs.top')</code></li>
+</ul>
+<h4 id="urllib-request-read">urllib.request.read</h4>
+<ul>
+<li>返回：Request实例的文本</li>
+<li>实践：<code>request.read()</code></li>
+</ul>
+<h4 id="urllib-request-Request">urllib.request.Request</h4>
+<ul>
+<li>推荐使用构建<code>Request</code>实例作为<code>urlopen</code>的参数</li>
+<li>构建：<code>req = request.Request('http://blog.proverbs.top')</code></li>
+<li>实践：<code>res = request.urlopen(req)</code></li>
+</ul>
+<h4 id="urllib-request-ProxyHandler">urllib.request.ProxyHandler</h4>
+<ul>
+<li><code>urllib</code>默认使用环境变量<code>http_proxy</code>作为代理</li>
+<li>手动设置代理：使用<code>Handler</code>可以构建<code>opener</code>，而<code>opener</code>代替<code>urlopen</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proxy_handler = request.ProxyHandler(&#123;<span class="string">"http"</span> : <span class="string">'http://some-proxy.com:8080'</span>&#125;)</span><br><span class="line">opener = request.build_opener(proxy_handler)</span><br><span class="line">request.install_opener(opener)</span><br></pre></td></tr></table></figure>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/14/python-crawler-urllib/" class="article-date">
+	  <time datetime="2017-05-15T05:56:02.000Z" itemprop="datePublished">May 14</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/14/python-crawler-urllib/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 650(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/12/linux-learning/">linux-learning</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="《鸟哥的Linux私房菜》学习笔记（未完）">《鸟哥的Linux私房菜》学习笔记（未完）</h1>
+<h2 id="linux内置工具">linux内置工具</h2>
+<ul>
+<li><code>man</code></li>
+<li><code>info</code>：需要以info格式书写说明文档</li>
+<li><code>nano</code>：简单的文本编辑器</li>
+</ul>
+<h2 id="linux命令">linux命令</h2>
+<h3 id="维护">维护</h3>
+<ul>
+<li><code>who</code>：查看当前在线用户</li>
+<li><code>ps -aux</code>：查看进程</li>
+<li><code>netstat -a</code>：查询网络状态</li>
+<li><code>shutdown</code>，<code>reboot</code>：在执行前会自动执行<code>sync</code></li>
+<li><code>init</code>：切换运行级别（0：关机，3：纯文本，5：图形接口模式，6：重新启动）</li>
+</ul>
+<h3 id="权限">权限</h3>
+<p>身份类别：owner, group, others<br>
+权限类别：read, write, execute</p>
+<ul>
+<li><code>chgrp (-R，递归) 所属组名 文件名</code>：改变group</li>
+<li><code>chown (-R，递归) 所有者名 文件名</code>：改变owner</li>
+<li><code>chmod (-R，递归) 文件名</code>：改变权限
+<ul>
+<li><code>chmod 777 文件名</code>：r=4，w=2，x=1</li>
+<li><code>chmod [u/g/o/a] [+/-/=][r/w/x] 文件名</code>：<code>chmod u=rwx,g=rx,o=r 文件名</code></li>
+</ul>
+</li>
+</ul>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/12/linux-learning/" class="article-date">
+	  <time datetime="2017-05-12T15:59:51.000Z" itemprop="datePublished">May 12</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/linux/" rel="tag">linux</a>, <a class="article-tag-link" href="/tags/shell/" rel="tag">shell</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/12/linux-learning/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.5k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/08/face-color/">face_color</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="颜色空间人脸检测">颜色空间人脸检测</h1>
+<hr>
+<h2 id="实验目的">实验目的</h2>
+<p>使用颜色空间的方法检测人脸，并用二值化的方法进行显示。</p>
+<hr>
+<h2 id="实验内容">实验内容</h2>
+<h3 id="选定图像色彩模型">选定图像色彩模型</h3>
+<p>如果使用RGB颜色模型，当光照、肤色稍微变化时，对RGB各分量的灰度值有较大的影响。所以通过查阅资料，最终选定了YCbCr颜色空间作为人脸检测的颜色模型，并选定Cr分量的灰度作为判定标准。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/08/face-color/" class="article-date">
+	  <time datetime="2017-05-08T21:24:38.000Z" itemprop="datePublished">May 8</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a>, <a class="article-tag-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/08/face-color/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.5k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 6(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2017/05/01/hello-world/">Hello World</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/01/hello-world/" class="article-date">
+	  <time datetime="2017-05-01T15:00:51.000Z" itemprop="datePublished">May 1</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/hexo/" rel="tag">hexo</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/01/hello-world/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 78(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+</div>
+
+    
+<nav class="pagination bottom-0 px-5 mb-3 absolute w-full inset-x-0" data-stick-bottom>
+    <div class="flex justify-between leading-tight">
+        <span class="pager">
+            
+                <button class="prev">
+                    <a href="/page/3/">
+                        <i class="iconfont icon-angle-left"></i>
+                        Prev
+                    </a>
+                </button>
+            
+            
+                <button class="next disabled">
+                    <a href="#">
+                        Next
+                        <i class="iconfont icon-angle-right"></i>
+                    </a>
+                </button>
+            
+        </span>
+        <div class="total-article bar-right">Page 4 of 4</div>
+    </div>
+</nav>
+
+
+</main>
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="widgets">
+        
+            
+
+        
+            
+    <div class="widget">
+        <h3 class="widget-title">
+            Tags
+        </h3>
+        <div class="widget-body">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agatha-Christie/" rel="tag">Agatha Christie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning-FER/" rel="tag">Deep Learning - FER</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/" rel="tag">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FER/" rel="tag">FER</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">37</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/" rel="tag">design pattern</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/novel/" rel="tag">novel</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/" rel="tag">reading</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflection/" rel="tag">reflection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+        
+            
+    <div class="widget">
+        
+        <h3 class="widget-title">Tag Cloud</h3>
+        
+        <div class="widget-body tagcloud">
+            <a href="/tags/Agatha-Christie/" style="font-size: 13px;">Agatha Christie</a> <a href="/tags/Deep-Learning/" style="font-size: 13px;">Deep Learning</a> <a href="/tags/Deep-Learning-FER/" style="font-size: 13px;">Deep Learning - FER</a> <a href="/tags/English/" style="font-size: 13px;">English</a> <a href="/tags/FER/" style="font-size: 13px;">FER</a> <a href="/tags/LeetCode/" style="font-size: 13.86px;">LeetCode</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/design-pattern/" style="font-size: 13.43px;">design pattern</a> <a href="/tags/game/" style="font-size: 13.14px;">game</a> <a href="/tags/hexo/" style="font-size: 13.29px;">hexo</a> <a href="/tags/life/" style="font-size: 13.43px;">life</a> <a href="/tags/linux/" style="font-size: 13.14px;">linux</a> <a href="/tags/novel/" style="font-size: 13.57px;">novel</a> <a href="/tags/python/" style="font-size: 13.29px;">python</a> <a href="/tags/reading/" style="font-size: 13.71px;">reading</a> <a href="/tags/reflection/" style="font-size: 13px;">reflection</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/tech/" style="font-size: 13.43px;">tech</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 13px;">人脸检测</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 13.29px;">字符串</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 13px;">数字图像处理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.57px;">数据结构</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 13px;">树状数组</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.29px;">爬虫</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 13px;">线段树</a>
+        </div>
+    </div>
+
+
+        
+            
+    <div class="widget">
+        <h3 class="widget-title">Archive</h3>
+        <div class="widget-body">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">16</span></li></ul>
+        </div>
+    </div>
+
+
+        
+            
+<div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled">
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/05/30/Reading-How-to-Win-Friends-and-Influence-People/" class="title">[Reading]How to Win Friends and Influence People</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-05-30T16:51:45.000Z" itemprop="datePublished">2021-05-30</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/01/08/Arc-of-a-Scythe-Scythe/" class="title">Arc of a Scythe - Scythe</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-01-09T07:02:11.000Z" itemprop="datePublished">2021-01-08</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/01/01/My-2020-End-of-Year-Review/" class="title">My 2020 End-of-Year Review</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-01-01T17:49:27.000Z" itemprop="datePublished">2021-01-01</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2020/07/05/Design-Pattern-Tour-A-Summary/" class="title">Design Pattern Tour: A Summary</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2020-07-05T17:39:40.000Z" itemprop="datePublished">2020-07-05</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/" class="title">Design Pattern Tour: Behavioral Patterns</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2020-07-04T23:51:38.000Z" itemprop="datePublished">2020-07-04</time>
+                        </p>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+        
+    </div>
+</aside>
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

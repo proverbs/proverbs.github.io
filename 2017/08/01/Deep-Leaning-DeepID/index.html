@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Deep-Leaning-DeepID | Proverbs's Blog</title>
+    <meta name="description" content="DeepID学习笔记 参考文献  Deep Learning Face Representation from Predicting 10,000 Classes（DeepID1） Deep Learning Face Representation by Joint Identification-Verification（DeepID2） Deeply learned face represent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep-Leaning-DeepID">
+<meta property="og:url" content="https://proverbs.github.io/2017/08/01/Deep-Leaning-DeepID/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="DeepID学习笔记 参考文献  Deep Learning Face Representation from Predicting 10,000 Classes（DeepID1） Deep Learning Face Representation by Joint Identification-Verification（DeepID2） Deeply learned face represent">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-1.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-2.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-3.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-4.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-5.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-6.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-7.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-8.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-9.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-1.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-2.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-3.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-4.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-11.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-5.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-6.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-7.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-8.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-9.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2-10.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-1.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-2.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-3.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-4.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-5.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-6.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-7.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-7.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-9.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-10.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-11.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-12.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid2+-13.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid3-1.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid3-2.png">
+<meta property="og:image" content="http://ok28v56oe.bkt.clouddn.com/deepid3-3.png">
+<meta property="article:published_time" content="2017-08-01T23:27:34.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="Deep Learning - FER">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ok28v56oe.bkt.clouddn.com/deepid1-1.png">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Deep-Leaning-DeepID
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/08/01/Deep-Leaning-DeepID/" class="article-date">
+	  <time datetime="2017-08-01T23:27:34.000Z" itemprop="datePublished">Aug 1</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Deep-Learning-FER/" rel="tag">Deep Learning - FER</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2017/08/01/Deep-Leaning-DeepID/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 3.7k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 13(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="DeepID学习笔记">DeepID学习笔记</h1>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li>Deep Learning Face Representation from Predicting 10,000 Classes（DeepID1）</li>
+<li>Deep Learning Face Representation by Joint Identification-Verification（DeepID2）</li>
+<li>Deeply learned face representations are sparse, selective, and robust（DeepID2+）</li>
+<li>DeepID3: Face Recognition with Very Deep Neural Networks（DeepID3）</li>
+</ul>
+<h2 id="DeepID1">DeepID1</h2>
+<h3 id="0-Abstract">0. Abstract</h3>
+<ul>
+<li>目标是提取Deep hidden IDentity features(DeepID)，这是在神经网络较高的一层所表示的特征，论文<strong>利用DeepID层提取的特征进行进行face verification</strong>（给两张人脸，判断是不是一个人）</li>
+</ul>
+<h3 id="1-Introduction">1. Introduction</h3>
+<ul>
+<li>一般的，神经网络是使用二值verification信号（是或否）作为监督信号训练网络。但是<strong>本文使用identification信号（多分类，类别达10000）作为监督信号提取个体特征</strong></li>
+<li>模型的思想大概是：**将一张人脸切分成多个patch，然后每个patch训练一个网络产生多个网络。然后将多个网络的特征压缩到160维，作为整个人的特征。**具体的做法将在后面部分详述。</li>
+<li>这160维的特征是high-level的（一般非深度学习提取的特征属于low-level的，如LBP），可以使用Joint Bayesian（联合贝叶斯）和NN（神经网络）等任意分类器对特征进行分类。后文也将给出联合贝叶斯和神经网络的比较</li>
+<li>这种模型对于weakly aligned faces也可以达到很高的verification正确率</li>
+</ul>
+<a id="more"></a>
+<h3 id="2-Related-Work">2. Related Work</h3>
+<ul>
+<li>太多了，见论文相关章节吧</li>
+</ul>
+<h3 id="3-Learning-DeepID-for-face-verification">3. Learning DeepID for face verification</h3>
+<ul>
+<li>DeepID网络结构，见Figure 2。着重注意Max-pooling layer 3、Convolutional layer 4和DeepID layer，从图中看出Max-pooling layer 3和Convolutional layer 4是通过concatenate的方式形成的DeepID层（这点论文中并没有提到）。最后，DeepID层全连接到Soft-max层做分类</li>
+<li>作者这样连接的目的是：<strong>高维的卷积层面临信息瓶颈的问题（神经元太少），使用低维卷积层提取的特征可以补充高维卷积层提取的特征，且这个特征是多尺度的（multi-scale），这个网络也称为multi-scale ConvNets</strong></li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-1.png" alt=""></p>
+<ul>
+<li>形成的特征一定要比类别少很多，这样才能体现出用特征做预测的价值</li>
+<li>这里详细解释<strong>如何切分为60个patch</strong>：一个人脸图片按照左右眼为中心、最右嘴角为中心、鼻尖为中心切分成5部分，这5部分又有3中不同的尺度，这样就有15种patch了。然后因为图片是RGB通道的，所有按照3个通道可以形成45中patch；在加上15个gray通道的patch，最终一共是60个patch。<strong>60个patch每个都训练一个DeepID网络</strong>。以上部分可以参考一下Figure 3，但个人觉得看了也没什么用，只是一种切分patch的思想。</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-2.png" alt=""></p>
+<ul>
+<li><strong>特征提取</strong>：通过上面的patch切分，我们现在有60个DeepID网络了。对于一张图片，我们用同样的方法切分成60个patch，通过60个网络，得到60* 160维的特征。然后将60个patch水平翻转，同理又得到60* 160维的特征。将两个特征合在一起，得到60* 160* 2维的特征</li>
+<li><strong>为了verification，作者这里使用的分类模型是Joint Bayesian和NN</strong>。关于<strong>Joint Bayesian</strong>，大致思想是人脸特征服从两个高斯分布（不同identity之间的差异和相同identity的不同图片之间的差异）的和，最终转换为用类EM算法求协方差矩阵的问题，更详细的内容要参考之前关于Bayesian Face的相关论文（这部分我也没有完全理解其数学推导，等学会了，我会整理一篇冠以Bayesian Face的学习笔记）。关于<strong>NN</strong>，输入层有60组，每组包含两个人脸的2个patch及其水平翻转；然后每个patch有160维特征，所以每组总共640维特征。<strong>两个隐含层分别是locally connected和fully-connected，分别用来学习同组两个patch之间的关系（顺便降低特征维度，减少训练参数）和综合所有关系</strong>。详见Figure 4</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-3.png" alt=""></p>
+<ul>
+<li>NN的训练方法参数还是太多了，为了解决梯度弥散的问题，在隐层后面加入Dropout（input层后面不加），并预训练参数初始化权值</li>
+</ul>
+<h3 id="4-Experiments">4. Experiments</h3>
+<ul>
+<li>使用CelebFaces（CelebFaces+）训练DeepID网络，使用LFW测试结果。</li>
+<li>作者用实验证明，<strong>multi-scale ConvNets（多尺度卷积网络）比普通的CNN能学习到更有效的特征</strong>。见Figure 5</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-4.png" alt=""></p>
+<ul>
+<li>作者发现：在同样维度（160维）的特征表示下，<strong>随着类别增加，错误率下降</strong>。见Figure 6和Figure 7</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-5.png" alt=""></p>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-6.png" alt=""></p>
+<ul>
+<li>作者发现：对于160维的DeepID层，<strong>同一个人在DeepID层的神经元响应的相似度更高，不同人响应相似度低。这再次证明了DeepID层提取的特征非常有效</strong>。见Figure 8</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-7.png" alt=""></p>
+<ul>
+<li>作者又研究了patch不同取值对正确率的影响：<strong>patch越多正确率越高</strong>。见Figure 9</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-8.png" alt=""></p>
+<ul>
+<li>作者又将论文中的方法和其他方法进行了比较。见Figure 10</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid1-9.png" alt=""></p>
+<h3 id="5-Conclusion-and-Discussion">5. Conclusion and Discussion</h3>
+<ul>
+<li>论文提出了一种<strong>有效提取不同个体high-level的人脸特征的方法</strong></li>
+</ul>
+<h2 id="DeepID2">DeepID2</h2>
+<h3 id="0-Abstract-2">0. Abstract</h3>
+<ul>
+<li><strong>face recognition的关键得到一种特征表示，intra-personal之间差距小，inter-personal之间差距大</strong>。根据这个思想，作者提出了<strong>使用verification（减小intra-personal之间差距）和identification（增加inter-personal之间差距）两种监督信号训练模型</strong></li>
+</ul>
+<h3 id="1-Introduction-2">1. Introduction</h3>
+<ul>
+<li>identification信号用于拉开不同identity之间的特征差距，使得不同人提取的特征有rich identity-related（inter-personal）variation；与identification互补，使用verification信号减小相同identity之间的特征差距</li>
+<li>使用不同区域、不同分辨率的图片，提取特征。然后将这些特征连接起来，再用PCA降维，使用Joint Bayesian的方法做verification</li>
+</ul>
+<h3 id="2-Identification-verification-guided-deep-feature-learning">2. Identification-verification guided deep feature learning</h3>
+<ul>
+<li>网络结构与DeepID1类似，但是**（1）第三和第四个卷积层局部权值共享**（<u>不懂？</u>），<strong>（2）DeepID2层是第三和第四层通过Dense（全连接）层之后的add（原文没说是add，但是理解起来应该是add），Dense和DeepID2后要加入ReLU</strong>，见Figure 1</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-1.png" alt=""></p>
+<ul>
+<li>Identification信号：cross-entropy loss。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>i</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{id}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是指隐层参数</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-2.png" alt=""></p>
+<ul>
+<li>Verification信号：L2范数规范化后的特征。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>v</mi><mi>e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{ve}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是指softmax层参数</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-3.png" alt=""></p>
+<ul>
+<li>Verification信号可以改写成如下表达式</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-4.png" alt=""></p>
+<ul>
+<li><strong>训练方法：每次抽取两个样本（不是按照batch训练了），对identification和verification信号的梯度加权，再用梯度下降更新</strong>。见Table 1</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-11.png" alt=""></p>
+<h3 id="3-Face-Verification">3. Face Verification</h3>
+<ul>
+<li>作者基于SDM算法搞出了400个patch（在位置、尺寸、颜色通道和水平翻转上各有不同），400个patch训练出200个网络（水平翻转使用同一个网络），每个网络提取160维特征。不同于DeepID1中用PCA降维，这里使用<strong>forward-backward greedy算法</strong>从400个特征向量中选择25个（每个向量对应一个patch）。再用PCA对25* 160的向量降维。最终使用Joint Bayesian做verification。</li>
+</ul>
+<h3 id="4-Experiments-2">4. Experiments</h3>
+<ul>
+<li>训练过程：（1）用CelebFaces+A训练，CelebFaces+B验证，从而调整模型的lr、epoch、和参数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span> ；（2）用CelebFaces+B一部分训练网络权值，另一部分验证；（3）用整个CelebFaces+B训练Joint Bayesian，用LFW测试（<u>为什么要这样训练？</u>）</li>
+<li>参数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span> （控制identification和verification权重的参数）对实验结果的影响：参数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span> 为0.05时（identification为1，verification为0.05），效果最好，见Figure 3。作者<strong>用LDA中的inter- and intra-personal variations解释了参数选择的原因</strong>（<u>暂时还没有懂</u>），见图Figure 5。</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-5.png" alt=""></p>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-6.png" alt=""></p>
+<ul>
+<li>作者还发现，和DeepID1一样，用于训练的类别数越多，模型准确率越高，见Figure 4</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-7.png" alt=""></p>
+<ul>
+<li>作者调查了verification的作用：在相同的identification信号下，<strong>降低类内距离且增加类间距离的L2效果最好</strong>。见Table 2</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-8.png" alt=""></p>
+<ul>
+<li>对patch数和模型准确率的关系的研究：见Table 3。最终模型选择了25个patch</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-9.png" alt=""></p>
+<ul>
+<li>与其他模型做了比较：使用SVM将过个Joint Bayesian融合，创造了state-of-the-art</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2-10.png" alt=""></p>
+<h3 id="5-Conclusion">5. Conclusion</h3>
+<ul>
+<li>用identification和verification两种信号监督训练的模型准确率很高</li>
+</ul>
+<h2 id="DeepID2-2">DeepID2+</h2>
+<h3 id="0-Abstract-3">0. Abstract</h3>
+<ul>
+<li>相比DeepID2，<strong>增加隐含层的尺寸，在较低的层次加入监督信号</strong></li>
+<li><strong>对神经元进行深入研究</strong>，实验发现：<strong>神经元的激活特性有稀疏性（激活神经元稀疏；用二值信号表示激活效果也很好）、选择性（更高层的神经元对不同的identity激活或抑制区分明显）、鲁棒性（训练中无遮挡数据，但测试时对遮挡鲁棒）</strong></li>
+</ul>
+<h3 id="1-Introduction-3">1. Introduction</h3>
+<ul>
+<li><strong>稀疏性：（1）对于一个图片，DeepID层有一半左右的神经元被激活；对于一个神经元，只对一半左右的图片处于激活状态。（2）使用二值表示的激活状态作为人脸特征进行verification准确率只下降了1%，也就提出了一种非常高效（时间+空间）的人脸表示方法</strong></li>
+<li><strong>选择性：对于同一个人的不同图片，总有一部分神经元是一直处于激活状态的，还有一部分一直处于抑制状态。说明，虽然模型并没有明确的让DeepID层提取特征，但是这层“偷偷”学到的特征已经比LBP更适合分类了</strong></li>
+<li><strong>鲁棒性：对于遮挡，神经元激活状态几乎一样（然后激活程度有些差别）。作者认为，高层次的神经元可能已经拥有获取全局特征的能力了（只是基于实验现象的猜想）</strong></li>
+<li>以上三种特性对应实验中的现象，见Figure 1（这图不用仔细看，后面部分会更详细的解释）</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-1.png" alt=""></p>
+<h3 id="2-Related-work">2. Related work</h3>
+<ul>
+<li>详见论文，不再一一列举</li>
+</ul>
+<h3 id="3-DeepID2-nets">3. DeepID2+ nets</h3>
+<ul>
+<li>DeepID2+继承自DeepID2网络，但主要有3点区别：<strong>（1）DeepID2+的feature maps（filters）提高到128个，最后一层的DeepID层扩大到512维</strong>；<strong>（2）训练数据量更大，包括CelebFaces+、WDRef和其他一些数据</strong>；<strong>（3）在4个卷积层的后面都加入一个512维的全连接层，并对每一层都加入identification和verification监督信号</strong>。见Figure 2。<s>这里我认为图画的不是很好，FC-4应该是全连接到Conv-3和Conv-4的（就像DeepID2中一样），这里图中并没有画出来。</s> 根据DeepID3的论文，作者这里已经改变了DeepID2的结构，但是在论文中没有提到，真实的结构就像图中画的一样</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-2.png" alt=""></p>
+<h3 id="4-High-performance-of-DeepID2-nets">4. High-performance of DeepID2+ nets</h3>
+<ul>
+<li>训练方法，和DeepID2相同。选DeepID2中选定的25个patch，用FC-4作为特征，同样用Joint Bayesian训练，最终得到每个patch的verification准确率都高于DeepID2。见Figure 3</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-3.png" alt=""></p>
+<ul>
+<li>在和其他模型的比较，见Table 1, Table 2, Table 3</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-4.png" alt=""></p>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-5.png" alt=""></p>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-6.png" alt=""></p>
+<h3 id="5-Moderate-sparsity-of-neural-activations">5. Moderate sparsity of neural activations</h3>
+<ul>
+<li>作者认为这种moderate sparsity使得特征有最大化的表达差异的能力</li>
+<li>用实验现象解释稀疏性：对于一个图片，DeepID层有一半左右的神经元被激活；对于一个神经元，只对一半左右的图片处于激活状态。见Figure 6</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-7.png" alt=""></p>
+<ul>
+<li>用实验结果证明二值化的特征依旧有很好的表达能力</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-7.png" alt=""></p>
+<h3 id="6-Selectiveness-on-identities-and-attributes">6. Selectiveness on identities and attributes</h3>
+<ul>
+<li>通过实验证明，DeepID2+的FC-4层的特征和高维LBP相比，可以更好的表示属性与个体。见Figure 7</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-9.png" alt=""></p>
+<ul>
+<li>通过实验证明：
+<ul>
+<li>看前两列：DeepID2特征对于一个人激活程度高时；则对于其他的人，激活程度相对较低（一定程度上证明了选择性）</li>
+<li>看第三列：且对于同一个人的不同图片，平均激活程度较高（或者较低）的神经元，单单用这个神经元的激活程度+阈值就可以有很高的正确率（输入一张图片，判断是不是某个特定的人）。见Figure 10，其中神经元按第一列的激活平均值（对指定人的激活平均值）排序</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-10.png" alt=""></p>
+<ul>
+<li>实验证明：特征对于不同的人有很好的选择性。见Figure 12，随机选择了5个神经元。</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-11.png" alt=""></p>
+<ul>
+<li>试验证明：对于类中的一个属性激活，则对应同类的其他属性就会抑制。见Figure 13，其中神经元是选择了5个判断准确率最高的神经元。</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-12.png" alt=""></p>
+<h3 id="7-Robustness-of-DeepID2-features">7. Robustness of DeepID2+ features</h3>
+<ul>
+<li>实验证明，无论哪个FC层的特征，其面对遮挡的鲁棒性都优于高维LBP特征。见Figure 15</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid2+-13.png" alt=""></p>
+<ul>
+<li>即使面对大面积的遮挡，DeepID2+特征仍然有较高的准确率</li>
+</ul>
+<h3 id="8-Conclusion">8. Conclusion</h3>
+<ul>
+<li>基于实验，DeepID2+网络有更高的准确率</li>
+<li>基于实验，DeepID2+网络有稀疏性、选择性和鲁棒性</li>
+<li>基于实验，研究了神经元激活特性，帮助人们理解神经网络（虽然只是一些表层的结论）</li>
+</ul>
+<h2 id="DeepID3">DeepID3</h2>
+<h3 id="0-Abstract-4">0. Abstract</h3>
+<ul>
+<li>在DeepID2+的基础上，借鉴了VGG net和GoogleNet，加深了网络层数，同样在每个中间层都使用identification+verification监督信号训练，分别训练了2个模型（基于VGG net和GoogleNet），达到了更高的准确率</li>
+</ul>
+<h3 id="1-Introduction-4">1. Introduction</h3>
+<ul>
+<li>介绍了之前的网络结构，包括DeepID系列、VGG net和GoogleNet</li>
+</ul>
+<h3 id="2-DeepID3-net">2. DeepID3 net</h3>
+<ul>
+<li>这里作者在<strong>回顾DeepID2+的时候，又偷偷改变了网络结构：第三层卷积层变成了局部卷积层（在局部区域共享权重，<u>什么意思？</u>），第三个池化层后加入了一个局部连接层</strong> ，见Figure 1</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid3-1.png" alt=""></p>
+<ul>
+<li>相比较DeepID2+，DeepID3更深。<strong>连续的conv或inception可以获得更大区域的更复杂的非线性表示；而局部连接层的权值不共享可以使用更低的维度表达更具有表达能力</strong>。2种网络结构，见Figure 2和Figure 3</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid3-2.png" alt=""></p>
+<ul>
+<li>训练方法和DeepID2+相同</li>
+</ul>
+<h3 id="3-Experiments">3. Experiments</h3>
+<ul>
+<li>两种网络各提取总特征数的一半（同一种网络不能同时训练一个patch及其水平翻转），然后将特征拼在一起形成30000维的向量，然后PCA降维到300</li>
+<li>DeepID3效果比DeepID2+效果好一点，见Table 1</li>
+</ul>
+<p><img src="http://ok28v56oe.bkt.clouddn.com/deepid3-3.png" alt=""></p>
+<h3 id="4-Discussion">4. Discussion</h3>
+<ul>
+<li>其实LFW中有一些错误标注的数据，当把这些错误修正后，DeepID3相比DeepID2+就没有提高了。原因未知。</li>
+<li>作者分析了一下false negatives和false positives的图片对，错误来源主要是人确实长得比较像、或者有遮挡、或者化妆差距大</li>
+</ul>
+<h3 id="5-Conclusion-2">5. Conclusion</h3>
+<ul>
+<li>作者说这个模型更好，但我觉得这个文章相比前三篇DeepID系列，确实水了点…</li>
+</ul>
+<h2 id="后记">后记</h2>
+<p>终于总结完DeepID系列的文章了，累死。</p>
+<p>我最初的目的是写一个很简单的笔记，但不知道怎么的，写着写着就越写越细了。</p>
+<p>可能是因为我在总结笔记的时候又发现了很多之前没有注意到的细节，想要写在笔记里提醒自己吧。</p>
+<p>以后不能这样了，真的要总结精华，才是笔记的作用。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2017/08/01/Deep-Leaning-DeepID/">https://proverbs.github.io/2017/08/01/Deep-Leaning-DeepID/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DeepID学习笔记"><span class="toc-number">1.</span> <span class="toc-text">DeepID学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">1.1.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepID1"><span class="toc-number">1.2.</span> <span class="toc-text">DeepID1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Abstract"><span class="toc-number">1.2.1.</span> <span class="toc-text">0. Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Introduction"><span class="toc-number">1.2.2.</span> <span class="toc-text">1. Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Related-Work"><span class="toc-number">1.2.3.</span> <span class="toc-text">2. Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Learning-DeepID-for-face-verification"><span class="toc-number">1.2.4.</span> <span class="toc-text">3. Learning DeepID for face verification</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Experiments"><span class="toc-number">1.2.5.</span> <span class="toc-text">4. Experiments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Conclusion-and-Discussion"><span class="toc-number">1.2.6.</span> <span class="toc-text">5. Conclusion and Discussion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepID2"><span class="toc-number">1.3.</span> <span class="toc-text">DeepID2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Abstract-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">0. Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Introduction-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">1. Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Identification-verification-guided-deep-feature-learning"><span class="toc-number">1.3.3.</span> <span class="toc-text">2. Identification-verification guided deep feature learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Face-Verification"><span class="toc-number">1.3.4.</span> <span class="toc-text">3. Face Verification</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Experiments-2"><span class="toc-number">1.3.5.</span> <span class="toc-text">4. Experiments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Conclusion"><span class="toc-number">1.3.6.</span> <span class="toc-text">5. Conclusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepID2-2"><span class="toc-number">1.4.</span> <span class="toc-text">DeepID2+</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Abstract-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">0. Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Introduction-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">1. Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Related-work"><span class="toc-number">1.4.3.</span> <span class="toc-text">2. Related work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DeepID2-nets"><span class="toc-number">1.4.4.</span> <span class="toc-text">3. DeepID2+ nets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-High-performance-of-DeepID2-nets"><span class="toc-number">1.4.5.</span> <span class="toc-text">4. High-performance of DeepID2+ nets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Moderate-sparsity-of-neural-activations"><span class="toc-number">1.4.6.</span> <span class="toc-text">5. Moderate sparsity of neural activations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Selectiveness-on-identities-and-attributes"><span class="toc-number">1.4.7.</span> <span class="toc-text">6. Selectiveness on identities and attributes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Robustness-of-DeepID2-features"><span class="toc-number">1.4.8.</span> <span class="toc-text">7. Robustness of DeepID2+ features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Conclusion"><span class="toc-number">1.4.9.</span> <span class="toc-text">8. Conclusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepID3"><span class="toc-number">1.5.</span> <span class="toc-text">DeepID3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Abstract-4"><span class="toc-number">1.5.1.</span> <span class="toc-text">0. Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Introduction-4"><span class="toc-number">1.5.2.</span> <span class="toc-text">1. Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DeepID3-net"><span class="toc-number">1.5.3.</span> <span class="toc-text">2. DeepID3 net</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Experiments"><span class="toc-number">1.5.4.</span> <span class="toc-text">3. Experiments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Discussion"><span class="toc-number">1.5.5.</span> <span class="toc-text">4. Discussion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Conclusion-2"><span class="toc-number">1.5.6.</span> <span class="toc-text">5. Conclusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-number">1.6.</span> <span class="toc-text">后记</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

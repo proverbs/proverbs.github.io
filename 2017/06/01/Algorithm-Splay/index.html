@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Algorithm-Splay | Proverbs's Blog</title>
+    <meta name="description" content="【数据结构】splay伸展树 引言 splay树并不是严格意义上的平衡树，但是他可以做到平衡树可以做到的一切。 而且，相比与RBT和AVL，splay简直不能更好写了～ 所以，用来解决一般的算法问题，基本上splay已经是够用了。 splay 操作 关于splay的基本操作就是旋转，将一个子树向左或向右旋转。 关于两种旋转，可以参考这篇博客。 但是，从我个人理解，无论是左旋还是右旋，本质都是将一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm-Splay">
+<meta property="og:url" content="https://proverbs.github.io/2017/06/01/Algorithm-Splay/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="【数据结构】splay伸展树 引言 splay树并不是严格意义上的平衡树，但是他可以做到平衡树可以做到的一切。 而且，相比与RBT和AVL，splay简直不能更好写了～ 所以，用来解决一般的算法问题，基本上splay已经是够用了。 splay 操作 关于splay的基本操作就是旋转，将一个子树向左或向右旋转。 关于两种旋转，可以参考这篇博客。 但是，从我个人理解，无论是左旋还是右旋，本质都是将一个">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-06-02T06:37:57.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Algorithm-Splay
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/06/01/Algorithm-Splay/" class="article-date">
+	  <time datetime="2017-06-02T06:37:57.000Z" itemprop="datePublished">Jun 1</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2017/06/01/Algorithm-Splay/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="【数据结构】splay伸展树">【数据结构】splay伸展树</h1>
+<h2 id="引言">引言</h2>
+<p>splay树并不是严格意义上的平衡树，但是他可以做到平衡树可以做到的一切。</p>
+<p>而且，相比与RBT和AVL，splay简直不能更好写了～</p>
+<p>所以，用来解决一般的算法问题，基本上splay已经是够用了。</p>
+<h2 id="splay">splay</h2>
+<h3 id="操作">操作</h3>
+<p>关于splay的基本操作就是旋转，将一个子树向左或向右旋转。</p>
+<p>关于两种旋转，可以参考<a href="http://dongxicheng.org/structure/splay-tree/" target="_blank" rel="noopener">这篇博客</a>。</p>
+<p>但是，从我个人理解，无论是左旋还是右旋，本质都是将一个节点上提（降低节点的深度）。</p>
+<p>而旋转操作有用在区间操作上：我们可以通过旋转将一个区间旋转到一棵子树上，这样就可以直接对树根打上lazy标记。</p>
+<a id="more"></a>
+<h3 id="实现">实现</h3>
+<p>理解起来真的很简单，动手画图很好画，但是当要将这么多种情况都写成代码的时候，就十分痛苦了：有那么多种情况，每一种情况分类讨论其实挺简单的，但是…那也太丑了，不忍直视。</p>
+<p>所以，只好找别的写好的模板自己改写一下，瞬间美观、简洁100倍！</p>
+<p>splay经常会写出bug，所以直接找个题应用一下～</p>
+<p>所以，模板就直接看应用吧～</p>
+<h2 id="应用">应用</h2>
+<p>HDU1890，splay模板题～</p>
+<p>自恋的吹一波，真心觉得这种风格的splay真的简洁～</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PX</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> va, id;</span><br><span class="line">&#125;px[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> rk[N], pos[N];</span><br><span class="line"><span class="keyword">int</span> son[N][<span class="number">2</span>], fa[N], rev[N], sz[N];</span><br><span class="line"><span class="keyword">int</span> cnt, root, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> PX &amp;a, <span class="keyword">const</span> PX &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.va == b.va) <span class="keyword">return</span> a.id &lt; b.id;</span><br><span class="line">    <span class="keyword">return</span> a.va &lt; b.va;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp1</span><span class="params">(<span class="keyword">const</span> PX &amp;a, <span class="keyword">const</span> PX &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.id &lt; b.id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">newnode</span><span class="params">(<span class="keyword">int</span> y, <span class="keyword">int</span> &amp;x)</span> </span>&#123;</span><br><span class="line">    x = ++cnt;</span><br><span class="line">    fa[x] = y;</span><br><span class="line">    sz[x] = <span class="number">1</span>;</span><br><span class="line">    rev[x] = <span class="literal">false</span>;</span><br><span class="line">    son[x][<span class="number">0</span>] = son[x][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 加入首尾节点方便提取区间</span></span><br><span class="line">    newnode(<span class="number">0</span>, root);<span class="comment">// 1为首节点</span></span><br><span class="line">    newnode(root, son[root][<span class="number">1</span>]);<span class="comment">// 2为末节点</span></span><br><span class="line">    sz[root] = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!x) <span class="keyword">return</span>;</span><br><span class="line">    rev[x] ^= <span class="number">1</span>;<span class="comment">// lazy</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    sz[x] = sz[son[x][<span class="number">0</span>]] + sz[son[x][<span class="number">1</span>]] + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!x || !rev[x]) <span class="keyword">return</span>;</span><br><span class="line">    rev[x] = <span class="literal">false</span>;</span><br><span class="line">    reverse(son[x][<span class="number">0</span>]);</span><br><span class="line">    reverse(son[x][<span class="number">1</span>]);</span><br><span class="line">    swap(son[x][<span class="number">0</span>], son[x][<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> g)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    newnode(g, x);</span><br><span class="line">    pos[rk[mid]] = x; <span class="comment">// pos[i]排名为i的数字对应splay中的节点号</span></span><br><span class="line">    build(son[x][<span class="number">0</span>], l, mid - <span class="number">1</span>, x);</span><br><span class="line">    build(son[x][<span class="number">1</span>], mid + <span class="number">1</span>, r, x);</span><br><span class="line">    pushup(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    fa[x] = y;</span><br><span class="line">    son[y][c] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y = fa[x];</span><br><span class="line">    pushdown(y);</span><br><span class="line">    pushdown(x);</span><br><span class="line">    link(x, fa[y], son[fa[y]][<span class="number">1</span>] == y);</span><br><span class="line">    link(son[x][!c], y, c);</span><br><span class="line">    link(y, x, !c);</span><br><span class="line">    pushup(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> g)</span> </span>&#123;</span><br><span class="line">    pushdown(x);</span><br><span class="line">    <span class="keyword">int</span> y, cy, cx;</span><br><span class="line">    <span class="keyword">while</span> (fa[x] != g) &#123;</span><br><span class="line">        y = fa[x];</span><br><span class="line">        pushdown(fa[y]);</span><br><span class="line">        pushdown(y);</span><br><span class="line">        pushdown(x);</span><br><span class="line">        cy = son[fa[y]][<span class="number">1</span>] == y;</span><br><span class="line">        cx = son[y][<span class="number">1</span>] == x;</span><br><span class="line">        <span class="keyword">if</span> (fa[y] == g) rotate(x, cx);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (cx == cy) rotate(y, cy);</span><br><span class="line">            <span class="keyword">else</span> rotate(x, cx);</span><br><span class="line">            rotate(x, cy);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    pushup(x);</span><br><span class="line">    <span class="keyword">if</span> (!g) root = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getmax</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 从上向下必须pushdown</span></span><br><span class="line">    pushdown(x);</span><br><span class="line">    <span class="keyword">while</span> (son[x][<span class="number">1</span>]) &#123;</span><br><span class="line">        x = son[x][<span class="number">1</span>];</span><br><span class="line">        pushdown(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = root;</span><br><span class="line">    <span class="keyword">if</span> (son[x][<span class="number">0</span>] &amp;&amp; son[x][<span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">int</span> y = getmax(son[x][<span class="number">0</span>]);</span><br><span class="line">        splay(y, x);</span><br><span class="line">        fa[y] = <span class="number">0</span>;</span><br><span class="line">        root = y;</span><br><span class="line">        fa[son[x][<span class="number">1</span>]] = y;</span><br><span class="line">        son[y][<span class="number">1</span>] = son[x][<span class="number">1</span>];</span><br><span class="line">        pushup(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (son[x][<span class="number">0</span>]) fa[son[x][<span class="number">0</span>]] = x, root = son[x][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">else</span> fa[son[x][<span class="number">1</span>]] = x, root = son[x][<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n), n) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;px[i].va);</span><br><span class="line">            px[i].id = i;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(px + <span class="number">1</span>, px + <span class="number">1</span> + n, cmp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            rk[px[i].id] = i;<span class="comment">// rk[x]表示原数组中索引为x的数的排名</span></span><br><span class="line">        sort(px + <span class="number">1</span>, px + <span class="number">1</span> + n, cmp1);</span><br><span class="line">        init();</span><br><span class="line">        build(son[son[root][<span class="number">1</span>]][<span class="number">0</span>], <span class="number">1</span>, n, son[root][<span class="number">1</span>]);</span><br><span class="line">        pushup(son[root][<span class="number">1</span>]);</span><br><span class="line">        pushup(root);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            splay(pos[i], <span class="number">0</span>);</span><br><span class="line">            splay(<span class="number">1</span>, pos[i]);<span class="comment">// root == pos[i]</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>, i + sz[son[<span class="number">1</span>][<span class="number">1</span>]]);</span><br><span class="line">            <span class="keyword">if</span> (i &lt; n) <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">            rev[son[<span class="number">1</span>][<span class="number">1</span>]] ^= <span class="number">1</span>;</span><br><span class="line">            del();<span class="comment">// 对root操作不需要向上pushup</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（待更新…）</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2017/06/01/Algorithm-Splay/">https://proverbs.github.io/2017/06/01/Algorithm-Splay/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【数据结构】splay伸展树"><span class="toc-number">1.</span> <span class="toc-text">【数据结构】splay伸展树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#splay"><span class="toc-number">1.2.</span> <span class="toc-text">splay</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作"><span class="toc-number">1.2.1.</span> <span class="toc-text">操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">1.2.2.</span> <span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

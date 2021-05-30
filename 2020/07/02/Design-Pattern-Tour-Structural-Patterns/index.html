@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Design Pattern Tour: Structural Patterns | Proverbs's Blog</title>
+    <meta name="description" content="Design Pattern Tour: Structural Patterns Adapter vs. Proxy vs. Decorator Adapter Readings:  https:&#x2F;&#x2F;refactoring.guru&#x2F;design-patterns&#x2F;adapter https:&#x2F;&#x2F;blog.csdn.net&#x2F;carson_ho&#x2F;article&#x2F;details&#x2F;54910430  I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern Tour: Structural Patterns">
+<meta property="og:url" content="https://proverbs.github.io/2020/07/02/Design-Pattern-Tour-Structural-Patterns/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="Design Pattern Tour: Structural Patterns Adapter vs. Proxy vs. Decorator Adapter Readings:  https:&#x2F;&#x2F;refactoring.guru&#x2F;design-patterns&#x2F;adapter https:&#x2F;&#x2F;blog.csdn.net&#x2F;carson_ho&#x2F;article&#x2F;details&#x2F;54910430  I">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-03T06:01:07.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="design pattern">
+<meta property="article:tag" content="tech">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Design Pattern Tour: Structural Patterns
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/02/Design-Pattern-Tour-Structural-Patterns/" class="article-date">
+	  <time datetime="2020-07-03T06:01:07.000Z" itemprop="datePublished">Jul 2</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/07/02/Design-Pattern-Tour-Structural-Patterns/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.6k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 10(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="Design-Pattern-Tour-Structural-Patterns">Design Pattern Tour: Structural Patterns</h1>
+<h2 id="Adapter-vs-Proxy-vs-Decorator">Adapter vs. Proxy vs. Decorator</h2>
+<h3 id="Adapter">Adapter</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/adapter" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/adapter</a></li>
+<li><a href="https://blog.csdn.net/carson_ho/article/details/54910430" target="_blank" rel="noopener">https://blog.csdn.net/carson_ho/article/details/54910430</a></li>
+</ul>
+<p>I think Delegate is the core idea of all structural patterns, as well as some creational patterns, such as Factory and Builder.</p>
+<p>Adapter, as the name indicates, is a way to connect incompatible interfaces. There are a variety of implementations, as long as the adapter can provide the client with all target interfaces(interfaces required by the client).</p>
+<p>There are mainly two kinds of implementations:</p>
+<ol>
+<li>Class adapter: The adapter class should inherit from the service class and implement the target interface. But it sometimes requires multiple inheritance, which is not supported in some programming language(e.x. Java).</li>
+<li>Object adapter: The adapter class, as a wrapper, only needs to implement the target interface, and the service will reside within as a wrappee(adaptee), following the Object Composition Principle. Personally speaking, I would prefer this approach, because it’s more flexible and doesn’t involve the annoying multiple inheritance.</li>
+</ol>
+<a id="more"></a>
+<p>The design of adapter follows the Single Responsibility Principle: The function calls and arguments(data) are converted in the adapter class, instead of in the client code. It also follows the Open/Closed Principle: If you want to change the backend service or change the frontend APIs while you still want to reuse your existing service, the only thing the client needs to do is to replace her current service with the adapter class.</p>
+<p>As for the advantages, I still cannot agree with the opinions of decoupling. I think it’s just a convenient way for code reuse.</p>
+<p>So, here comes a problem: Can an adapter adapt to multiple services? Technically, it definitely can. We can simply add more services as adaptees. However, from the aspect of the intent, to add multiple services is to simplify(aka. We just want to use part of the functionalities) while Adapter is focusing on changes(aka. We want to reuse the code with different target interfaces and implement the same functionalities). Thus, to adapt multiple services can be defined as another structural pattern: Facade.</p>
+<p>And this website(<a href="https://refactoring.guru/design-patterns/adapter" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/adapter</a>) also mentions this difference: “Facade defines a new interface for existing objects, whereas Adapter tries to make the existing interface usable. Adapter usually wraps just one object, while Facade works with an entire subsystem of objects.”</p>
+<h3 id="Proxy">Proxy</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/proxy" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/proxy</a></li>
+</ul>
+<p>Proxy looks quite similar to Object Adapter from the code aspect, but the goals are different. Adapter just wants to have the same(existing) functionalities, but the target interfaces are not compatible. However, Proxy wants to enhance current functionalities or add new functionalities while the interfaces remain the same.</p>
+<p>For Proxy, new functionalities involve logging, cache, RPC, access control, lazy initialization, etc.</p>
+<h3 id="Decorator">Decorator</h3>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/decorator" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/decorator</a></li>
+<li><a href="https://blog.csdn.net/small_june/article/details/28631369" target="_blank" rel="noopener">https://blog.csdn.net/small_june/article/details/28631369</a></li>
+</ul>
+<p>The implementations of Decorator, Proxy and Adapter are similar, which are all based on the Object Composition Principle and wrap a wrappee to delegate.</p>
+<p>Decorator and Proxy are both to enhance the functionalities and their difference is slight. From the reading materials, I prefer this explanation, although it’s not very strict: “Decorator focuses on adding new functionalities <strong>dynamically</strong>, while Proxy underscore the <strong>access control</strong> over objects. In other words, proxy class can hide detailed information from the client. Therefore, we always create an instance of a class(a wrappee) within the proxy class. However, we usually pass the original instance of a class to the constructor of the decorator class as an argument while applying the decorator pattern.”</p>
+<p>And “pass the original instance of a class to the constructor of the decorator class as an argument” also explains why decorators are always implemented recursively, because we can add a bunch of decorators to the same class(or a method in the class).</p>
+<p>Actually, this explanation is still not very clear. So, if I’m asked to tell the difference, I’d like to say, if there’s only one new functionality and the client can decide whether she wants to use it or not, I will use Proxy. However, if there are N functionalities, and the client can select K(0&lt;=0&lt;=N) of them to add, I will use Decorator.</p>
+<p>Another thing I want to mention here is the difference between Java Annotation and Python Decorator. They look the same, like @xxx. However, they are completely two different things. Java Annotation is just an annotation(a marker). And it by itself just stores metadata and you must have something that inspects it to add behaviors. And Python Decorator is a syntactic sugar for passing a function to another function and replacing the first function with the result. (But of course, Python Decorator can decorate classes: <a href="https://foofish.net/python-decorator.html" target="_blank" rel="noopener">https://foofish.net/python-decorator.html</a>)(<a href="https://stackoverflow.com/questions/15347136/is-a-python-decorator-the-same-as-java-annotation-or-java-with-aspects" target="_blank" rel="noopener">https://stackoverflow.com/questions/15347136/is-a-python-decorator-the-same-as-java-annotation-or-java-with-aspects</a>)</p>
+<h2 id="Bridge-vs-Strategy">Bridge vs. Strategy</h2>
+<h3 id="Bridge">Bridge</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/bridge" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/bridge</a></li>
+</ul>
+<p>Bridge’s intent is to split a monolithic class, meaning to avoid a class being too big. Of course, it should still follow the Single Responsibility Principle. Thus, the normal idea is to split it by Abstraction and Implementation.</p>
+<p>Abstraction, from my understanding, is business logics, while Implementation means the implementation details. And both Abstraction and Implementation, as an interface, are able to be extended. In practice, the Implementation will serve as a member variable(in composite way) to delegate the details.</p>
+<p>I want to take the remote(Abstraction) and TV(Implementation) as an example:The client only cares if she is able to switch channels and turn up/down the voice, but doesn’t care how the remote does those, which is the responsibility of the TV. Therefore, the Abstraction and the Implementation get separated.Remotes of the same brand should have the same interface for different TVs, so they should be able to pair any of these TVs.</p>
+<p>For the use cases, I think Bridge gives me a sense of “2D orthogonal”.</p>
+<h3 id="Strategy-or-State">Strategy(or State)</h3>
+<p>Strategy is a behavioral pattern. Although the implementation of Strategy is similar to Bridge, Bridge, as a structural pattern, is focusing on simplifying the code structure. However, behavioral patterns usually consider the convenience of functionalities.</p>
+<p>You should find there are only a few ways of design pattern implementation(e.x. delegate, composite), although there are a lot of design patterns. So, I don’t think we should remember all these concrete patterns. Instead, we should learn what problems they are trying to solve(aka. intent) and their core ideas, and then we can say we have truly understood design patterns.</p>
+<h2 id="Adapter-vs-Facade">Adapter vs. Facade</h2>
+<h3 id="Facade">Facade</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/facade" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/facade</a></li>
+</ul>
+<p>I think I’ve mentioned Facade in the section of Adapter before: Facade is aiming to simplify the interfaces for multiple classes(or subsystems) as a coordinator, whose implementation is just like an adapter with many services embedded.</p>
+<p>Practically, when the logics become so complicated that the client feels uncomfortable using the framework(e.x. The client finds she is writing more code for a single logic), we should abstract a simple interface for the commonly used logics and probably can apply Facade if we still want to reuse current code.</p>
+<p>For example, I really like this example of MVC(<a href="https://zhuanlan.zhihu.com/p/26036733" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26036733</a>) that the Controller becomes too bulky to be maintained(probably because I had a similar experience).</p>
+<p>And for Facade, I think it’s safe to say it decouples the client code, because the client only needs to interact with Facade rather than with all kinds of subsystems(Because all couplings are moved into Facade class).</p>
+<p>There’s a small detail that Facade is usually implemented in the Singleton way because a single instance is enough for a coordinator.</p>
+<h2 id="Others">Others</h2>
+<h3 id="Composite">Composite</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/composite" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/composite</a></li>
+<li><a href="https://www.cnblogs.com/peida/archive/2008/09/09/1284686.html" target="_blank" rel="noopener">https://www.cnblogs.com/peida/archive/2008/09/09/1284686.html</a></li>
+</ul>
+<p>If the object we are designing is of a tree structure and all the nodes in the tree(both leaf nodes and top nodes) have the same interface, then we can apply composite.A widely used case is UI components.</p>
+<p>Of course, the leaf nodes and top nodes always have some not in common. So, here comes the trade-off between safety and transparency. To add APIs which are supported by top nodes but not by the leaf nodes to the common interface increases transparency, but it undermines the safety because it’s apparently unsafe to be able to call some functions incompatible with leaf nodes. Otherwise, it improves safety but loses transparency because the client should check if a node is a top node or a leaf node before she calls the APIs.</p>
+<p>Thus, it’s one of the issues we need to consider while designing. Personally, I prefer the safer way. Although it breaches the intent of consistent interfaces of Composite, the logics are more reasonable.</p>
+<p>There’s an optimization of the implementation: Because of the tree structure, it always involves a lot of aggregation and traversal, which can be optimized using cache to make the program faster.</p>
+<h3 id="Flyweight">Flyweight</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/flyweight" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/flyweight</a></li>
+<li><a href="http://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/flyweight.html" target="_blank" rel="noopener">http://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/flyweight.html</a></li>
+</ul>
+<p>Flyweight is a method to save memory(RAM). It extracts a frequently used part from many objects of the same class(called Intrinsic State) as a class(or enum) and leaves the other part(called Extrinsic State) and then shares the frequently used part.</p>
+<p>Usually, it is combined with Factory Method because Factory can maintain a Flyweight pool of frequently used objects implicitly.</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2020/07/02/Design-Pattern-Tour-Structural-Patterns/">https://proverbs.github.io/2020/07/02/Design-Pattern-Tour-Structural-Patterns/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Design-Pattern-Tour-Structural-Patterns"><span class="toc-number">1.</span> <span class="toc-text">Design Pattern Tour: Structural Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Adapter-vs-Proxy-vs-Decorator"><span class="toc-number">1.1.</span> <span class="toc-text">Adapter vs. Proxy vs. Decorator</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adapter"><span class="toc-number">1.1.1.</span> <span class="toc-text">Adapter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Proxy"><span class="toc-number">1.1.2.</span> <span class="toc-text">Proxy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Decorator"><span class="toc-number">1.1.3.</span> <span class="toc-text">Decorator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bridge-vs-Strategy"><span class="toc-number">1.2.</span> <span class="toc-text">Bridge vs. Strategy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bridge"><span class="toc-number">1.2.1.</span> <span class="toc-text">Bridge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Strategy-or-State"><span class="toc-number">1.2.2.</span> <span class="toc-text">Strategy(or State)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adapter-vs-Facade"><span class="toc-number">1.3.</span> <span class="toc-text">Adapter vs. Facade</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Facade"><span class="toc-number">1.3.1.</span> <span class="toc-text">Facade</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Others"><span class="toc-number">1.4.</span> <span class="toc-text">Others</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Composite"><span class="toc-number">1.4.1.</span> <span class="toc-text">Composite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flyweight"><span class="toc-number">1.4.2.</span> <span class="toc-text">Flyweight</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

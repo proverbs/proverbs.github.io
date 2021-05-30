@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>python-crawler-urllib | Proverbs's Blog</title>
+    <meta name="description" content="python爬虫（一）：urllib urllib urllib.request urllib.request.urlopen  原型：request.urlopen(url, data, timeout) 返回：Request类实例 实践：response &#x3D; request.urlopen(&#39;http:&#x2F;&#x2F;blog.proverbs.top&#39;)  urllib.request.read  返回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-crawler-urllib">
+<meta property="og:url" content="https://proverbs.github.io/2017/05/14/python-crawler-urllib/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="python爬虫（一）：urllib urllib urllib.request urllib.request.urlopen  原型：request.urlopen(url, data, timeout) 返回：Request类实例 实践：response &#x3D; request.urlopen(&#39;http:&#x2F;&#x2F;blog.proverbs.top&#39;)  urllib.request.read  返回">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-05-15T05:56:02.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.056Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            python-crawler-urllib
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/14/python-crawler-urllib/" class="article-date">
+	  <time datetime="2017-05-15T05:56:02.000Z" itemprop="datePublished">May 14</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2017/05/14/python-crawler-urllib/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 650(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="python爬虫（一）：urllib">python爬虫（一）：urllib</h1>
+<h2 id="urllib">urllib</h2>
+<h3 id="urllib-request">urllib.request</h3>
+<h4 id="urllib-request-urlopen">urllib.request.urlopen</h4>
+<ul>
+<li>原型：<code>request.urlopen(url, data, timeout)</code></li>
+<li>返回：Request类实例</li>
+<li>实践：<code>response = request.urlopen('http://blog.proverbs.top')</code></li>
+</ul>
+<h4 id="urllib-request-read">urllib.request.read</h4>
+<ul>
+<li>返回：Request实例的文本</li>
+<li>实践：<code>request.read()</code></li>
+</ul>
+<h4 id="urllib-request-Request">urllib.request.Request</h4>
+<ul>
+<li>推荐使用构建<code>Request</code>实例作为<code>urlopen</code>的参数</li>
+<li>构建：<code>req = request.Request('http://blog.proverbs.top')</code></li>
+<li>实践：<code>res = request.urlopen(req)</code></li>
+</ul>
+<h4 id="urllib-request-ProxyHandler">urllib.request.ProxyHandler</h4>
+<ul>
+<li><code>urllib</code>默认使用环境变量<code>http_proxy</code>作为代理</li>
+<li>手动设置代理：使用<code>Handler</code>可以构建<code>opener</code>，而<code>opener</code>代替<code>urlopen</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proxy_handler = request.ProxyHandler(&#123;<span class="string">"http"</span> : <span class="string">'http://some-proxy.com:8080'</span>&#125;)</span><br><span class="line">opener = request.build_opener(proxy_handler)</span><br><span class="line">request.install_opener(opener)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="opener">opener</h4>
+<ul>
+<li><code>urlopen</code>是特殊的一种<code>opener</code>，可以理解为<code>opener</code>的一个实例</li>
+<li><code>http.cookiejar</code>可提供存储cookie的对象，其中：CookieJar —-派生—-&gt;FileCookieJar —-派生—–&gt;MozillaCookieJar和LWPCookieJar</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request, error</span><br><span class="line"><span class="keyword">from</span> http <span class="keyword">import</span> cookiejar</span><br><span class="line"></span><br><span class="line"><span class="comment">#声明一个CookieJar对象实例来保存cookie</span></span><br><span class="line">cookie = cookiejar.MozillaCookieJar()</span><br><span class="line"><span class="comment">#利用request库的HTTPCookieProcessor对象来创建cookie处理器</span></span><br><span class="line">handler = request.HTTPCookieProcessor(cookie)</span><br><span class="line"><span class="comment">#通过handler来构建opener</span></span><br><span class="line">opener = request.build_opener(handler)</span><br><span class="line"><span class="comment">#此处的open方法同request的urlopen方法，也可以传入Request</span></span><br><span class="line">response = opener.open(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cookie:</span><br><span class="line">    print(<span class="string">'Name = '</span> + item.name)</span><br><span class="line">    print(<span class="string">'Value = '</span> + item.value)</span><br><span class="line"><span class="comment"># cookie保存到文件，使用load可将cookie加载，参数与save相同</span></span><br><span class="line">cookie.save(<span class="string">'cookie.txt'</span>, ignore_discard=<span class="literal">True</span>, ignore_expires=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实践：模拟登录sysu在线课程系统</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request, error, parse</span><br><span class="line"><span class="keyword">from</span> http <span class="keyword">import</span> cookiejar</span><br><span class="line"></span><br><span class="line">file_name = <span class="string">'cookie.txt'</span></span><br><span class="line"><span class="comment"># 使用firefox的tamperdata插件获取post地址，注意还要补充header</span></span><br><span class="line">url = <span class="string">'http://222.200.182.10/docs/studentLogin.php?db=CompilersOnline'</span></span><br><span class="line"></span><br><span class="line">values = &#123;<span class="string">'username'</span>: <span class="string">'xxxxxx'</span>, <span class="string">'password'</span>: <span class="string">'*****'</span>&#125; <span class="comment"># 填写账号、密码</span></span><br><span class="line">values[<span class="string">'User-Agent'</span>] = <span class="string">'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0'</span></span><br><span class="line">values[<span class="string">'Referer'</span>] = <span class="string">'http://222.200.182.10/compilersindex.htm'</span></span><br><span class="line"></span><br><span class="line">data = parse.urlencode(values)</span><br><span class="line">b_data = data.encode(<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">cookie = cookiejar.MozillaCookieJar()</span><br><span class="line">handler = request.HTTPCookieProcessor(cookie)</span><br><span class="line">opener = request.build_opener(handler)</span><br><span class="line"></span><br><span class="line">response = opener.open(url, b_data)</span><br><span class="line">print(response.read())</span><br><span class="line"></span><br><span class="line">cookie.save(file_name, ignore_discard=<span class="literal">True</span>, ignore_expires=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用有cookie的opener访问个人信息页</span></span><br><span class="line">t_url = <span class="string">'http://222.200.182.10/docs/showSelfInformation.php'</span></span><br><span class="line">res = opener.open(t_url)</span><br><span class="line"></span><br><span class="line">print(res.read())</span><br></pre></td></tr></table></figure>
+<h3 id="urllib-parse">urllib.parse</h3>
+<h4 id="urllib-parse-urlencode">urllib.parse.urlencode</h4>
+<ul>
+<li>用于通过<code>dict</code>构造<code>urlopen</code>中的<code>data</code>域，实现<code>POST</code>方法</li>
+<li>实践：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">values = &#123;<span class="string">"username"</span>:<span class="string">"379548839@qq.com"</span>,<span class="string">"password"</span>:<span class="string">"password"</span>&#125;</span><br><span class="line">data = parse.urlencode(values) </span><br><span class="line">url = <span class="string">"https://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn"</span></span><br><span class="line">request = urllib2.Request(url, data)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>GET</code>方法：很POST方法一样，唯一不同的是网址需要带参数的url</li>
+</ul>
+<h3 id="urllib-error">urllib.error</h3>
+<h4 id="urllib-error-URLError">urllib.error.URLError</h4>
+<ul>
+<li>产生原因：无法联网；无法连接服务器</li>
+<li>实践：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">req = request.Request(<span class="string">'http://www.provb.top'</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    request.urlopen(req)</span><br><span class="line"><span class="keyword">except</span> error.URLError <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">'fuck:'</span>, e.reason)</span><br></pre></td></tr></table></figure>
+<h2 id="Web">Web</h2>
+<h3 id="Headers">Headers</h3>
+<ul>
+<li>浏览器访问网页是发送请求会包含<code>headers</code></li>
+<li><code>User-Agent</code>表示请求设备描述，<code>Referer</code>表示从请求来源（防盗链）</li>
+<li><code>Header</code>是需要加入<code>data</code>中构造的</li>
+</ul>
+<h3 id="cookies">cookies</h3>
+<ul>
+<li>Cookie，指某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）</li>
+</ul>
+<h2 id="正则表达式">正则表达式</h2>
+<p><a href="http://cuiqingcai.com/977.html" target="_blank" rel="noopener">cqc的博客</a></p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2017/05/14/python-crawler-urllib/">https://proverbs.github.io/2017/05/14/python-crawler-urllib/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python爬虫（一）：urllib"><span class="toc-number">1.</span> <span class="toc-text">python爬虫（一）：urllib</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#urllib"><span class="toc-number">1.1.</span> <span class="toc-text">urllib</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#urllib-request"><span class="toc-number">1.1.1.</span> <span class="toc-text">urllib.request</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-request-urlopen"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">urllib.request.urlopen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-request-read"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">urllib.request.read</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-request-Request"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">urllib.request.Request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-request-ProxyHandler"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">urllib.request.ProxyHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#opener"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">opener</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#urllib-parse"><span class="toc-number">1.1.2.</span> <span class="toc-text">urllib.parse</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-parse-urlencode"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">urllib.parse.urlencode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#urllib-error"><span class="toc-number">1.1.3.</span> <span class="toc-text">urllib.error</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-error-URLError"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">urllib.error.URLError</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Headers"><span class="toc-number">1.2.1.</span> <span class="toc-text">Headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookies"><span class="toc-number">1.2.2.</span> <span class="toc-text">cookies</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.3.</span> <span class="toc-text">正则表达式</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

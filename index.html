@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Proverbs's Blog</title>
+    <meta name="description" content="share what I think about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Proverbs&#39;s Blog">
+<meta property="og:url" content="https://proverbs.github.io/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="share what I think about">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content=" js">
+<meta property="article:tag" content=" html">
+<meta property="article:tag" content=" c++">
+<meta property="article:tag" content=" c">
+<meta property="article:tag" content=" java">
+<meta property="article:tag" content=" css">
+<meta property="article:tag" content=" nodejs">
+<meta property="article:tag" content=" hexo">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    <div class="content article-list">
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2021/05/30/Reading-How-to-Win-Friends-and-Influence-People/">[Reading]How to Win Friends and Influence People</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Reading-How-to-Win-Friends-and-Influence-People">[Reading]How to Win Friends and Influence People</h1>
+<p><img src="https://raw.githubusercontent.com/proverbs/image-host/master/personal-dev/Reading-How-to-Win-Friends-and-Influence-People.jpg" alt="How to Win Friends and Influence People"></p>
+<p>这本书我读的是中文版 ——《人性的弱点》。不得不说，这个中文书名真的很“符合”这个浮躁的时代，很能吸引大家的眼球。<br>
+个人认为这个标题存在一定的误导性：本书列举了一些人际交往中的“技巧”，而这些技巧正是利用了人性的“弱点”已达到某种特定的目的，如赢得友情，提升对他人的影响力。这就是这个书名，搭配书的章节总结给人的印象，看上去像是本PUA学的著作。考虑到这本书出版于上世纪30年代，都可以称为是PUA学鼻祖了。</p>
+<p>然而，我想说这本书完全不是这个目的。书中不止一次强调，这本书所列举的不是虚伪的“技巧”，而是要发自真心的态度。或者说是一种价值观：真诚，尊重和积极的态度。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2021/05/30/Reading-How-to-Win-Friends-and-Influence-People/" class="article-date">
+	  <time datetime="2021-05-30T16:51:45.000Z" itemprop="datePublished">May 30</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/05/30/Reading-How-to-Win-Friends-and-Influence-People/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.1k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2021/01/08/Arc-of-a-Scythe-Scythe/">Arc of a Scythe - Scythe</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Scythe-Arc-of-a-Scythe-Series-Book-1-Review">Scythe (Arc of a Scythe Series - Book 1) Review</h1>
+<p>2021年读的第一本书，第一本英文书，也是Arc of a Scythe系列的第一本，还是挺有纪念意义的。</p>
+<p>这本书主要讲的在未来社会，人工智能Thunderhead控制着社会的运行，人类拥有了无限寿命，且即使死亡也可以被revive（除非被烧成炭）。但与此同时，人类会面临人口膨胀的问题，所以就有了不受Thunderhead管理的工会组织Scythedom（因为Thunderhead想把人类自己的生存问题交给人类自己），以及scythe这个职业：scythe和普通人类没有不同，但是scythe可以合法glean人类，且被glean的人类是不能被revive的。每个scythe都拥有一个戒指，人类亲吻戒指可以被赋予一年的immunity（无法被任何scythe glean）。也正因为此，scythe在社会中的地位非常高，也产生了众多flatterer。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2021/01/08/Arc-of-a-Scythe-Scythe/" class="article-date">
+	  <time datetime="2021-01-09T07:02:11.000Z" itemprop="datePublished">Jan 8</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/novel/" rel="tag">novel</a>, <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/08/Arc-of-a-Scythe-Scythe/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 982(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2021/01/01/My-2020-End-of-Year-Review/">My 2020 End-of-Year Review</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="My-2020-End-of-Year-Review">My 2020 End-of-Year Review</h1>
+<h2 id="Prologue">Prologue</h2>
+<p>我是在一次road trip中迎来2020的：Bay Area -&gt; SF -&gt; LA -&gt; San Diego -&gt; Las Vegas -&gt; the Grand Canyon -&gt; Bay Area。这是我第一次road trip，也是目前唯一一次。但一个happy start并没有持续多久：在CMU最后一学期刚开始就隐约有了对covid的担忧。起初只是戴口罩上课，然后没过多久就开始了无限期的stay-at-home，这也让本就没有什么学习状态的我更加放肆颓废。直到毕业典礼，covid已经日渐严重，毕业典礼取消了，同时也宣告了一个残酷的事实：我不仅错过了undergraduate的毕业典礼，也错过了master的毕业典礼——我已经没有机会再参加自己的毕业典礼了，这也可能成为这辈子的一个遗憾吧。</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2021/01/01/My-2020-End-of-Year-Review/" class="article-date">
+	  <time datetime="2021-01-01T17:49:27.000Z" itemprop="datePublished">Jan 1</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/life/" rel="tag">life</a>, <a class="article-tag-link" href="/tags/reflection/" rel="tag">reflection</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/01/My-2020-End-of-Year-Review/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 3.9k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 13(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/07/05/Design-Pattern-Tour-A-Summary/">Design Pattern Tour: A Summary</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Design-Pattern-Tour-A-Summary">Design Pattern Tour: A Summary</h1>
+<p>After learning all these design patterns, I feel the design patterns themselves don’t really matter. Instead, <strong>the intent of separation(or decouple, or Single Responsibility Principle) and the idea of delegating(or composite) are the kernel</strong>. These design patterns are just some common solutions for some popular use cases in development and their ultimate goal is still to decouple the code and then to achieve a high usability and extendability.</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/05/Design-Pattern-Tour-A-Summary/" class="article-date">
+	  <time datetime="2020-07-05T17:39:40.000Z" itemprop="datePublished">Jul 5</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/07/05/Design-Pattern-Tour-A-Summary/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 267(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/">Design Pattern Tour: Behavioral Patterns</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Design-Pattern-Tour-Behavioral-Patterns">Design Pattern Tour: Behavioral Patterns</h1>
+<h2 id="Iterator">Iterator</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/iterator" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/iterator</a></li>
+</ul>
+<p>Iterator is an approach to provide collections(or containers) a common way to traverse, while hiding the inner structure of the collections. The application of it is obvious: Java and CPP both use this pattern.</p>
+<p>For the structure of this pattern, the collection class normally provides an interface of <code>getIterator()</code>, the iterator class, on the other hand, offers interfaces of <code>hasNext()</code> and <code>getNext()</code>. In the concrete iterator class, we usually need to add a variable as a reference to the collection instance.</p>
+<p>Concrete iterators can implement different kinds of traversal methods(e.x. DFS, BFS, etc.) easily, which makes it quite convenient to add new collections and iterators, or to replace current collections and iterators with new one in the client code. This design is not only good for extensibility but also Open/Closed Principle.</p>
+<p>The separation of collections and iterators decouples the traversal from business logics, embodying Single Responsibility Principle. However, it sometimes might make things more complicated.</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/" class="article-date">
+	  <time datetime="2020-07-04T23:51:38.000Z" itemprop="datePublished">Jul 4</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.8k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 10(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/07/02/Design-Pattern-Tour-Structural-Patterns/">Design Pattern Tour: Structural Patterns</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Design-Pattern-Tour-Structural-Patterns">Design Pattern Tour: Structural Patterns</h1>
+<h2 id="Adapter-vs-Proxy-vs-Decorator">Adapter vs. Proxy vs. Decorator</h2>
+<h3 id="Adapter">Adapter</h3>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/adapter" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/adapter</a></li>
+<li><a href="https://blog.csdn.net/carson_ho/article/details/54910430" target="_blank" rel="noopener">https://blog.csdn.net/carson_ho/article/details/54910430</a></li>
+</ul>
+<p>I think Delegate is the core idea of all structural patterns, as well as some creational patterns, such as Factory and Builder.</p>
+<p>Adapter, as the name indicates, is a way to connect incompatible interfaces. There are a variety of implementations, as long as the adapter can provide the client with all target interfaces(interfaces required by the client).</p>
+<p>There are mainly two kinds of implementations:</p>
+<ol>
+<li>Class adapter: The adapter class should inherit from the service class and implement the target interface. But it sometimes requires multiple inheritance, which is not supported in some programming language(e.x. Java).</li>
+<li>Object adapter: The adapter class, as a wrapper, only needs to implement the target interface, and the service will reside within as a wrappee(adaptee), following the Object Composition Principle. Personally speaking, I would prefer this approach, because it’s more flexible and doesn’t involve the annoying multiple inheritance.</li>
+</ol>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/02/Design-Pattern-Tour-Structural-Patterns/" class="article-date">
+	  <time datetime="2020-07-03T06:01:07.000Z" itemprop="datePublished">Jul 2</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/07/02/Design-Pattern-Tour-Structural-Patterns/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.6k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 10(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/06/30/Design-Pattern-Tour-Creational-Patterns/">Design Pattern Tour: Creational Patterns</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Design-Pattern-Tour-Creational-Patterns">Design Pattern Tour: Creational Patterns</h1>
+<h2 id="Factory">Factory</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://juejin.im/entry/58f5e080b123db2fa2b3c4c6" target="_blank" rel="noopener">https://juejin.im/entry/58f5e080b123db2fa2b3c4c6</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017</a></li>
+<li><a href="https://refactoring.guru/design-patterns/factory-method" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/factory-method</a></li>
+<li><a href="https://refactoring.guru/design-patterns/abstract-factory" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/abstract-factory</a></li>
+</ul>
+<p>First, I’d like to clarify the difference between all kinds of factory patterns.</p>
+<ol>
+<li>Simple factory: A single factory class; product is determined by the parameter passing to the factory class(or using Java reflection).</li>
+<li>Factory method: all products have their own specialized factory classes.</li>
+<li>Abstract factory method: based on factory method, but each of the factories will provide <strong>a set of methods</strong> for returning different kinds of products.</li>
+<li>Static factory method: there will be no factory class, instead, the functionality is implemented in the product class as a static function.</li>
+</ol>
+<p>To sum up, Factory can work as either a class or a function. <strong>Therefore, it’s just a design idea, instead of a concrete implementation. (this works for all the design patterns)</strong></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/30/Design-Pattern-Tour-Creational-Patterns/" class="article-date">
+	  <time datetime="2020-07-01T04:27:37.000Z" itemprop="datePublished">Jun 30</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/30/Design-Pattern-Tour-Creational-Patterns/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.6k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 9(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/06/30/Design-Pattern-Tour-Overview/">Design Pattern Tour: Overview</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Design-Pattern-Tour-Overview">Design Pattern Tour: Overview</h1>
+<p>Today, I’d like to start a new series of Design Patterns. This is not a series for those who don’t have prior knowledge of these design patterns. So, my recommendation is to at least explore and skim through this <a href="https://refactoring.guru/design-patterns" target="_blank" rel="noopener">website</a> to gain some basic knowledge about design patterns. As for the code example, you can find a Java version on <a href="https://github.com/proverbs/DesignPattern" target="_blank" rel="noopener">My Github</a>, which is based on the example of the website and you should be able to run it directly.</p>
+<p>And as always, I will not talk about the detailed intents or implementations. Instead, I will be focusing on my personal understanding of these design patterns and their relationship and difference. Moreover, I will share some useful materials I was referring to for your further study.</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/30/Design-Pattern-Tour-Overview/" class="article-date">
+	  <time datetime="2020-06-30T22:42:44.000Z" itemprop="datePublished">Jun 30</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/30/Design-Pattern-Tour-Overview/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 249(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/06/20/Reading-Percy-Jackson-and-the-Olympians-The-Titan-s-Curse/">[Reading]Percy Jackson and the Olympians: The Titan&#39;s Curse</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Percy-Jackson-and-the-Olympians-The-Titan’s-Curse">Percy Jackson and the Olympians: The Titan’s Curse</h1>
+<p>I don’t know how to evaluate this volume because it seemed like I was indulged in it. I indeed spent only two days reading it, but I can’t say it’s interesting. Probably because I finally figured out the stereotype of stories from the writer, which were just like American <em>road movies</em>. I can still remember some wonderful plots from the last volume The Sea of Monsters. However, for this volume, I can barely remember anything after reading. I think the only thing which motivate me to continue reading is the ending, which I hope will be the same as expectation.</p>
+<p><img src="https://raw.githubusercontent.com/proverbs/image-host/master/percy-jackson/the-titans-curse.jpg" alt="the-titan's-curse"></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/20/Reading-Percy-Jackson-and-the-Olympians-The-Titan-s-Curse/" class="article-date">
+	  <time datetime="2020-06-21T04:20:26.000Z" itemprop="datePublished">Jun 20</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/novel/" rel="tag">novel</a>, <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/20/Reading-Percy-Jackson-and-the-Olympians-The-Titan-s-Curse/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 483(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/06/13/Reading-Percy-Jackson-and-the-Olympians-The-Sea-of-Monsters/">[Reading]Percy Jackson and the Olympians: The Sea of Monsters</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Reading-Percy-Jackson-and-the-Olympians-The-Sea-of-Monsters">[Reading]Percy Jackson and the Olympians: The Sea of Monsters</h1>
+<p>HaHa, I think I’m not as old as I thought, since I can still get indulged in a book for children in elementary schools. Or probably I should say the author Rick Riordan wrote so good a story that I as an “old man” can also get fascinated.</p>
+<p><img src="https://raw.githubusercontent.com/proverbs/image-host/master/percy-jackson/the-sea-of-monsters.jpg" alt="the-sea-of-monsters"></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/13/Reading-Percy-Jackson-and-the-Olympians-The-Sea-of-Monsters/" class="article-date">
+	  <time datetime="2020-06-14T04:35:00.000Z" itemprop="datePublished">Jun 13</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/novel/" rel="tag">novel</a>, <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/13/Reading-Percy-Jackson-and-the-Olympians-The-Sea-of-Monsters/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 531(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/06/10/Reading-A-Song-of-Ice-and-Fire-Game-of-Thrones-quited/">[Reading]A Song of Ice and Fire: Game of Thrones(quited)</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Reading-A-Song-of-Ice-and-Fire-Game-of-Thrones-quited">[Reading]A Song of Ice and Fire: Game of Thrones(quited)</h1>
+<p>Recently I was reading the first volume of <em>A Song of Ice and Fire</em> — <em>Game of Thrones</em>. Till now, I have read a quarter of the whole book. However, today I decided to quit this book because it doesn’t fit into my purpose of reading, at least for recently. Because my primal reason for reading English novels is to improve my English, which can hardly be accomplished by reading this novel. This novel is telling a story of medieval fantasy epic, so the author are using a lot of “ancient” words which will merely be used in our real life. Although I can still understand what the author is telling with the help of my dictionary and Google, I don’t want to spend much time but gain little.</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/10/Reading-A-Song-of-Ice-and-Fire-Game-of-Thrones-quited/" class="article-date">
+	  <time datetime="2020-06-10T20:38:45.000Z" itemprop="datePublished">Jun 10</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/novel/" rel="tag">novel</a>, <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/10/Reading-A-Song-of-Ice-and-Fire-Game-of-Thrones-quited/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 267(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/06/04/Reading-Murder-on-the-Orient-Express/">[Reading]Murder on the Orient Express</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Reading-Murder-on-the-Orient-Express">[Reading]Murder on the Orient Express</h1>
+<p>The other day, I felt very lucky to finish my first Agatha Christie’s famous whodunit – Murder on the Orient Express. I had watched the movie, and I had some vague memories about the ending, although I can hardly remember any details of books or movies I watched or read. Thus, the so-called “unexpected ending” didn’t surprise me very much.</p>
+<p><img src="https://raw.githubusercontent.com/proverbs/image-host/master/agatha-christie/murder-on-the-orient-express.jpg" alt="murder-on-the-orient-express"></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/04/Reading-Murder-on-the-Orient-Express/" class="article-date">
+	  <time datetime="2020-06-04T18:58:44.000Z" itemprop="datePublished">Jun 4</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Agatha-Christie/" rel="tag">Agatha Christie</a>, <a class="article-tag-link" href="/tags/novel/" rel="tag">novel</a>, <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/04/Reading-Murder-on-the-Orient-Express/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 583(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/05/29/Reading-Percy-Jackson-and-the-Olympians-The-Lightning-Thief/">[Reading]Percy Jackson and the Olympians: The Lightning Thief</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="Reading-Percy-Jackson-and-the-Olympians-The-Lightning-Thief">[Reading]Percy Jackson and the Olympians: The Lightning Thief</h1>
+<p>Today, I’m really glad that I’ve finally finished reading the first original English novel — the first novel of Percy Jackson and the Olympians series: The Lightning Thief — although it is of a low reading level (for elementary school students) for native speakers.</p>
+<p><img src="https://github.com/proverbs/image-host/blob/master/percy-jackson/the-lightning-thief.jpg?raw=true" alt="the-lightning-thief"></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/05/29/Reading-Percy-Jackson-and-the-Olympians-The-Lightning-Thief/" class="article-date">
+	  <time datetime="2020-05-29T17:39:08.000Z" itemprop="datePublished">May 29</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/novel/" rel="tag">novel</a>, <a class="article-tag-link" href="/tags/reading/" rel="tag">reading</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/29/Reading-Percy-Jackson-and-the-Olympians-The-Lightning-Thief/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 469(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/03/14/GAME-Life-is-Strange-Review/">[GAME]Life is Strange Review</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="GAME-Life-is-Strange-Review">[GAME]Life is Strange Review</h1>
+<p>It’s been a long time since I played the game. And I was actually not a big fan of this kind of game,  because I thought it was like a girl game and the story always developed slowly. However, I felt so exhausted after 6-week “homework-sleep-homework” life that I would like to play some casual games instead of those requiring too much focus, such as Dark Soul III. And Coronavirus and spring break provided me with plenty of time for playing this kind of “slow” game.</p>
+<p><img src="https://github.com/proverbs/image-host/blob/master/life-is-strange/life-is-strange-1.jpg?raw=true" alt="max"></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/03/14/GAME-Life-is-Strange-Review/" class="article-date">
+	  <time datetime="2020-03-14T19:59:42.000Z" itemprop="datePublished">Mar 14</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/game/" rel="tag">game</a>, <a class="article-tag-link" href="/tags/life/" rel="tag">life</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/14/GAME-Life-is-Strange-Review/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 697(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/02/02/FFXIV-FINAL-FANTASY-XIV-Review/">[FFXIV]FINAL FANTASY XIV Review</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="FFXIV-FINAL-FANTASY-XIV-Review">[FFXIV]FINAL FANTASY XIV Review</h1>
+<p>I’ve been dreaming of playing in a world of MMORPG game for long years. However, MMORPG games are always famous(notorious) for costing a lot of time and money. Thus, I had never played a real MMORPG until last semester, when I got plenty of spare time to do things other than study. But I felt much stronger course pressure this semseter, so I decided to quit this game. It doesn’t mean that the game is boring. On the contrary, it is one of the greatest games and the greatest online game I’ve ever played. Although I quit this game, I’m not leaving this game. And that’s why I would like to spend the whole evening to write a review of this game and talk about the FFXIV in my heart.</p>
+<p><img src="https://github.com/proverbs/image-host/blob/master/ffixiv/FFXIV-0.0.jpg?raw=true" alt="ffxiv-0.0"></p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/02/02/FFXIV-FINAL-FANTASY-XIV-Review/" class="article-date">
+	  <time datetime="2020-02-03T01:13:31.000Z" itemprop="datePublished">Feb 2</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/game/" rel="tag">game</a>, <a class="article-tag-link" href="/tags/life/" rel="tag">life</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/02/02/FFXIV-FINAL-FANTASY-XIV-Review/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.2k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 7(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/01/20/First-Time-Snowboarding/">First Time Snowboarding</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="First-Time-Snowboarding">First Time Snowboarding</h1>
+<p>That was so amazing!!!</p>
+<p><img src="https://cdn-std.droplr.net/files/acc_555202/FaUJ8v" alt="dodgeridge"></p>
+<p>This time, we went to <a href="https://www.dodgeridge.com/" target="_blank" rel="noopener">Dodge Ridge</a>, which is the closest wintersports area to the Bay Area. And because it was my first going snowboarding, I registered a L1(beginner) lesson. The funny thing is the lesson includeing the rental and day pass is cheaper than day pass plus rental. I don’t know why…</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/01/20/First-Time-Snowboarding/" class="article-date">
+	  <time datetime="2020-01-21T04:19:57.000Z" itemprop="datePublished">Jan 20</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/life/" rel="tag">life</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/01/20/First-Time-Snowboarding/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 411(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 2(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+        <article class="article border-b border-solid border-gray-200">
+    <div class="article-header mb-4 mt-5">
+        
+    
+        <h1 itemprop="name">
+            <a class="article-title text-lg" href="/2020/01/15/2020-New-Start-Learning-English/">2020 New Start: Learning English</a>
+        </h1>
+    
+
+
+
+    </div>
+    
+        <div class="article-excerpt text-gray-600 mb-3" itemprop="description">
+            <h1 id="2020-New-Start-Learning-English">2020 New Start: Learning English</h1>
+<p>Happy new year and happy new semester!</p>
+<p>This will be my last year as a student. I really treasure the time as a student, especially a CMU student, because there are still a lot of courses I love but not get the opportunity to take. However, the tuition here is also extremely thrilling and I wish I can start to work as early as possible to live on my own.</p>
+        </div>
+    
+    <p class="article-meta mb-3 text-xs">
+        <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/01/15/2020-New-Start-Learning-English/" class="article-date">
+	  <time datetime="2020-01-16T06:28:50.000Z" itemprop="datePublished">Jan 15</time>
+	</a>
+</span>
+
+        
+
+        
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/English/" rel="tag">English</a>, <a class="article-tag-link" href="/tags/life/" rel="tag">life</a>
+  </span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/01/15/2020-New-Start-Learning-English/#comments" class="article-comment-link">Comments</a></span>
+        
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 247(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 1(minutes)</span>
+    
+
+
+    </p>
+
+</article>
+
+    
+</div>
+
+    
+<nav class="pagination bottom-0 px-5 mb-3 absolute w-full inset-x-0" data-stick-bottom>
+    <div class="flex justify-between leading-tight">
+        <span class="pager">
+            
+                <button class="prev disabled">
+                    <a href="#">
+                        <i class="iconfont icon-angle-left"></i>
+                        Prev
+                    </a>
+                </button>
+            
+            
+                <button class="next">
+                    <a href="/page/2/">
+                        Next
+                        <i class="iconfont icon-angle-right"></i>
+                    </a>
+                </button>
+            
+        </span>
+        <div class="total-article bar-right">Page 1 of 4</div>
+    </div>
+</nav>
+
+
+</main>
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="widgets">
+        
+            
+
+        
+            
+    <div class="widget">
+        <h3 class="widget-title">
+            Tags
+        </h3>
+        <div class="widget-body">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agatha-Christie/" rel="tag">Agatha Christie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning-FER/" rel="tag">Deep Learning - FER</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/" rel="tag">English</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FER/" rel="tag">FER</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">37</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/" rel="tag">design pattern</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/novel/" rel="tag">novel</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/" rel="tag">reading</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflection/" rel="tag">reflection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+        
+            
+    <div class="widget">
+        
+        <h3 class="widget-title">Tag Cloud</h3>
+        
+        <div class="widget-body tagcloud">
+            <a href="/tags/Agatha-Christie/" style="font-size: 13px;">Agatha Christie</a> <a href="/tags/Deep-Learning/" style="font-size: 13px;">Deep Learning</a> <a href="/tags/Deep-Learning-FER/" style="font-size: 13px;">Deep Learning - FER</a> <a href="/tags/English/" style="font-size: 13px;">English</a> <a href="/tags/FER/" style="font-size: 13px;">FER</a> <a href="/tags/LeetCode/" style="font-size: 13.86px;">LeetCode</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/design-pattern/" style="font-size: 13.43px;">design pattern</a> <a href="/tags/game/" style="font-size: 13.14px;">game</a> <a href="/tags/hexo/" style="font-size: 13.29px;">hexo</a> <a href="/tags/life/" style="font-size: 13.43px;">life</a> <a href="/tags/linux/" style="font-size: 13.14px;">linux</a> <a href="/tags/novel/" style="font-size: 13.57px;">novel</a> <a href="/tags/python/" style="font-size: 13.29px;">python</a> <a href="/tags/reading/" style="font-size: 13.71px;">reading</a> <a href="/tags/reflection/" style="font-size: 13px;">reflection</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/tech/" style="font-size: 13.43px;">tech</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 13px;">人脸检测</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 13.29px;">字符串</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 13px;">数字图像处理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.57px;">数据结构</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 13px;">树状数组</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.29px;">爬虫</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 13px;">线段树</a>
+        </div>
+    </div>
+
+
+        
+            
+    <div class="widget">
+        <h3 class="widget-title">Archive</h3>
+        <div class="widget-body">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">16</span></li></ul>
+        </div>
+    </div>
+
+
+        
+            
+<div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled">
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/05/30/Reading-How-to-Win-Friends-and-Influence-People/" class="title">[Reading]How to Win Friends and Influence People</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-05-30T16:51:45.000Z" itemprop="datePublished">2021-05-30</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/01/08/Arc-of-a-Scythe-Scythe/" class="title">Arc of a Scythe - Scythe</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-01-09T07:02:11.000Z" itemprop="datePublished">2021-01-08</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2021/01/01/My-2020-End-of-Year-Review/" class="title">My 2020 End-of-Year Review</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2021-01-01T17:49:27.000Z" itemprop="datePublished">2021-01-01</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2020/07/05/Design-Pattern-Tour-A-Summary/" class="title">Design Pattern Tour: A Summary</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2020-07-05T17:39:40.000Z" itemprop="datePublished">2020-07-05</time>
+                        </p>
+                    </div>
+                </li>
+            
+                <li>
+                    <div class="recent-post">
+                        <p class="item-category">
+                            
+                        </p>
+                        <p class="item-title">
+                            <a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/" class="title">Design Pattern Tour: Behavioral Patterns</a>
+                        </p>
+                        <p class="item-date">
+                            <time datetime="2020-07-04T23:51:38.000Z" itemprop="datePublished">2020-07-04</time>
+                        </p>
+                    </div>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+        
+    </div>
+</aside>
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

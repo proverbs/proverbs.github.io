@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>[Leetcode]collection-2018-12-25 | Proverbs's Blog</title>
+    <meta name="description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. asteroid-collision(medium) Monotonous stack: each negative asteroid will make positive asteroids wit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leetcode]collection-2018-12-25">
+<meta property="og:url" content="https://proverbs.github.io/2018/12/25/Leetcode-collection-2018-12-25/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. asteroid-collision(medium) Monotonous stack: each negative asteroid will make positive asteroids wit">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-12-25T17:51:20.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            [Leetcode]collection-2018-12-25
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2018/12/25/Leetcode-collection-2018-12-25/" class="article-date">
+	  <time datetime="2018-12-25T17:51:20.000Z" itemprop="datePublished">Dec 25</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2018/12/25/Leetcode-collection-2018-12-25/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 597(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 3(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="asteroid-collision-medium">asteroid-collision(medium)</h2>
+<p>Monotonous stack: each negative asteroid will make positive asteroids with less size explode until it meet a larger positive asteroid.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="design-tic-tac-toe-easy">design-tic-tac-toe(easy)</h2>
+<p>There are only <code>n + n + 2</code> ways to win the tic tac toe: n rows, n columns, and 2 diagonals.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<a id="more"></a>
+<h2 id="mencode-and-decode-tinyurl-easy">mencode-and-decode-tinyurl(easy)</h2>
+<p>Map url to a number and then convert the number to a string with the length of 6 consisting of ‘a’-‘z’, ‘A’-‘Z’ and ‘0’-‘9’. Thus, it can store 62^6 mappings.</p>
+<ul>
+<li>Time complexity: O(length).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="find-the-celebrity-medium">find-the-celebrity(medium)</h2>
+<p>The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.<br>
+<strong>Thus, the celebrity must be the last node in any one of the paths.</strong></p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="guess-the-word-medium">guess-the-word(medium)</h2>
+<p>Because words are  generated randomly, there should be many pairs matching 0 letters and much less pairs matching word.length()-1 letters.<br>
+For a word, if the return value of guess() is 0, we cannot exclude any other words.<br>
+So, we should select the word with least matching-0 pairs to guess to reduce the probability of getting 0 from guess().</p>
+<ul>
+<li>Time complexity: in worst case, such as {‘a’, ‘b’, … , ‘z’}, O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="reverse-linked-list-ii-easy">reverse-linked-list-ii(easy)</h2>
+<p>One pass solution.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="robot-room-cleaner-medium">robot-room-cleaner(medium)</h2>
+<p>Use relative coordinates to DFS with backtracking.</p>
+<ul>
+<li>Time complexity: O(width*length).</li>
+<li>Space complexity: O(width*length).</li>
+</ul>
+<h2 id="serialize-and-deserialize-bst-medium">serialize-and-deserialize-bst(medium)</h2>
+<p>Use DFS to encode and decode the tree. When come to a NULL node, backtrack.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="subarray-product-less-than-k-medium">subarray-product-less-than-k(medium)</h2>
+<p>Two pointers and maintain the product of numbers between left and right pointers.<br>
+When left pointer moves back, the product will not increase. Thus, the right pointer never moves forward.<br>
+And there is a brilliant idea that to use binary search by converting the problem from subarray products to subarray sums using <code>log</code>.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="super-egg-drop-hard">super-egg-drop(hard)</h2>
+<p>First, my intuition is to binary search. However, it is correct only when K is large enough.<br>
+Then, I thought a dp solution: <code>dp[i][j] = min(max(dp[i - 1][k], dp[i][j - k - 1])), O(k*n^2)</code>. However, it is O(n) for each state transition.<br>
+Finally, I saw a elegant dp solution: <code>dp[i][j] = 1 + dp[i - 1][j - 1] + dp[i][j - 1]</code>, where <code>dp[i][j]</code> means given i moves and j eggs, how many floors can be excluded.<br>
+1 means current floor, <code>dp[i - 1][j - 1]</code> means the egg is broken and move downstairs, <code>dp[i][j - 1]</code> means the egg is not broken and move upstairs.</p>
+<ul>
+<li>Time complexity: O(kn).</li>
+<li>Space complexity: O(kn).</li>
+</ul>
+<h2 id="top-k-frequent-words-medium">top-k-frequent-words(medium)</h2>
+<p>Use a priority_queue to maintain the top k frequent words. The trick is to keep the least frequent words at the top.<br>
+If the output order is not required, we can use the similar methods as finding the k-th largest number in O(n).</p>
+<ul>
+<li>Time complexity: O(n + klogk).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="valid-anagram-easy">valid-anagram(easy)</h2>
+<p>Count the frequency of all letters.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(26).</li>
+</ul>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2018/12/25/Leetcode-collection-2018-12-25/">https://proverbs.github.io/2018/12/25/Leetcode-collection-2018-12-25/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#asteroid-collision-medium"><span class="toc-number">1.</span> <span class="toc-text">asteroid-collision(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#design-tic-tac-toe-easy"><span class="toc-number">2.</span> <span class="toc-text">design-tic-tac-toe(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mencode-and-decode-tinyurl-easy"><span class="toc-number">3.</span> <span class="toc-text">mencode-and-decode-tinyurl(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find-the-celebrity-medium"><span class="toc-number">4.</span> <span class="toc-text">find-the-celebrity(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#guess-the-word-medium"><span class="toc-number">5.</span> <span class="toc-text">guess-the-word(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reverse-linked-list-ii-easy"><span class="toc-number">6.</span> <span class="toc-text">reverse-linked-list-ii(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#robot-room-cleaner-medium"><span class="toc-number">7.</span> <span class="toc-text">robot-room-cleaner(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#serialize-and-deserialize-bst-medium"><span class="toc-number">8.</span> <span class="toc-text">serialize-and-deserialize-bst(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#subarray-product-less-than-k-medium"><span class="toc-number">9.</span> <span class="toc-text">subarray-product-less-than-k(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#super-egg-drop-hard"><span class="toc-number">10.</span> <span class="toc-text">super-egg-drop(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-k-frequent-words-medium"><span class="toc-number">11.</span> <span class="toc-text">top-k-frequent-words(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#valid-anagram-easy"><span class="toc-number">12.</span> <span class="toc-text">valid-anagram(easy)</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

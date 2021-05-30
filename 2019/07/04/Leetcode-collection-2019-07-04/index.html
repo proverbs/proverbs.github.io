@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>[Leetcode]collection-2019-07-04 | Proverbs's Blog</title>
+    <meta name="description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. robot-return-to-origin(easy) Use dx++&#x2F;-- and dy++&#x2F;-- to indicate the move of the robot.  Time comple">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leetcode]collection-2019-07-04">
+<meta property="og:url" content="https://proverbs.github.io/2019/07/04/Leetcode-collection-2019-07-04/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. robot-return-to-origin(easy) Use dx++&#x2F;-- and dy++&#x2F;-- to indicate the move of the robot.  Time comple">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-05T01:11:01.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.056Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            [Leetcode]collection-2019-07-04
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/07/04/Leetcode-collection-2019-07-04/" class="article-date">
+	  <time datetime="2019-07-05T01:11:01.000Z" itemprop="datePublished">Jul 4</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2019/07/04/Leetcode-collection-2019-07-04/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 931(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 5(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="robot-return-to-origin-easy">robot-return-to-origin(easy)</h2>
+<p>Use <code>dx++/--</code> and <code>dy++/--</code> to indicate the move of the robot.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="reverse-vowels-of-a-string-easy">reverse-vowels-of-a-string(easy)</h2>
+<p>Scan the string from left to right and save all vowels in order in an array. Then, replace the vowels from right to left according to the array. Another way is to use two pointers to walk the string from left and right respectively and swap the vowels.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<a id="more"></a>
+<h2 id="maximum-xor-of-two-numbers-in-an-array-medium">maximum-xor-of-two-numbers-in-an-array(medium)</h2>
+<p>This problem is really classic and I love it. It’s a problem of “selecting the optimal pair” and a problem of &quot; bitwise XOR&quot;. For the first problem, the basic idea is to enumerate each one, and compute the best with any other ones. Trie’s “find” function is exactly that.</p>
+<ul>
+<li>Time complexity: O(32n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="power-of-three-easy">power-of-three(easy)</h2>
+<p>The easiest O(1) method is to calculate the maximum power of three within <code>MAX_INT</code> manually, and then all the other powers of three are all its factors.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="k-closest-points-to-origin-medium">k-closest-points-to-origin(medium)</h2>
+<p>The kind of problem is quite common(using Max Heap) now and it shouldn’t have been a “medium” problem. But the only reason why I marked it as “medium” is I can practice how to use STL Priority Queue with <code>Comparator</code> class.</p>
+<ul>
+<li>Time complexity: O(nlogK).</li>
+<li>Space complexity: O(K).</li>
+</ul>
+<h2 id="partition-labels-easy">partition-labels(easy)</h2>
+<p>My straightforward idea is Greedy: to keep track of the occurrence of lowercase letters of both current string and the rest of the string. When there’s no letter occurring in both strings, I will make current string a new partition. It’s a solution with the time complexity of O(26n). However, there’s another solution which is much better in the <a href="https://leetcode.com/problems/partition-labels/solution/" target="_blank" rel="noopener">Solution Page</a> using <code>next pointers</code>.</p>
+<ul>
+<li>Time complexity: O(26n), the better solution is O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="min-cost-climbing-stairs-easy">min-cost-climbing-stairs(easy)</h2>
+<p>One of the easiest DP problems in Leetcode. Two ways of state transfer: one step of two steps.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="gray-code-easy">gray-code(easy)</h2>
+<p>This is quite easy if you do know how to construct <code>Gray Code</code>: to unfold from <code>0 1</code> iteratively. For example:</p>
+<p>1-bit Gray code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>2-bit Gray code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">0</span>) <span class="number">0</span></span><br><span class="line">(<span class="number">0</span>) <span class="number">1</span></span><br><span class="line">------</span><br><span class="line">(<span class="number">1</span>) <span class="number">1</span></span><br><span class="line">(<span class="number">1</span>) <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>3-bit Gray code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">0</span>) <span class="number">0</span> <span class="number">0</span></span><br><span class="line">(<span class="number">0</span>) <span class="number">0</span> <span class="number">1</span></span><br><span class="line">(<span class="number">0</span>) <span class="number">1</span> <span class="number">1</span></span><br><span class="line">(<span class="number">0</span>) <span class="number">1</span> <span class="number">0</span></span><br><span class="line">-------</span><br><span class="line">(<span class="number">1</span>) <span class="number">1</span> <span class="number">0</span></span><br><span class="line">(<span class="number">1</span>) <span class="number">1</span> <span class="number">1</span></span><br><span class="line">(<span class="number">1</span>) <span class="number">0</span> <span class="number">1</span></span><br><span class="line">(<span class="number">1</span>) <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(2^n).</li>
+</ul>
+<h2 id="pascals-triangle-ii-easy">pascals-triangle-ii(easy)</h2>
+<p>Use circular array to save the space, if you are calculating row by row.</p>
+<p><a href="https://leetcode.com/problems/pascals-triangle-ii/discuss/323549/A-simple-c%2B%2B-solution-with-O(n)-space" target="_blank" rel="noopener">A smarter way</a> is to calculate column by column.</p>
+<ul>
+<li>Time complexity: O(n^2).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="valid-number-hard">valid-number(hard)</h2>
+<p>It’s not a real hard problem, it’s just <strong>nauseous</strong>: there are so many corner cases that you couldn’t cover they at the first shot or first several shots. My idea is to split in into 3 parts: integer, decimal, and exponential.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="paint-house-easy">paint-house(easy)</h2>
+<p>The only the constraint is adjacent houses can’t be painted to the same color which is also a very common feature(no aftereffect) of DP.</p>
+<p>State: <code>dp[i][j]</code>: lowest cost for painting first <code>i</code> houses and the <code>i</code>th house’s color is <code>j</code>.</p>
+<p>State transfer: <code>dp[i][j] = min(dp[i - 1][k] + cost[i][j])</code>, where <code>j != k</code>.</p>
+<ul>
+<li>Time complexity: O(3^2*n).</li>
+<li>Space complexity: O(3n).</li>
+</ul>
+<h2 id="binary-tree-upside-down-easy">binary-tree-upside-down(easy)</h2>
+<p>Honestly, I didn’t understand the problem statement until I found another description in <a href="https://leetcode.com/problems/binary-tree-upside-down/discuss/49410/Explain-the-question-and-my-solution-Python" target="_blank" rel="noopener">Discussion Page</a>. We just need to rotate the original left child to the root, original root to the right child, original right child to left child. And do it recursively.</p>
+<p>Note that only binary trees whose right child is either leaf node or NULL can do this.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="second-minimum-node-in-a-binary-tree-easy">second-minimum-node-in-a-binary-tree(easy)</h2>
+<p>There are only two kinds of cases:</p>
+<ol>
+<li>left child is the same as right child: return the smaller value of the “second-minimum-node” the left subtree and the right subtree.</li>
+<li>not the same: return the smaller value of the “second-minimum-node” the left subtree and the value of the root of the right subtree if the right child is larger, and vice versa.</li>
+</ol>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="can-i-win-hard">can-i-win(hard)</h2>
+<p>For this problem, you need to know what is <code>SG function</code>. <strong>And then you will know for a given state, a person can either force a win or eventually reach a unavoidable lose.</strong></p>
+<p>If <code>sg(state)</code> is 1 if there exists a move which can reach a <code>state1</code> whose sg value is -1.</p>
+<p>If <code>sg(state)</code> is -1 if all states a move can reach have a value of 1.</p>
+<ul>
+<li>Time complexity: O(2^#nums*tot).</li>
+<li>Space complexity: O(2^#nums).</li>
+</ul>
+<h2 id="find-largest-value-in-each-tree-row-easy">find-largest-value-in-each-tree-row(easy)</h2>
+<p>DFS with passing the depth at the same time, or BFS. In practical, BFS is faster but DFS uses less memory.</p>
+<ul>
+<li>TIme complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="sum-of-square-numbers-easy">sum-of-square-numbers(easy)</h2>
+<p>Same as two 2-sum using 2 pointers.</p>
+<ul>
+<li>Time complexity: O(sqrt(n)).</li>
+<li>Space complexity: O(sqrt(n)).</li>
+</ul>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2019/07/04/Leetcode-collection-2019-07-04/">https://proverbs.github.io/2019/07/04/Leetcode-collection-2019-07-04/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#robot-return-to-origin-easy"><span class="toc-number">1.</span> <span class="toc-text">robot-return-to-origin(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reverse-vowels-of-a-string-easy"><span class="toc-number">2.</span> <span class="toc-text">reverse-vowels-of-a-string(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maximum-xor-of-two-numbers-in-an-array-medium"><span class="toc-number">3.</span> <span class="toc-text">maximum-xor-of-two-numbers-in-an-array(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#power-of-three-easy"><span class="toc-number">4.</span> <span class="toc-text">power-of-three(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-closest-points-to-origin-medium"><span class="toc-number">5.</span> <span class="toc-text">k-closest-points-to-origin(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#partition-labels-easy"><span class="toc-number">6.</span> <span class="toc-text">partition-labels(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#min-cost-climbing-stairs-easy"><span class="toc-number">7.</span> <span class="toc-text">min-cost-climbing-stairs(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gray-code-easy"><span class="toc-number">8.</span> <span class="toc-text">gray-code(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pascals-triangle-ii-easy"><span class="toc-number">9.</span> <span class="toc-text">pascals-triangle-ii(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#valid-number-hard"><span class="toc-number">10.</span> <span class="toc-text">valid-number(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#paint-house-easy"><span class="toc-number">11.</span> <span class="toc-text">paint-house(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#binary-tree-upside-down-easy"><span class="toc-number">12.</span> <span class="toc-text">binary-tree-upside-down(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#second-minimum-node-in-a-binary-tree-easy"><span class="toc-number">13.</span> <span class="toc-text">second-minimum-node-in-a-binary-tree(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-i-win-hard"><span class="toc-number">14.</span> <span class="toc-text">can-i-win(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find-largest-value-in-each-tree-row-easy"><span class="toc-number">15.</span> <span class="toc-text">find-largest-value-in-each-tree-row(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sum-of-square-numbers-easy"><span class="toc-number">16.</span> <span class="toc-text">sum-of-square-numbers(easy)</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

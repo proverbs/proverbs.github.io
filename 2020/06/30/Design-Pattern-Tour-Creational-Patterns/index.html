@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Design Pattern Tour: Creational Patterns | Proverbs's Blog</title>
+    <meta name="description" content="Design Pattern Tour: Creational Patterns Factory Readings:  https:&#x2F;&#x2F;juejin.im&#x2F;entry&#x2F;58f5e080b123db2fa2b3c4c6 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1252599548343744&#x2F;1281319170474017 https:&#x2F;&#x2F;refactoring.guru">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern Tour: Creational Patterns">
+<meta property="og:url" content="https://proverbs.github.io/2020/06/30/Design-Pattern-Tour-Creational-Patterns/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="Design Pattern Tour: Creational Patterns Factory Readings:  https:&#x2F;&#x2F;juejin.im&#x2F;entry&#x2F;58f5e080b123db2fa2b3c4c6 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1252599548343744&#x2F;1281319170474017 https:&#x2F;&#x2F;refactoring.guru">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-01T04:27:37.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="design pattern">
+<meta property="article:tag" content="tech">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Design Pattern Tour: Creational Patterns
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/06/30/Design-Pattern-Tour-Creational-Patterns/" class="article-date">
+	  <time datetime="2020-07-01T04:27:37.000Z" itemprop="datePublished">Jun 30</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/06/30/Design-Pattern-Tour-Creational-Patterns/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.6k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 9(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="Design-Pattern-Tour-Creational-Patterns">Design Pattern Tour: Creational Patterns</h1>
+<h2 id="Factory">Factory</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://juejin.im/entry/58f5e080b123db2fa2b3c4c6" target="_blank" rel="noopener">https://juejin.im/entry/58f5e080b123db2fa2b3c4c6</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017</a></li>
+<li><a href="https://refactoring.guru/design-patterns/factory-method" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/factory-method</a></li>
+<li><a href="https://refactoring.guru/design-patterns/abstract-factory" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/abstract-factory</a></li>
+</ul>
+<p>First, I’d like to clarify the difference between all kinds of factory patterns.</p>
+<ol>
+<li>Simple factory: A single factory class; product is determined by the parameter passing to the factory class(or using Java reflection).</li>
+<li>Factory method: all products have their own specialized factory classes.</li>
+<li>Abstract factory method: based on factory method, but each of the factories will provide <strong>a set of methods</strong> for returning different kinds of products.</li>
+<li>Static factory method: there will be no factory class, instead, the functionality is implemented in the product class as a static function.</li>
+</ol>
+<p>To sum up, Factory can work as either a class or a function. <strong>Therefore, it’s just a design idea, instead of a concrete implementation. (this works for all the design patterns)</strong></p>
+<a id="more"></a>
+<p>If you are new to Factory, you will probably be wondering if there’s any difference between using it and creating an instance using a constructor. Cannot polymorphism do the same thing?</p>
+<p>Personally speaking, I think we should find our new orientation(what we are doing): We are learning design patterns, because we want to design something good so others can use it easily. For example, we are developing a framework, and we hope our clients(developers who are using our framework) will feel comfortable using and customizing(extending) our framework.<br>
+So here comes a design principle: <strong>Open/Closed Principle</strong>, meaning our design should be open to extension, but closed to modification. In other words, we only want to add more to code, but not to modify our current code(or modify as little as possible). This should be followed by both of us and clients.</p>
+<p><em>Ps.</em> Simple factory doesn’t follow this principle, because it requires modification of the existing factory when we want to add a new product class.</p>
+<p>Thus, our goal is that we adding new features will not influence(or influence as little as possible) the code from the client, which means the client doesn’t need to change their code, and it still works.</p>
+<p>And Factory is designed for this goal: the client doesn’t need to know the creation of a product(because it could be quite complicated if it’s a bulky class). Instead, she can just ask the factory for that product. For instance, the client wants a computer for exploring webpages. She doesn’t care if it has a 4k screen, or if its CPU is Intel. As long as it makes her feel comfortable exploring webpages, it’s fine. So, as a factory, even if I’m changing Intel to AMD, I don’t need to tell you, and you will not notice it, because you will be still having fun surfing the Internet.</p>
+<p>While I was learning the Factory pattern, almost all materials mentioned this pattern was good because it decoupled the code. However, I think there’s no REAL decoupling, because as long as two classes are related, they are coupled. We eliminate the coupling between the client code and the product code, but we bring in coupling between client and factory and that between factory and product.</p>
+<p>I think decoupling is mostly achieved using abstraction (as well as <strong>Liskov Substitution Principle</strong>, <strong>LSP</strong>). Thus, I’d like to say the advantage of Factory is to hide the details of the product creation, instead of decoupling.Of course, if you insist on decoupling, I would prefer this explanation of “coupling”(<a href="https://www.zhihu.com/question/21386172/answer/54501456" target="_blank" rel="noopener">https://www.zhihu.com/question/21386172/answer/54501456</a> ): The essence of code decoupling is that one makes some assumptions about the other one. In other words, the more one assumes, the more coupling between them. And it’s very common that one couples many others.</p>
+<p>Also, you have to admit that product creation and product itself are two separate things(according to the Single Responsibility Principle). Then, using constructor with some default arguments or read arguments from configuration files will not be under our consideration.</p>
+<p>Thus, with this understanding, I think it’s safe to say Factory can decouple the code. Because without Factory, the client should assume how to use both the factory and product APIs. However, with Factory, the client only needs to know product APIs(the interface of Factory method is relatively stable, so to change products, the only thing we need to do is to change the Factory class).</p>
+<p>In conclusion, I think there are two main advantages/applications for Factory:</p>
+<ol>
+<li>To use Factory class to reuse cached instances instead of creating a new instance if the class is bulky. E.x. connection pool.</li>
+<li>To simplify the creation from the client side if the constructor requires many arguments. Factory class can load these arguments from configuration files, thereby separating the product and product creation and hiding the details of creation, making client code more clear. E.x. DB URL, DB username, DB password.</li>
+</ol>
+<h2 id="Builder">Builder</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/builder" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/builder</a></li>
+</ul>
+<p>I think Builder is a better choice than Factory for understanding creational patterns, because it highlights the separation of creation and product and it doesn’t bring us questions of Factory like “why not use new to create instances directly”.</p>
+<p>Builder has two characteristics: stey-by-step(a sense of assembling) and hiding creation of complicated objects(from bulky class).As for Director, it’s just an encapsulation of the building process. Although it’s not a necessary part of Builder, I would recommend using it since it’s good design.</p>
+<p>I think Build shares the same advantages as Factory: To make client code focus on product interfaces. And it’s easy to extend: The client can extend a new concrete builder from the builder interface and replace the class name in her code without changing the logics.</p>
+<p>However, I don’t like the examples on the website. So I’d like to take another example.Suppose <code>CarBuilder</code> is the interface, which is extended by <code>BMWCarBuilder</code> and <code>AudiCarBuilder</code>. Then, the usage will be as follows.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CarBuilder cb = <span class="keyword">new</span> BMWCarBuilder(); <span class="comment">// CarBuilder cb = new AudiCarBuilder(); </span></span><br><span class="line">Director d = <span class="keyword">new</span> Director(cb);</span><br><span class="line">d.buildSUV();</span><br><span class="line">Car c = cb.getResult();</span><br></pre></td></tr></table></figure>
+<p>If the client wants to build Audi, she just changes the first line and replaces the concrete builder with <code>AudiCarBuilder</code>.</p>
+<h2 id="Prototype">Prototype</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/prototype" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/prototype</a></li>
+</ul>
+<p>Prototype is much easier and we can simply find an analogy in Java: Cloneable interface, which requires an implementation of the function <code>clone()</code>.</p>
+<p>Prototype is aiming to let us create a copy of an object without knowing what its class is. To use copy constructor we can do the same thing, but we would rely on the class, meaning we are creating a new object using CLASS, while we are creating objects from an object with the help of Cloneable. That’s their main difference.</p>
+<p>But usually we will call the copy constructor within clone(), so we still need to pay attention to the issue of shallow copy and deep copy. And in the cases of inheritance, clone() of a subclass sometimes may need to call its counterpart(aka. clone()) in its superclass for initializing new objects.</p>
+<p>By the way, Prototype Registry builds on Prototype pattern, which normally uses a hash map to cache some frequently used objects. The implementation is usually similar to the follows.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Button b = <span class="keyword">new</span> Button(<span class="number">10</span>, <span class="number">40</span>, “red”);</span><br><span class="line">registry.addItem(“landingButton”, button);</span><br><span class="line">Button nb = registry.getByColor(“red”);</span><br></pre></td></tr></table></figure>
+<h2 id="Singleton">Singleton</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/singleton" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/singleton</a></li>
+<li><a href="https://refactoring.guru/design-patterns/singleton/java/example#example-2" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/singleton/java/example#example-2</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java</a></li>
+<li><a href="https://blog.csdn.net/u011595939/article/details/79972371" target="_blank" rel="noopener">https://blog.csdn.net/u011595939/article/details/79972371</a></li>
+</ul>
+<p>Singleton aims to limit the amount of instances(usually 1) of a certain class.</p>
+<p>The implementation is to make the constructor private and to add a static function to serve as a constructor for creating objects.</p>
+<p>There are mainly two ways of Singleton:</p>
+<ol>
+<li>Lazy loading, which creates the instance(s) when function getInstance() is called for the first time;</li>
+<li>Eager loading, which creates the instance(s) at the initialization of the class.</li>
+</ol>
+<p>There are two main use cases I can come up with:</p>
+<ol>
+<li>To provide a substitute for global variables;</li>
+<li>To delay the initialization(with lazy loading) in order to save the memory.</li>
+</ol>
+<p>Although the definition of Singleton is simple, the implementation is quite annoying, because the issue of thread safety and potential attacks.</p>
+<p>Double-checked locking is an efficient way to solve this issue. However, in some languages(e.x. Java 1.4), a lot of implementations you find are probably problematic. The correct way is to add a seemingly useless local variable(<a href="https://refactoring.guru/design-patterns/singleton/java/example#example-2" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/singleton/java/example#example-2</a>). However, this issue is solved in Java 1.5. So, to simply use volatile can guarantee the thread safety.</p>
+<p>In Java, another issue is serialization attack(<a href="https://blog.csdn.net/u013256816/article/details/50474678" target="_blank" rel="noopener">https://blog.csdn.net/u013256816/article/details/50474678</a>) and reflection attack(<a href="https://blog.csdn.net/u013256816/article/details/50525335" target="_blank" rel="noopener">https://blog.csdn.net/u013256816/article/details/50525335</a>), which can break the limitation of the amount of instances.</p>
+<p>So, the safe implementations of Singleton in Java are as follows.</p>
+<ol>
+<li>Eager loading: Enum is highly recommended(<a href="https://blog.csdn.net/qq_27093465/article/details/52180865" target="_blank" rel="noopener">https://blog.csdn.net/qq_27093465/article/details/52180865</a>).</li>
+<li>Lazy loading: Static nested class is recommended(<a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="noopener">http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/</a>), which can defend reflection attack because inner class will not be automatically loaded. However, it’s still susceptible to serialization attack(<a href="https://blog.csdn.net/siying8419/article/details/82152921" target="_blank" rel="noopener">https://blog.csdn.net/siying8419/article/details/82152921</a>).</li>
+</ol>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2020/06/30/Design-Pattern-Tour-Creational-Patterns/">https://proverbs.github.io/2020/06/30/Design-Pattern-Tour-Creational-Patterns/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Design-Pattern-Tour-Creational-Patterns"><span class="toc-number">1.</span> <span class="toc-text">Design Pattern Tour: Creational Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Factory"><span class="toc-number">1.1.</span> <span class="toc-text">Factory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Builder"><span class="toc-number">1.2.</span> <span class="toc-text">Builder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prototype"><span class="toc-number">1.3.</span> <span class="toc-text">Prototype</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Singleton"><span class="toc-number">1.4.</span> <span class="toc-text">Singleton</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

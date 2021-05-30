@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Design Pattern Tour: Behavioral Patterns | Proverbs's Blog</title>
+    <meta name="description" content="Design Pattern Tour: Behavioral Patterns Iterator Readings:  https:&#x2F;&#x2F;refactoring.guru&#x2F;design-patterns&#x2F;iterator  Iterator is an approach to provide collections(or containers) a common way to traverse,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern Tour: Behavioral Patterns">
+<meta property="og:url" content="https://proverbs.github.io/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="Design Pattern Tour: Behavioral Patterns Iterator Readings:  https:&#x2F;&#x2F;refactoring.guru&#x2F;design-patterns&#x2F;iterator  Iterator is an approach to provide collections(or containers) a common way to traverse,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-04T23:51:38.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="design pattern">
+<meta property="article:tag" content="tech">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Design Pattern Tour: Behavioral Patterns
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/" class="article-date">
+	  <time datetime="2020-07-04T23:51:38.000Z" itemprop="datePublished">Jul 4</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="article-tag-link" href="/tags/tech/" rel="tag">tech</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.8k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 10(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="Design-Pattern-Tour-Behavioral-Patterns">Design Pattern Tour: Behavioral Patterns</h1>
+<h2 id="Iterator">Iterator</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/iterator" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/iterator</a></li>
+</ul>
+<p>Iterator is an approach to provide collections(or containers) a common way to traverse, while hiding the inner structure of the collections. The application of it is obvious: Java and CPP both use this pattern.</p>
+<p>For the structure of this pattern, the collection class normally provides an interface of <code>getIterator()</code>, the iterator class, on the other hand, offers interfaces of <code>hasNext()</code> and <code>getNext()</code>. In the concrete iterator class, we usually need to add a variable as a reference to the collection instance.</p>
+<p>Concrete iterators can implement different kinds of traversal methods(e.x. DFS, BFS, etc.) easily, which makes it quite convenient to add new collections and iterators, or to replace current collections and iterators with new one in the client code. This design is not only good for extensibility but also Open/Closed Principle.</p>
+<p>The separation of collections and iterators decouples the traversal from business logics, embodying Single Responsibility Principle. However, it sometimes might make things more complicated.</p>
+<a id="more"></a>
+<h2 id="Chain-of-Responsibility-CoR-vs-Decorator">Chain of Responsibility(CoR) vs. Decorator</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/chain-of-responsibility" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/chain-of-responsibility</a></li>
+</ul>
+<p>The intent of CoR is to deal with requests: A request can be passed through a bunch of bandlers and each of the handlers can decide if it wants to handle the request or just to pass it on to the next handler.</p>
+<p>It looks very similar to Decorator, because both of them have something passing through a chain structure. However, Decorator, as a structural pattern, has a fundamental functionality, which anyhow must be executed. And the other decorators are just working to improve this functionality. On the other hand, CoR, as a behavioral pattern, doesn’t have a basic function. All handlers can decide to jump out of the chain without passing the request to the following handlers.</p>
+<p>A typical use case is <strong>sequential access filter</strong>, including login authentication(checking if the username/password is correct, the user has access permission, etc.). Another example is event bubbling(<a href="https://www.jianshu.com/p/1f45f5fae39e" target="_blank" rel="noopener">https://www.jianshu.com/p/1f45f5fae39e</a>).</p>
+<p>As for advantages, it, first, follows the Single Responsibility Principle, making logic more clear. And it follows the Open/Closed Principle, so not only we or the client can easily add handlers(by extending the handler interface). What’s more, the client can decide which handlers she wants to use and the order of them in the chain(which is similar to Decorator).</p>
+<p>The implementation usually requires an abstract class of handler, consisting of a reference to the next handler(<code>nextHandler</code>), a function <code>handleRequest()</code> and a function <code>handle()</code>😦<a href="https://www.jianshu.com/p/1f45f5fae39e" target="_blank" rel="noopener">https://www.jianshu.com/p/1f45f5fae39e</a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Handler handler1=<span class="keyword">new</span> Handler1();</span><br><span class="line">Handler handler2=<span class="keyword">new</span> Handler2();</span><br><span class="line">Handler handler3=<span class="keyword">new</span> Handler3();</span><br><span class="line">handler1.nextHandler=handler2;</span><br><span class="line">handler2.nextHandler=handler3;</span><br><span class="line">handler1.handleRequest(request);</span><br></pre></td></tr></table></figure>
+<h2 id="Command">Command</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/command" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/command</a></li>
+</ul>
+<p>The kernel of Command is to turn the requests(or method call) to stand-alone objects. Some typical applications include delayed execution(e.x. To add requests to a queue because of the long execution time) and undo/redo(e.x. In editor or painting).</p>
+<p>A generic application is GUI, where we can add a layer of Command to decouple UI layer and business logic layer. Without the Command layer, the UI layer has to know all the method calls in the business logic layer. However, with the help of the Command layer, the UI layer only needs to parameterize(abstract) the method calls to command objects, so that command objects can interact with business logic instead.</p>
+<p>The critical part of the implementation is the function executeCommand(new CutCommand(editor)) and the function command.execute(). (<a href="https://refactoring.guru/design-patterns/command/java/example#example-0--editor-Editor-java" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/command/java/example#example-0--editor-Editor-java</a>)</p>
+<p>A more generic application is to parameterize method calls and delegate the function calls from the sender to the receiver(<strong>unidirectional</strong>).</p>
+<h2 id="Mediator">Mediator</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/mediator" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/mediator</a></li>
+<li><a href="https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/mediator.html" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/mediator.html</a></li>
+<li><a href="https://www.cnblogs.com/gaochundong/p/design_pattern_mediator.html" target="_blank" rel="noopener">https://www.cnblogs.com/gaochundong/p/design_pattern_mediator.html</a></li>
+</ul>
+<p>Mediator is to use an intermediate object to encapsulate interactions between a series of objects(e.x. components). From the communication structure of the system aspect, using Mediator reshapes the structure to a star from a net. In other words, a mediator works as a transportation hub.</p>
+<p>Mediator is similar to generic Command. But Mediator allows bidirectional communication between senders and receivers. And compared to Command, Mediator doesn’t stress the conversion from method calls to objects.</p>
+<p>From the intent aspect, both Mediator and Facade are trying to simplify APIs(or decouple). But Mediator, from my understanding, is more like a bidirectional Facade. Facade is aiming to simplify function calls from the client to subsystems, which don’t realize the existence of Facade. However, all senders/receivers are at equal positions and they all know Mediator exists.</p>
+<p>The advantages of Mediator is to extract the communication(interaction) from the sender/receiver classes (following the Single Responsibility Principle) and manage them in a single class. From the aspect of senders/receivers, the communication interface is simplified(probably to a single function notify()). However, there’s a huge problem: To manage the communication between many objects, Mediator has to reference all the related objects(to delegate functionalities), making Mediator class too bulky and operations much more complicated.</p>
+<h2 id="Observer">Observer</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/observer" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/observer</a></li>
+<li><a href="http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html" target="_blank" rel="noopener">http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html</a></li>
+</ul>
+<p>Observer is the subscription(or listener) mechanism: Objects can subscribe/unsubscribe an event(or a kind of events) to a publisher(an object). And the event occurs, the publisher will notify all subscribers, updating the states of the subscribers.</p>
+<p>From the aspect of communication structure, Observer and Mediator are the same, which both have a star structure. However, all edges in Mediator all bidirectional, while all edges in Observer are from the center to the outside. So, I think Observer is a specialized Mediator for Sub/Pub scenarios.</p>
+<p>There are many use cases, including forums, video websites and reading websites, applying this pattern.</p>
+<h2 id="Strategy">Strategy</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/strategy" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/strategy</a></li>
+</ul>
+<p>The intent of Strategy is to move different algorithms of the same functionality(using the same interface) to different classes, making them interchangeable. Normally, it references an instance of the algorithm class as a member variable. (the variable delegates the functionality in the context class)</p>
+<p>To implement the same pattern, we can also extend concrete context classes and override the algorithm interface(this is actually Template Method pattern, which I will talk about later). So, applying Strategy is just for Single Responsibility Principle and separate algorithms with the logics in the context, and as well, using composite instead of inheritance.</p>
+<p>Of course, if the programming language supports function as arguments, then we can simply pass function names (or using anonymous functions) as arguments, instead of adding complexity.</p>
+<h2 id="State">State</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/state" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/state</a></li>
+</ul>
+<p>State’s intent is to change the member variable(composite variable, which is always an object implementing a specific interface) to perform different functionalities(behaviors).</p>
+<p>I think State is a special case of Strategy. Though they both try to change their own behaviors by changing the delegating variable, delegating objects in State are always interdependent, because they need to transfer from one to another within their own logic, like automaton. In Strategy, however, delegating variables are invisible to each other. It will work as long as they implement the same interface.</p>
+<p>It can be used when the behavior of a class relies on different states and all the states have transferrable mechanisms among them.</p>
+<p>Actually, I have met a similar use case where I was implementing TCP in my Computer Networks course. I was using an enum to represent the state and using switch for different behaviors, which follows neither Single Responsibility Principle nor Open/Closed Principle because I had to change the code snippet of switch when I changed the behavior or added new states.</p>
+<h2 id="Template-method">Template method</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/template-method" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/template-method</a></li>
+</ul>
+<p>Template Method is aiming to solve the code reuse problem where two concrete have the same structure, but some of the detailed implementations are different.</p>
+<p>Usually, Template Method is inheritance from an abstract class.</p>
+<p>I’ve already mentioned it in the section of Strategy. And I think using Template Method or Strategy is determined by whether it follows Single Responsibility Principle.</p>
+<h2 id="Visitor">Visitor</h2>
+<p>Readings:</p>
+<ul>
+<li>
+<p><a href="https://refactoring.guru/design-patterns/visitor" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/visitor</a></p>
+</li>
+<li>
+<p><a href="https://refactoring.guru/design-patterns/visitor/java/example#example-0--shapes-Shape-java" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/visitor/java/example#example-0--shapes-Shape-java</a></p>
+</li>
+</ul>
+<p>When you want to add the same operation to all elements of a complicated object(e.x. Hierarchy and tree) and you want to change as little code as possible, You can apply Visitor pattern with the help of <strong>Double Dispatch</strong>.</p>
+<p>Actually, when I see the intent for the first time, my first idea is to add a new interface and all the classes then can extend this interface, like Composite pattern. However, This violates the Single Responsibility Principle. As for Open/Closed Principle, I think they both follow it(or they neither follow it. It depends.) at the same level because both of them modify the classes(adding new functions).</p>
+<p>BUT, if I’ve already added an operation and now I want to add another. Then, using Visitor pattern will be a better choice, because we can reuse accept() without modifying the classes this time. The only thing we need to do will be to implement a new concrete visitor(from Visitor interface) <code>ConcreteVisitor2</code> and to call <code>object.accept(new ConcreteVisitor2())</code>. This is why all materials on the Internet say one of Visitor’s advantages is following the Open/Closed Principle.</p>
+<h2 id="Memento">Memento</h2>
+<p>Readings:</p>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/memento" target="_blank" rel="noopener">https://refactoring.guru/design-patterns/memento</a></li>
+</ul>
+<p>The intent of Memento is to create snapshots of objects and to allow restore from snapshots without knowing the details of the objects(or even cannot directly access the object’s fields/getters/setters).</p>
+<p>A typical application is serialization, such as Serializable interface in Java. The client doesn’t have to know what member variables an object has, but she can serialize/deserialize it as long as the class implements the Serializable interface.</p>
+<p>Now, I want to mention Visitor. Because if we can directly access the object’s fields/getters/setters, then we can create snapshots and restore from snapshots using Visitor pattern.</p>
+<p>Finally, I’d like to tell the difference between Prototype(Creational pattern) and Memento(Behavioral pattern): Prototype is to solve the issue of copying objects, which happens in RAM, while Memento is to persist objects, usually to external devices, such as HD or networks.</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/">https://proverbs.github.io/2020/07/04/Design-Pattern-Tour-Behavioral-Patterns/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Design-Pattern-Tour-Behavioral-Patterns"><span class="toc-number">1.</span> <span class="toc-text">Design Pattern Tour: Behavioral Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterator"><span class="toc-number">1.1.</span> <span class="toc-text">Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chain-of-Responsibility-CoR-vs-Decorator"><span class="toc-number">1.2.</span> <span class="toc-text">Chain of Responsibility(CoR) vs. Decorator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Command"><span class="toc-number">1.3.</span> <span class="toc-text">Command</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mediator"><span class="toc-number">1.4.</span> <span class="toc-text">Mediator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observer"><span class="toc-number">1.5.</span> <span class="toc-text">Observer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strategy"><span class="toc-number">1.6.</span> <span class="toc-text">Strategy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State"><span class="toc-number">1.7.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Template-method"><span class="toc-number">1.8.</span> <span class="toc-text">Template method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Visitor"><span class="toc-number">1.9.</span> <span class="toc-text">Visitor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memento"><span class="toc-number">1.10.</span> <span class="toc-text">Memento</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

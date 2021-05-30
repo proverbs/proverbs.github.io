@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>[Review]LeetCode Top 100 Liked Questions(1) | Proverbs's Blog</title>
+    <meta name="description" content="[Review]LeetCode Top 100 Liked Questions(1) 所有代码可以在github上下载：https:&#x2F;&#x2F;github.com&#x2F;proverbs&#x2F;LTC 以下难易度评级为个人评级，非官方评级 个人认为比较有代表性的题目，标题将加粗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Review]LeetCode Top 100 Liked Questions(1)">
+<meta property="og:url" content="https://proverbs.github.io/2018/03/19/Review-LeetCode-Top-100-Liked-Questions-1/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="[Review]LeetCode Top 100 Liked Questions(1) 所有代码可以在github上下载：https:&#x2F;&#x2F;github.com&#x2F;proverbs&#x2F;LTC 以下难易度评级为个人评级，非官方评级 个人认为比较有代表性的题目，标题将加粗">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-03-20T02:39:12.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.056Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            [Review]LeetCode Top 100 Liked Questions(1)
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2018/03/19/Review-LeetCode-Top-100-Liked-Questions-1/" class="article-date">
+	  <time datetime="2018-03-20T02:39:12.000Z" itemprop="datePublished">Mar 19</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2018/03/19/Review-LeetCode-Top-100-Liked-Questions-1/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 2.2k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 9(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="Review-LeetCode-Top-100-Liked-Questions-1">[Review]LeetCode Top 100 Liked Questions(1)</h1>
+<p><strong>所有代码可以在github上下载：<a href="https://github.com/proverbs/LTC" target="_blank" rel="noopener">https://github.com/proverbs/LTC</a></strong><br>
+<strong>以下难易度评级为个人评级，非官方评级</strong><br>
+<strong>个人认为比较有代表性的题目，标题将加粗</strong></p>
+<a id="more"></a>
+<ol>
+<li>Two Sum[easy]<br>
+<a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum/description/</a><br>
+从左向右扫，维护当前位置左侧的数字是否出现过（hashmap实现）</li>
+<li>Add Two Numbers[easy]<br>
+<a href="https://leetcode.com/problems/add-two-numbers/description/" target="_blank" rel="noopener">https://leetcode.com/problems/add-two-numbers/description/</a><br>
+链表对应位置直接相加</li>
+<li>Longest Substring Without Repeating Characters[medium]<br>
+<a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-substring-without-repeating-characters/description/</a><br>
+双指针确定滑窗位置，set维护滑窗中字母是否出现。熟悉这种套路之后这题也是easy</li>
+<li>Median of Two Sorted Arrays[easy]<br>
+<a href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/" target="_blank" rel="noopener">https://leetcode.com/problems/median-of-two-sorted-arrays/description/</a><br>
+归并排序的数组合并方法</li>
+<li><strong>Longest Palindromic Substring</strong>[hard]<br>
+<a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-palindromic-substring/description/</a><br>
+暴力O(n^2)可以过<br>
+我用的二分+区间hash（需要手写，如果怕重复，可以多重hash），O(nlogn)<br>
+还有O(n)的方法，Manacher 算法</li>
+<li>Regular Expression Matching[hard]<br>
+<a href="https://leetcode.com/problems/regular-expression-matching/description/" target="_blank" rel="noopener">https://leetcode.com/problems/regular-expression-matching/description/</a><br>
+dp[i][j]表示s的前i个和p的前j个匹配是否可行，但是恶心在条件转移非常复杂，需要考虑各种情况</li>
+<li><strong>Container With Most Water</strong>[hard]<br>
+<a href="https://leetcode.com/problems/container-with-most-water/description/" target="_blank" rel="noopener">https://leetcode.com/problems/container-with-most-water/description/</a><br>
+一开始没有思路。考虑构成最大容器的左右边界，如果一个边它的左右两侧都有比它高的边，那么它不可能构成最大容器，所以可以删除。那么，最终剩下的所有边界构成单峰形。考虑i,j两条边构成的容器，其中较短的向中间移动则构成的新容器可能会更大，但是如果较长的向中间移动，则构成的新容器必然更小。所以得到贪心策略。最终做法，如果不删边对算法也不会有影响。</li>
+<li>3Sum[easy]<br>
+<a href="https://leetcode.com/problems/3sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/3sum/description/</a><br>
+和2sum一样，a+b=-c，枚举c，然后用2sum的方法求解</li>
+<li>Letter Combinations of a Phone Number[easy]<br>
+<a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/" target="_blank" rel="noopener">https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/</a><br>
+dfs</li>
+<li>Remove Nth Node From End of List[easy]<br>
+<a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/</a><br>
+指针操作</li>
+<li><strong>Valid Parentheses</strong>[easy]<br>
+<a href="https://leetcode.com/problems/valid-parentheses/description/" target="_blank" rel="noopener">https://leetcode.com/problems/valid-parentheses/description/</a><br>
+非常经典，通用的括号匹配方法——使用栈匹配</li>
+<li>Merge Two Sorted Lists[easy]<br>
+<a href="https://leetcode.com/problems/merge-two-sorted-lists/description/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-two-sorted-lists/description/</a><br>
+归并排序的合并思想</li>
+<li>Generate Parentheses[east]<br>
+<a href="https://leetcode.com/problems/generate-parentheses/description/" target="_blank" rel="noopener">https://leetcode.com/problems/generate-parentheses/description/</a><br>
+dfs</li>
+<li>Merge k Sorted Lists[easy]<br>
+<a href="https://leetcode.com/problems/merge-k-sorted-lists/description/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-k-sorted-lists/description/</a><br>
+和Merge Two Sorted Lists类似，只不过想要快速的比较k个队头元素的大小需要使用优先队列或者堆这类数据结构。<br>
+代码里有heap的简单使用方式。</li>
+<li>Next Permutation[easy]<br>
+<a href="https://leetcode.com/problems/next-permutation/description/" target="_blank" rel="noopener">https://leetcode.com/problems/next-permutation/description/</a><br>
+从右向左，找第一个下降的数字，然后从这个数字到结尾排序</li>
+<li><strong>Longest Valid Parentheses</strong>[hard]<br>
+<a href="https://leetcode.com/problems/longest-valid-parentheses/description/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-valid-parentheses/description/</a><br>
+利用之前提到的栈的括号匹配方法，只不过栈中还要保存这个括号的下标<br>
+还可以用dp[i]表示以i开头的最长匹配括号串长度，可由dp[i + 1]转移</li>
+<li><strong>Search in Rotated Sorted Array</strong>[easy]<br>
+<a href="https://leetcode.com/problems/search-in-rotated-sorted-array/description/" target="_blank" rel="noopener">https://leetcode.com/problems/search-in-rotated-sorted-array/description/</a><br>
+很经典的题。二分查找先找出断点位置，然后再二分查找需要的数字</li>
+<li>Search for a Range[easy]<br>
+<a href="https://leetcode.com/problems/search-for-a-range/description/" target="_blank" rel="noopener">https://leetcode.com/problems/search-for-a-range/description/</a><br>
+二分查找，找不小于target+1的第一个数字，再找不小于target的第一个数字</li>
+<li>Combination Sum[easy]<br>
+<a href="https://leetcode.com/problems/combination-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/combination-sum/description/</a><br>
+爆搜</li>
+<li><strong>Trapping Rain Water</strong>[hard]<br>
+<a href="https://leetcode.com/problems/trapping-rain-water/description/" target="_blank" rel="noopener">https://leetcode.com/problems/trapping-rain-water/description/</a><br>
+题目中的图给人启发：每个点的水位高度=min(这个点左侧最大值，这个点右侧最大值)<br>
+这两个最大值可以从左右两遍dp一下就可以了</li>
+<li>Permutations[easy]<br>
+<a href="https://leetcode.com/problems/permutations/description/" target="_blank" rel="noopener">https://leetcode.com/problems/permutations/description/</a><br>
+按字典序暴搜</li>
+<li>Rotate Image[medium]<br>
+<a href="https://leetcode.com/problems/rotate-image/description/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-image/description/</a><br>
+我写的方法超级麻烦，不说了。<br>
+比较好的方法是，既然我们会沿主对角线翻转，那么沿副对角翻转=水平翻转+沿主对角线翻转+水平翻转</li>
+<li>Group Anagrams[easy]<br>
+<a href="https://leetcode.com/problems/group-anagrams/description/" target="_blank" rel="noopener">https://leetcode.com/problems/group-anagrams/description/</a><br>
+sort</li>
+<li>Maximum Subarray[easy]<br>
+<a href="https://leetcode.com/problems/maximum-subarray/description/" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-subarray/description/</a><br>
+最简单的dp</li>
+<li>Jump Game[easy]<br>
+<a href="https://leetcode.com/problems/jump-game/description/" target="_blank" rel="noopener">https://leetcode.com/problems/jump-game/description/</a><br>
+维护一个最远可达位置</li>
+<li>Merge Intervals[easy]<br>
+<a href="https://leetcode.com/problems/merge-intervals/description/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-intervals/description/</a><br>
+sort+维护最远可达位置</li>
+<li>Unique Paths[easy]<br>
+<a href="https://leetcode.com/problems/unique-paths/description/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-paths/description/</a><br>
+dp或者直接组合数计算</li>
+<li><strong>Minimum Path Sum</strong>[easy]<br>
+<a href="https://leetcode.com/problems/minimum-path-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-path-sum/description/</a><br>
+这个题本身很水，dp。<br>
+但这题有个拓展——传纸条问题，也就是两条不同路径，sum最小。dp[k][i][j]表示走了k步，其中向下走了i步和j步的两个位置到左上角的sum最小值。</li>
+<li>Climbing Stairs[easy]<br>
+<a href="https://leetcode.com/problems/climbing-stairs/description/" target="_blank" rel="noopener">https://leetcode.com/problems/climbing-stairs/description/</a><br>
+dp</li>
+<li>Edit Distance[medium]<br>
+<a href="https://leetcode.com/problems/edit-distance/description/" target="_blank" rel="noopener">https://leetcode.com/problems/edit-distance/description/</a><br>
+dp[i][j]表示word1前i个和word2前j个匹配的最小距离，对于每个位置，根据3种操作有3种转移方式。</li>
+<li>Sort Colors[medium]<br>
+<a href="https://leetcode.com/problems/sort-colors/description/" target="_blank" rel="noopener">https://leetcode.com/problems/sort-colors/description/</a><br>
+第一种方法，统计每个数字的个数，然后在数组中直接填充；<br>
+第二种方法，从左向右扫描，动态更新每个数字下一个可插入位置的下标</li>
+<li><strong>Minimum Window Substring</strong>[medium]<br>
+<a href="https://leetcode.com/problems/minimum-window-substring/description/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-window-substring/description/</a><br>
+双指针确定滑窗位置，set维护滑窗中字母是否出现。和Longest Substring Without Repeating Characters一样</li>
+<li>Subsets[easy]<br>
+<a href="https://leetcode.com/problems/subsets/description/" target="_blank" rel="noopener">https://leetcode.com/problems/subsets/description/</a><br>
+2^n爆搜</li>
+<li>Word Search[easy]<br>
+<a href="https://leetcode.com/problems/word-search/description/" target="_blank" rel="noopener">https://leetcode.com/problems/word-search/description/</a><br>
+爆搜</li>
+<li><strong>Largest Rectangle in Histogram</strong>[hard]<br>
+<a href="https://leetcode.com/problems/largest-rectangle-in-histogram/description/" target="_blank" rel="noopener">https://leetcode.com/problems/largest-rectangle-in-histogram/description/</a><br>
+很经典的stack应用。<br>
+枚举i作为面积的最高度，只需要知道左右两侧比h[i]小的第一个的位置。用stack维护单调减的队列即可。</li>
+<li>Maximal Rectangle[hard]<br>
+<a href="https://leetcode.com/problems/maximal-rectangle/description/" target="_blank" rel="noopener">https://leetcode.com/problems/maximal-rectangle/description/</a><br>
+和上一道题一样，先枚举一下矩形区域的底部坐标即可</li>
+<li><strong>Binary Tree Inorder Traversal</strong>[easy]<br>
+<a href="https://leetcode.com/problems/binary-tree-inorder-traversal/description/" target="_blank" rel="noopener">https://leetcode.com/problems/binary-tree-inorder-traversal/description/</a><br>
+dfs。<br>
+为什么加粗，是因为可以思考一下如何用非递归形式实现3种遍历。（我不管，反正我用手工栈）</li>
+<li>Unique Binary Search Trees[medium]<br>
+<a href="https://leetcode.com/problems/unique-binary-search-trees/description/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-binary-search-trees/description/</a><br>
+类似区间dp</li>
+<li>Validate Binary Search Tree[easy]<br>
+<a href="https://leetcode.com/problems/validate-binary-search-tree/description/" target="_blank" rel="noopener">https://leetcode.com/problems/validate-binary-search-tree/description/</a><br>
+第一种方法，递归直接判断；<br>
+第二种方法，中序遍历是否有序</li>
+<li>Symmetric Tree[easy]<br>
+<a href="https://leetcode.com/problems/symmetric-tree/description/" target="_blank" rel="noopener">https://leetcode.com/problems/symmetric-tree/description/</a><br>
+树形结构上的题一般都递归做</li>
+<li>Binary Tree Level Order Traversal[easy]<br>
+<a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/" target="_blank" rel="noopener">https://leetcode.com/problems/binary-tree-level-order-traversal/description/</a><br>
+树的bfs</li>
+<li>Maximum Depth of Binary Tree[easy]<br>
+<a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/description/" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-depth-of-binary-tree/description/</a><br>
+dfs</li>
+<li>Construct Binary Tree from Preorder and Inorder Traversal[medium]<br>
+<a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/" target="_blank" rel="noopener">https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/</a><br>
+根据先序遍历确定根，然后根据中序遍历确定左右子树节点，递归构造</li>
+<li>Flatten Binary Tree to Linked List[medium]<br>
+<a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/</a><br>
+使用递归函数：将子树化为链表，并返回链表首尾指针</li>
+<li>Best Time to Buy and Sell Stock[easy]<br>
+<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/</a><br>
+动态维护当前最小值</li>
+<li><strong>Binary Tree Maximum Path Sum</strong>[easy]<br>
+<a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/binary-tree-maximum-path-sum/description/</a><br>
+如果是多叉树，需要两次dp，分别算出节点向下的最大和第二大路径长度。<br>
+而二叉树则确定了最大和第二大路径长度：左子树最大路径长度和右子树最大路径长度（或者相反），所以更简单</li>
+<li>Longest Consecutive Sequence[medium]<br>
+<a href="https://leetcode.com/problems/longest-consecutive-sequence/description/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-consecutive-sequence/description/</a><br>
+dp+hashmap</li>
+<li><strong>Single Number</strong>[medium]<br>
+<a href="https://leetcode.com/problems/single-number/description/" target="_blank" rel="noopener">https://leetcode.com/problems/single-number/description/</a><br>
+这里只讨论不用额外空间的做法：异或</li>
+<li>Word Break[medium]<br>
+<a href="https://leetcode.com/problems/word-break/description/" target="_blank" rel="noopener">https://leetcode.com/problems/word-break/description/</a><br>
+注意这个题不可以搜索和贪心匹配，所以需要使用dp</li>
+<li><strong>Linked List Cycle</strong>[hard]<br>
+<a href="https://leetcode.com/problems/linked-list-cycle/description/" target="_blank" rel="noopener">https://leetcode.com/problems/linked-list-cycle/description/</a><br>
+以下解都不使用额外空间！真的有难度，反正我是想不到。<br>
+原题解：2个指针，其中一个每次移动1步，另一个每次移动2步，有环则必然相遇。<br>
+拓展1：求环的起点<br>
+拓展1解：设链表头到环的起点有x步，相遇点距环起点b步，环长s；则2k=x+ns+b, k=x+ms+b；相减2k-k = k = (n-m)s=x+ms+b；则x+b=(n-2m)s；也就是说从环起点走x+b步可以回到环起点；也就是说从链表头走x+(x+b)步可以到环起点；所以从相遇点走x步可到环起点。但是环起点未知，所以使用第3个指针从链表头开始，与相遇点指针每次移动1步，相遇时则为环起点。<br>
+拓展2：数组长度0-n(共n+1个数字)，每个数字为1-n中的一个，求重复数字<br>
+拓展2解：这样的数组其实是链表！！解法和拓展1相同。</li>
+</ol>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2018/03/19/Review-LeetCode-Top-100-Liked-Questions-1/">https://proverbs.github.io/2018/03/19/Review-LeetCode-Top-100-Liked-Questions-1/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Review-LeetCode-Top-100-Liked-Questions-1"><span class="toc-number">1.</span> <span class="toc-text">[Review]LeetCode Top 100 Liked Questions(1)</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

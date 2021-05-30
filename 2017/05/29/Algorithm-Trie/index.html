@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Algorithm-Trie | Proverbs's Blog</title>
+    <meta name="description" content="【算法】Trie图 引言 Trie图是Trie树的变种，结合了ac自动机中的思想。 而ac自动机的根本思想是基于kmp的next数组构建的fail指针。 所以，在学习Trie图前，请先搞清楚kmp算法。 关于AC自动机 我太久没写过AC自动机了，只知道AC自动机可以自动ac了。 所以，我还真的说不出AC自动机和我写的trie图有什么区别，可能我写的就叫ac自动机吧。 或者说，可能AC自动机和Tri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm-Trie">
+<meta property="og:url" content="https://proverbs.github.io/2017/05/29/Algorithm-Trie/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="【算法】Trie图 引言 Trie图是Trie树的变种，结合了ac自动机中的思想。 而ac自动机的根本思想是基于kmp的next数组构建的fail指针。 所以，在学习Trie图前，请先搞清楚kmp算法。 关于AC自动机 我太久没写过AC自动机了，只知道AC自动机可以自动ac了。 所以，我还真的说不出AC自动机和我写的trie图有什么区别，可能我写的就叫ac自动机吧。 或者说，可能AC自动机和Tri">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-05-29T18:37:05.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="字符串">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Algorithm-Trie
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/29/Algorithm-Trie/" class="article-date">
+	  <time datetime="2017-05-29T18:37:05.000Z" itemprop="datePublished">May 29</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2017/05/29/Algorithm-Trie/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 986(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="【算法】Trie图">【算法】Trie图</h1>
+<h2 id="引言">引言</h2>
+<p>Trie图是Trie树的变种，结合了ac自动机中的思想。</p>
+<p>而ac自动机的根本思想是基于kmp的next数组构建的fail指针。</p>
+<p>所以，在学习Trie图前，请先搞清楚<a href="http://blog.proverbs.top/2017/05/27/Algorithm-KMP/" target="_blank" rel="noopener">kmp</a>算法。</p>
+<h2 id="关于AC自动机">关于AC自动机</h2>
+<p>我太久没写过AC自动机了，只知道AC自动机可以自动ac了。</p>
+<p>所以，我还真的说不出AC自动机和我写的trie图有什么区别，可能我写的就叫ac自动机吧。</p>
+<p>或者说，可能AC自动机和Trie图本来就是几乎一样的。</p>
+<h2 id="Trie图">Trie图</h2>
+<p>关于Trie图，只要找到有图（那种非常好看的图）的那种博文，一般讲的都比较清楚。</p>
+<p>因为，根本不用看字，看看图就明白了。</p>
+<p>这里推荐一个博客：<a href="http://www.cnblogs.com/gtarcoder/p/4820560.html" target="_blank" rel="noopener">http://www.cnblogs.com/gtarcoder/p/4820560.html</a></p>
+<p>Trie图写起来非常短，我这种邋遢的代码风格也就10行。</p>
+<a id="more"></a>
+<p>先上代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TR</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> son[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> f;</span><br><span class="line">    <span class="keyword">bool</span> fg;</span><br><span class="line">&#125;tr[M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">1</span>; <span class="comment">// root</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, x; i &lt; len; i++) &#123;</span><br><span class="line">        x = str[i] - <span class="string">'a'</span>;</span><br><span class="line">        <span class="keyword">if</span> (!tr[now].son[x]) tr[now].son[x] = ++cnt;</span><br><span class="line">        now = tr[now].son[x];</span><br><span class="line">    &#125;</span><br><span class="line">    tr[now].fg = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_trie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = <span class="number">1</span>, t = <span class="number">2</span>, sta, ch, fl;</span><br><span class="line">    q[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// root</span></span><br><span class="line">    <span class="keyword">while</span> (h &lt; t) &#123;</span><br><span class="line">        sta = q[h++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">            ch = tr[sta].son[i];</span><br><span class="line">            <span class="keyword">if</span> (sta == <span class="number">1</span>) fl = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> fl = tr[tr[sta].f].son[i];</span><br><span class="line">            <span class="keyword">if</span> (!ch) tr[sta].son[i] = fl;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                tr[ch].f = fl;</span><br><span class="line">                tr[ch].fg |= tr[fl].fg;</span><br><span class="line">                q[t++] = ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>trie图中同样有失败指针，即以上代码中的f</li>
+<li>trie图中和trie树一样，用fg标记单词的结束字符</li>
+<li>trie图比较好的地方在于，对于trie树中为空的孩子节点，<strong>它将这个孩子节点直接指向了失败指针的孩子节点，这个节点必然不会是空节点（除了是根节点的情况）</strong>。这里非常值得注意的是，<strong>这个孩子节点其实跨越了很多失败指针的，也就相当于将失败指针类似于并查集那样压缩</strong>。之所以会这样，是因为，当前节点的失败指针指向的节点可能也没有这个孩子，所以就要不停的调用失败指针，直到有找到有这个孩子的失败指针为止（或者到根节点为止）。</li>
+</ul>
+<h2 id="应用">应用</h2>
+<h3 id="字符串匹配">字符串匹配</h3>
+<p>HDU 2222，多么好的题号～</p>
+<p>字符串匹配模板题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 1000010</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TR</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> son[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> f;</span><br><span class="line">    <span class="keyword">bool</span> fg;<span class="comment">// 为了保留Trie的原始形态，此处保留了fg，否则可以删除</span></span><br><span class="line">    <span class="keyword">int</span> ct;</span><br><span class="line">&#125;tr[M];</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a[M * <span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ans, n, cas;</span><br><span class="line"><span class="keyword">int</span> q[M * <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">1</span>; <span class="comment">// root</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, x; i &lt; len; i++) &#123;</span><br><span class="line">        x = str[i] - <span class="string">'a'</span>;</span><br><span class="line">        <span class="keyword">if</span> (!tr[now].son[x]) tr[now].son[x] = ++cnt;</span><br><span class="line">        now = tr[now].son[x];</span><br><span class="line">    &#125;</span><br><span class="line">    tr[now].fg = <span class="literal">true</span>;</span><br><span class="line">    tr[now].ct++; <span class="comment">//相同单词算两个</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_trie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = <span class="number">1</span>, t = <span class="number">2</span>, sta, ch, fl;</span><br><span class="line">    q[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// root</span></span><br><span class="line">    <span class="keyword">while</span> (h &lt; t) &#123;</span><br><span class="line">        sta = q[h++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">            ch = tr[sta].son[i];</span><br><span class="line">            <span class="keyword">if</span> (sta == <span class="number">1</span>) fl = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> fl = tr[tr[sta].f].son[i];</span><br><span class="line">            <span class="keyword">if</span> (!ch) tr[sta].son[i] = fl;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                tr[ch].f = fl;</span><br><span class="line">                tr[ch].fg |= tr[fl].fg;</span><br><span class="line">                q[t++] = ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">match</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(a);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, x, ch; i &lt; len; i++) &#123;</span><br><span class="line">        x = a[i] - <span class="string">'a'</span>;</span><br><span class="line">        now = tr[now].son[x];</span><br><span class="line">        <span class="keyword">if</span> (tr[now].fg) &#123;</span><br><span class="line">            <span class="keyword">int</span> up = now;</span><br><span class="line">            <span class="keyword">while</span> (tr[up].fg) &#123;</span><br><span class="line">                ans += tr[up].ct;</span><br><span class="line">                tr[up].ct = <span class="number">0</span>;<span class="comment">// 重复出现算一次</span></span><br><span class="line">                up = tr[up].f;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">26</span>; j++)</span><br><span class="line">            tr[i].son[j] = <span class="number">0</span>;</span><br><span class="line">        tr[i].ct = tr[i].f = <span class="number">0</span>;</span><br><span class="line">        tr[i].fg = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ans = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;cas);</span><br><span class="line">    <span class="keyword">while</span> (cas--) &#123;</span><br><span class="line">        cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">char</span> str[<span class="number">55</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, str);</span><br><span class="line">            insert(str);</span><br><span class="line">        &#125;</span><br><span class="line">        build_trie();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, a);</span><br><span class="line">        match();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">        clear();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Trie树上的DP">Trie树上的DP</h3>
+<p>待补充…</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2017/05/29/Algorithm-Trie/">https://proverbs.github.io/2017/05/29/Algorithm-Trie/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【算法】Trie图"><span class="toc-number">1.</span> <span class="toc-text">【算法】Trie图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于AC自动机"><span class="toc-number">1.2.</span> <span class="toc-text">关于AC自动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trie图"><span class="toc-number">1.3.</span> <span class="toc-text">Trie图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">1.4.</span> <span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串匹配"><span class="toc-number">1.4.1.</span> <span class="toc-text">字符串匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trie树上的DP"><span class="toc-number">1.4.2.</span> <span class="toc-text">Trie树上的DP</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

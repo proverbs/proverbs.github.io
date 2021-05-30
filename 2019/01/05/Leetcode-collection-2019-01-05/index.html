@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>[Leetcode]collection-2019-01-05 | Proverbs's Blog</title>
+    <meta name="description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. card-flipping-game(easy) The description is kind of vague. Another description from discussion is:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leetcode]collection-2019-01-05">
+<meta property="og:url" content="https://proverbs.github.io/2019/01/05/Leetcode-collection-2019-01-05/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="My code can be viewed in my github: Proverbs Github. The following difficulty is defined by myself. card-flipping-game(easy) The description is kind of vague. Another description from discussion is:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-01-06T05:46:31.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            [Leetcode]collection-2019-01-05
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2019/01/05/Leetcode-collection-2019-01-05/" class="article-date">
+	  <time datetime="2019-01-06T05:46:31.000Z" itemprop="datePublished">Jan 5</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>, <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2019/01/05/Leetcode-collection-2019-01-05/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 753(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 4(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>My code can be viewed in my github: <a href="https://github.com/proverbs/LTC/" target="_blank" rel="noopener">Proverbs Github</a>.<br>
+The following difficulty is defined by myself.</p>
+<h2 id="card-flipping-game-easy">card-flipping-game(easy)</h2>
+<p>The description is kind of vague. Another description from discussion is:</p>
+<blockquote>
+<p>Given an array of cards with numbers written on both sides and an infinite number of card flips, find the minimum number appearing on any card’s back which is not appearing on any card’s front.</p>
+</blockquote>
+<p>And the solution is to find the smallest number which never appears on both sides of any card.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="count-different-palindromic-subsequences-hard">count-different-palindromic-subsequences(hard)</h2>
+<p>The most difficult point of this problem is how to deal with the duplicate subsequences.<br>
+<code>dp[c][lt][rt]: number of different subsequences which start with c and end with c using letters in range [lt, rt]</code>.<br>
+The key point is when <code>c == s[lt] == s[rt]</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (s[lt] == <span class="string">'a'</span> + c &amp;&amp; s[rt] == <span class="string">'a'</span> + c) &#123;</span><br><span class="line">    <span class="keyword">if</span> (lt + <span class="number">1</span> == rt) &#123;</span><br><span class="line">        res = <span class="number">2</span>; <span class="comment">// c, cc</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res = <span class="number">1</span>; <span class="comment">// cc</span></span><br><span class="line">    res += dfs(dp, s, c, lt + <span class="number">1</span>, rt - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (dfs(dp, s, c, lt + <span class="number">1</span>, rt - <span class="number">1</span>)) res ++; <span class="comment">// there exists at least one c, then 1 for cc...cc or c...c...c</span></span><br><span class="line">    <span class="keyword">else</span> res ++; <span class="comment">// there exists no c, then 1 for c</span></span><br><span class="line">    res %= mod;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++)</span><br><span class="line">        <span class="keyword">if</span> (i != c) &#123;</span><br><span class="line">            res += dfs(dp, s, i, lt + <span class="number">1</span>, rt - <span class="number">1</span>);</span><br><span class="line">            res %= mod;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS: Why I got MLE if I used the resize function???</p>
+<ul>
+<li>Time complexity: O(4*length^2).</li>
+<li>Space complexity: O(4*length^2).</li>
+</ul>
+<a id="more"></a>
+<h2 id="delete-node-in-a-linked-list-medium">delete-node-in-a-linked-list(medium)</h2>
+<p>We do not know the root of the linked list, then we create a root by swapping current node with the next node.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="design-snake-game-medium">design-snake-game(medium)</h2>
+<p>Use deque to represent the snake and use queue to represent the food.</p>
+<ul>
+<li>Time complexity: O(1).</li>
+<li>Space complexity: O(1).</li>
+</ul>
+<h2 id="h-index-hard">h-index(hard)</h2>
+<p><strong>The result must be from 1 to n.</strong><br>
+So, we can sort the array and then enumerate the result and use binary search to check how many numbers are not less than the result.<br>
+This is the O(nlogn) method. However, there is a brilliant solution which applies the <strong>counting sort</strong> whose complexity is determined by range.<br>
+Again, the result must be from 1 to n, then all numbers larger than n are meaningless and we can change them to n to reduce the range.</p>
+<ul>
+<li>Time complexity: O(nlogn) or O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="longest-line-of-consecutive-one-in-matrix-medium">longest-line-of-consecutive-one-in-matrix(medium)</h2>
+<p>Only check the top, left, top-left or top-right 1 for each line. Then, we can solve it in one pass.</p>
+<ul>
+<li>Time complexity: O(row*col).</li>
+<li>Space complexity: O(row*col).</li>
+</ul>
+<h2 id="longest-substring-with-at-least-k-repeating-characters-hard">longest-substring-with-at-least-k-repeating-characters(hard)</h2>
+<p>It is hard to apply sliding window, when we cannot determine how many unique letters should be in the sliding window.<br>
+So, we can enumerate the number of unique letters and then use 26 sliding windows for different numbers of unique letters.</p>
+<ul>
+<li>Time complexity: O(26*n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="network-delay-time-medium">network-delay-time(medium)</h2>
+<p>Shortest path from a single source point: SPFA.</p>
+<ul>
+<li>Time complexity: O(n^2).</li>
+<li>Space complexity: O(n^2).</li>
+</ul>
+<h2 id="next-greater-element-ii-easy">next-greater-element-ii(easy)</h2>
+<p>Extend the array using itself and then use stack to get the first larger element on the right.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="number-of-connected-components-in-an-undirected-graph-easy">number-of-connected-components-in-an-undirected-graph(easy)</h2>
+<p>DFS.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="partition-list-medium">partition-list(medium)</h2>
+<p>Take the elements not less than x out of the original list. Then connect two lists.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="path-sum-ii-easy">path-sum-ii(easy)</h2>
+<p>DFS.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n^2).</li>
+</ul>
+<h2 id="random-pick-index-easy">random-pick-index(easy)</h2>
+<p>Use a map to store all indices of a number.</p>
+<ul>
+<li>Time complexity: O(n) initialization, O(1) pick.</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="same-tree-easy">same-tree(easy)</h2>
+<p>Do it recursively.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="sentence-similarity-easy">sentence-similarity(easy)</h2>
+<p>Use nested maps to store the similarities.</p>
+<ul>
+<li>Time complexity: O(n+m).</li>
+<li>Space complexity: O(n+m).</li>
+</ul>
+<h2 id="sum-of-subarray-minimums-medium">sum-of-subarray-minimums(medium)</h2>
+<p>I have misunderstood the problem <code>sum-of-subsequence-widths</code> to this problem. You can see the method at: <a href="https://blog.proverbs.top/2019/01/04/Leetcode-collection-2019-01-04/#sum-of-subsequence-widths-medium" target="_blank" rel="noopener">Link</a>.</p>
+<ul>
+<li>Time complexity: O(n).</li>
+<li>Space complexity: O(n).</li>
+</ul>
+<h2 id="the-maze-ii-medium">the-maze-ii(medium)</h2>
+<p>Heap or priority_queue + Dijkstra.</p>
+<ul>
+<li>Time complexity: O(col<em>row</em>log(row*col)).</li>
+<li>Space complexity: O(col*row).</li>
+</ul>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2019/01/05/Leetcode-collection-2019-01-05/">https://proverbs.github.io/2019/01/05/Leetcode-collection-2019-01-05/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#card-flipping-game-easy"><span class="toc-number">1.</span> <span class="toc-text">card-flipping-game(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#count-different-palindromic-subsequences-hard"><span class="toc-number">2.</span> <span class="toc-text">count-different-palindromic-subsequences(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#delete-node-in-a-linked-list-medium"><span class="toc-number">3.</span> <span class="toc-text">delete-node-in-a-linked-list(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#design-snake-game-medium"><span class="toc-number">4.</span> <span class="toc-text">design-snake-game(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h-index-hard"><span class="toc-number">5.</span> <span class="toc-text">h-index(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#longest-line-of-consecutive-one-in-matrix-medium"><span class="toc-number">6.</span> <span class="toc-text">longest-line-of-consecutive-one-in-matrix(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#longest-substring-with-at-least-k-repeating-characters-hard"><span class="toc-number">7.</span> <span class="toc-text">longest-substring-with-at-least-k-repeating-characters(hard)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#network-delay-time-medium"><span class="toc-number">8.</span> <span class="toc-text">network-delay-time(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next-greater-element-ii-easy"><span class="toc-number">9.</span> <span class="toc-text">next-greater-element-ii(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#number-of-connected-components-in-an-undirected-graph-easy"><span class="toc-number">10.</span> <span class="toc-text">number-of-connected-components-in-an-undirected-graph(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#partition-list-medium"><span class="toc-number">11.</span> <span class="toc-text">partition-list(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#path-sum-ii-easy"><span class="toc-number">12.</span> <span class="toc-text">path-sum-ii(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#random-pick-index-easy"><span class="toc-number">13.</span> <span class="toc-text">random-pick-index(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#same-tree-easy"><span class="toc-number">14.</span> <span class="toc-text">same-tree(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sentence-similarity-easy"><span class="toc-number">15.</span> <span class="toc-text">sentence-similarity(easy)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sum-of-subarray-minimums-medium"><span class="toc-number">16.</span> <span class="toc-text">sum-of-subarray-minimums(medium)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-maze-ii-medium"><span class="toc-number">17.</span> <span class="toc-text">the-maze-ii(medium)</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

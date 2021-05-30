@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Algorithm-Suffix-Array | Proverbs's Blog</title>
+    <meta name="description" content="【算法】后缀数组（SA） 引言 关于后缀数组的原理，集训队论文中已经将的非常详细了。 但是，其中的代码对于第一接触这个东西的人来说可能就觉得有些恶心了。 所以，我这篇文章主要是讲怎么理解倍增方法的SA的构建过程。 SA的实现 基数排序 很多人理解不了这个是因为不知道基数排序。 所以，在学习后缀数组之前请先动手写一个双关键字的基数排序程序：求sa[i]表示第i大的元组在数组中的下标。 然后就可以正式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm-Suffix-Array">
+<meta property="og:url" content="https://proverbs.github.io/2017/05/27/Algorithm-Suffix-Array/index.html">
+<meta property="og:site_name" content="Proverbs&#39;s Blog">
+<meta property="og:description" content="【算法】后缀数组（SA） 引言 关于后缀数组的原理，集训队论文中已经将的非常详细了。 但是，其中的代码对于第一接触这个东西的人来说可能就觉得有些恶心了。 所以，我这篇文章主要是讲怎么理解倍增方法的SA的构建过程。 SA的实现 基数排序 很多人理解不了这个是因为不知道基数排序。 所以，在学习后缀数组之前请先动手写一个双关键字的基数排序程序：求sa[i]表示第i大的元组在数组中的下标。 然后就可以正式">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-05-27T07:45:42.000Z">
+<meta property="article:modified_time" content="2021-05-30T16:25:43.046Z">
+<meta property="article:author" content="Proverbs Xu">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="字符串">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/img/verify.jpeg" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/proverbs" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="https://www.gravatar.com/avatar/3ba386c9bd7c66d78447def6b3c4b352?s=128" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Proverbs</h2>
+            <h3 id="title" class="hidden xl:block">@SYSU-&gt;@CMU-&gt;SWE</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Sunnyvale, California
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">Links</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            Algorithm-Suffix-Array
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2017/05/27/Algorithm-Suffix-Array/" class="article-date">
+	  <time datetime="2017-05-27T07:45:42.000Z" itemprop="datePublished">May 27</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-link" href="/tags/algorithm/" rel="tag">algorithm</a>, <a class="article-tag-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2017/05/27/Algorithm-Suffix-Array/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">Word Count: 1.8k(words)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">Read Count: 8(minutes)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="【算法】后缀数组（SA）">【算法】后缀数组（SA）</h1>
+<h2 id="引言">引言</h2>
+<p>关于后缀数组的原理，<a href="https://wenku.baidu.com/view/228caa45b307e87101f696a8.html" target="_blank" rel="noopener">集训队论文</a>中已经将的非常详细了。</p>
+<p>但是，其中的代码对于第一接触这个东西的人来说可能就觉得有些恶心了。</p>
+<p>所以，我这篇文章主要是讲怎么理解倍增方法的SA的构建过程。</p>
+<h2 id="SA的实现">SA的实现</h2>
+<h3 id="基数排序">基数排序</h3>
+<p>很多人理解不了这个是因为不知道<strong>基数排序</strong>。</p>
+<p>所以，在学习后缀数组之前请先动手写一个双关键字的基数排序程序：求sa[i]表示第i大的元组在数组中的下标。</p>
+<p>然后就可以正式进入SA部分了～</p>
+<a id="more"></a>
+<h3 id="SA">SA</h3>
+<p>先上代码，然后结合代码讲～</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 原理是双关键字的基数排序</span></span><br><span class="line">    <span class="comment">// sk为第一关键字，sb为第二关键字排序</span></span><br><span class="line">    <span class="comment">// 其中，sb相当于上一轮的sa</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; i++) acc[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) acc[sk[i]]++;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; m; i++) acc[i] += acc[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) sa[--acc[sk[sb[i]]]] = sb[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 比较字符串的大小，可以直接利用sk数组比较</span></span><br><span class="line">    <span class="keyword">return</span> f[x] == f[y] &amp;&amp; f[x + w] == f[y + w];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">suffix_array</span><span class="params">(<span class="keyword">int</span> *a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        sk[i] = a[i];</span><br><span class="line">        <span class="comment">// 为了一般性，最初设置一个基于位置的第二关键字</span></span><br><span class="line">        sb[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    radix_sort();</span><br><span class="line">    <span class="comment">// 倍增</span></span><br><span class="line">    <span class="comment">// p=n时说明已经能够将n个后缀全部区分了</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">1</span>, p = <span class="number">1</span>, i; p &lt; n; w &lt;&lt;= <span class="number">1</span>, m = p) &#123;</span><br><span class="line">        <span class="comment">// 基数排序，求新的sa</span></span><br><span class="line">        <span class="keyword">for</span> (p = <span class="number">0</span>, i = n - w; i &lt; n; i++)</span><br><span class="line">            sb[p++] = i;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (sa[i] &gt;= w) sb[p++] = sa[i] - w;</span><br><span class="line">        radix_sort();</span><br><span class="line">        <span class="comment">// sb存放sk的一份拷贝，因为之后要利用当前sk更新之后的sk</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) sb[i] = sk[i];</span><br><span class="line">        <span class="comment">// 更新sk</span></span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        sk[sa[<span class="number">0</span>]] = p++; <span class="comment">// sa[0]永远都是n-1，即最后补上的0；而sk[sa[0]]即sk[n-1]=0</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">            <span class="comment">// 此处的sb实际意义相当于sk</span></span><br><span class="line">            sk[sa[i]] = cmp(sb, sa[i], sa[i - <span class="number">1</span>], w) ? p - <span class="number">1</span> : p++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个我写的SA的代码，虽然比论文中的长很多，但是更好理解，时间效率也和论文中一样～</p>
+<p>大部分代码可以看注释去理解，我只强调几个非常重要的部分：</p>
+<ul>
+<li>sk的意义类似于rk（rank），但是不同的是，sk中使用的是对应元素的值作为排名，所以经常会出现sk中两个元素（甚至多个元素）值相同的情况；而根据rk的定义，rk是和sa互为逆运算，所以，必然是一对一映射</li>
+<li>sb的意义相当于sa，sb中任意两个元素不相同</li>
+<li>因为，我按照论文中的方法，在字符串后面添加了一个0，这样会导致sa[0]永远都是n-1，sk[sa[0]]即sk[n-1]=0</li>
+<li>双关键字的基数排序理论上需要进行两次排序过程，但是实际上，代码中只进行了一次。之所以只进行了一次，是因为第二关键字已经排好顺序了，按照i从小到大的顺序访问sb[i]（即上一轮的sk[i]），即可满足第二关键字由小到大排列的要求</li>
+<li>p&lt;n为结束条件是因为，p代表sk中不同数字的个数，所以，当p=n时，相当于没有并列的情况出现，即n个后缀已经全部区分开了～</li>
+</ul>
+<h2 id="应用">应用</h2>
+<p>上面求sa和rk还无法体现SA的强大之处。因为，SA还有一个很强大的辅助数组：height。</p>
+<p>关于hight数组，可以参考上面提到的论文，这部分无论是原理还是代码都还是比较好理解的。</p>
+<p>应用方面主要也是关于各种各样的匹配问题的，还是参看论文吧～</p>
+<p>这里给出poj1743中应用SA的代码：</p>
+<p>因为我是用Jetbrain家的CLion写的，为了方便，就只能用名字空间了，对于单个代码其实没什么用，所以请忽略啦…</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> POJ1743 &#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> N 20020</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// sk中的两个元素可以相同，但是sa，sb中的不可以相同</span></span><br><span class="line"><span class="comment">// 所以，实际上sk和sa并不是互逆的</span></span><br><span class="line">    <span class="keyword">int</span> sk[N], rk[N], sa[N], sb[N], ht[N];</span><br><span class="line">    <span class="keyword">int</span> acc[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n, m, nn;</span><br><span class="line">    <span class="keyword">int</span> a[N];</span><br><span class="line">    <span class="keyword">int</span> b[N];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 原理是双关键字的基数排序</span></span><br><span class="line">        <span class="comment">// sk为第一关键字，sb为第二关键字排序</span></span><br><span class="line">        <span class="comment">// 其中，sb相当于上一轮的sa</span></span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; i++) acc[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) acc[sk[i]]++;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; m; i++) acc[i] += acc[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) sa[--acc[sk[sb[i]]]] = sb[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 比较字符串的大小，可以直接利用sk数组比较</span></span><br><span class="line">        <span class="keyword">return</span> f[x] == f[y] &amp;&amp; f[x + w] == f[y + w];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">suffix_array</span><span class="params">(<span class="keyword">int</span> *a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            sk[i] = a[i];</span><br><span class="line">            <span class="comment">// 为了一般性，最初设置一个基于位置的第二关键字</span></span><br><span class="line">            sb[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        radix_sort();</span><br><span class="line">        <span class="comment">// 倍增</span></span><br><span class="line">        <span class="comment">// p=n时说明已经能够将n个后缀全部区分了</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">1</span>, p = <span class="number">1</span>, i; p &lt; n; w &lt;&lt;= <span class="number">1</span>, m = p) &#123;</span><br><span class="line">            <span class="comment">// 基数排序，求新的sa</span></span><br><span class="line">            <span class="keyword">for</span> (p = <span class="number">0</span>, i = n - w; i &lt; n; i++)</span><br><span class="line">                sb[p++] = i;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">                <span class="keyword">if</span> (sa[i] &gt;= w) sb[p++] = sa[i] - w;</span><br><span class="line">            radix_sort();</span><br><span class="line">            <span class="comment">// sb存放sk的一份拷贝，因为之后要利用当前sk更新之后的sk</span></span><br><span class="line">            <span class="comment">// 而且，在下一轮循环中，sb利用sk的值可以直接排序</span></span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) sb[i] = sk[i];</span><br><span class="line">            <span class="comment">// 更新sk</span></span><br><span class="line">            p = <span class="number">0</span>;</span><br><span class="line">            sk[sa[<span class="number">0</span>]] = p++; <span class="comment">// sa[0]永远都是n-1，即最后补上的0；而sk[sa[0]]即sk[n-1]=0</span></span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">                <span class="comment">// 此处的sb实际意义相当于sk</span></span><br><span class="line">                sk[sa[i]] = cmp(sb, sa[i], sa[i - <span class="number">1</span>], w) ? p - <span class="number">1</span> : p++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get_ht</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i, j, k = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// sk和sa是互逆的(rk[sa[0]]=0)</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= nn; i++) rk[sa[i]] = i;</span><br><span class="line">        <span class="comment">// h[i] &gt;= h[i-1]-1，其中h[i]=ht[rk[i]]</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; nn; ht[rk[i++]] = k)</span><br><span class="line">            <span class="keyword">for</span> (k ? k-- : <span class="number">0</span>, j = sa[rk[i] - <span class="number">1</span>]; b[i + k] == b[j + k]; k++);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mx = sa[<span class="number">1</span>], mn = sa[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; nn; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ht[i] &lt; x) mx = mn = sa[i];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                mx = max(mx, sa[i]);</span><br><span class="line">                mn = min(mn, sa[i]);</span><br><span class="line">                <span class="keyword">if</span> (mx - mn &gt;= x) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;nn), nn) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nn; i++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            nn -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nn; i++) &#123;</span><br><span class="line">                b[i] = a[i] - a[i + <span class="number">1</span>] + <span class="number">88</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            m = <span class="number">190</span>;</span><br><span class="line">            <span class="comment">// 将字符串拓展一位，保证cmp函数中不会越界</span></span><br><span class="line">            n = nn + <span class="number">1</span>;</span><br><span class="line">            b[n - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">            suffix_array(b);</span><br><span class="line">            get_ht();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> l = <span class="number">4</span>, r = nn / <span class="number">2</span> + <span class="number">1</span>, mid;</span><br><span class="line">            <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">                mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (check(mid)) ans = mid, l = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (ans &lt; <span class="number">4</span>) <span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    POJ1743::solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="https://proverbs.github.io/2017/05/27/Algorithm-Suffix-Array/">https://proverbs.github.io/2017/05/27/Algorithm-Suffix-Array/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【算法】后缀数组（SA）"><span class="toc-number">1.</span> <span class="toc-text">【算法】后缀数组（SA）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SA的实现"><span class="toc-number">1.2.</span> <span class="toc-text">SA的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基数排序"><span class="toc-number">1.2.1.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SA"><span class="toc-number">1.2.2.</span> <span class="toc-text">SA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">1.3.</span> <span class="toc-text">应用</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a href="https://github.com/proverbs" target="_blank" rel="noopener">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8508e493791a73e1f8ed',
+        clientSecret: '74aa92f957eb5ac1c9de2a34fad4b39b2a192b23',
+        repo: 'blog-comment',
+        owner: 'proverbs',
+        admin: ['proverbs'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
